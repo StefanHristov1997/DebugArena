@@ -1,9 +1,9 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/debugArena?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
-    username: root
-    password: ${DEFAULT_ADMIN_PASS:root}
+    url: "jdbc:mysql://localhost:3306/${DEFAULT_DATABASE}?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
+    username: ${DEFAULT_ADMIN_USERNAME}
+    password: ${DEFAULT_ADMIN_PASSWORD}
   servlet:
     multipart:
       max-file-size: 1MB
