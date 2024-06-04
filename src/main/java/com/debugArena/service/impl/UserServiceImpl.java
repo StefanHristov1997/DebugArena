@@ -14,4 +14,9 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
+    @Override
+    public boolean isUsernameExist(String username) {
+        return this.userRepository.findByUsername(username).isPresent();
+    }
 }
