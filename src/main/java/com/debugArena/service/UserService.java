@@ -3,4 +3,6 @@ package com.debugArena.service;
 public interface UserService {
 
     boolean isUsernameExist(String username);
+
+    boolean isEmailExist(String email);
 }

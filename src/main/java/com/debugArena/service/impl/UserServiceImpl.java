@@ -19,4 +19,9 @@ public class UserServiceImpl implements UserService {
     public boolean isUsernameExist(String username) {
         return this.userRepository.findByUsername(username).isPresent();
     }
+
+    @Override
+    public boolean isEmailExist(String email) {
+        return this.userRepository.findByEmail(email).isPresent();
+    }
 }

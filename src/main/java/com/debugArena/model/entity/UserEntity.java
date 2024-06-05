@@ -13,22 +13,22 @@ import java.util.Set;
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @Column(nullable = false)
+    @Column
     private String skills;
 
-    @Column(nullable = false)
+    @Column
     private String interests;
 
     @OneToMany

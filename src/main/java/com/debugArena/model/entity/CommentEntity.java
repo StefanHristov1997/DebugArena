@@ -12,13 +12,13 @@ import java.time.LocalDateTime;
 @Table(name = "comments")
 public class CommentEntity extends BaseEntity {
 
-    @Column(nullable = false)
-    private boolean approved;
+    @Column(name = "is_aproved", nullable = false)
+    private boolean isApproved;
 
-    @Column(nullable = false)
-    private LocalDateTime created;
+    @Column(name = "created_on", nullable = false)
+    private LocalDateTime createdOn;
 
-    @Column(nullable = false)
+    @Column(name = "text_content", nullable = false)
     private String textContent;
 
     @ManyToOne

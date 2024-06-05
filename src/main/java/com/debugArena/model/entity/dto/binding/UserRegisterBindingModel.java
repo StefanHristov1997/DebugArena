@@ -1,5 +1,6 @@
 package com.debugArena.model.entity.dto.binding;
 
+import com.debugArena.model.validation.anotation.UniqueEmail;
 import com.debugArena.model.validation.anotation.UniqueUsername;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -19,12 +20,14 @@ public class UserRegisterBindingModel {
 
     @NotBlank
     @Email(message = "{user.email}")
-    //TODO: Add UniqueEmail Validation
+    @UniqueEmail
     private String email;
 
     @NotBlank
+    @Length(min = 6, message = "{user.password.length}")
     private String password;
 
     @NotBlank
+    @Length(min = 6, message = "{user.confirm-password.length}")
     private String confirmPassword;
 }

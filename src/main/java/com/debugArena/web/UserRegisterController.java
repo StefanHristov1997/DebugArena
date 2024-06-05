@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/users")
-public class UsersController {
+public class UserRegisterController {
 
     @GetMapping("/register")
     public ModelAndView register() {
