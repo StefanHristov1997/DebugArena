@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Entity
@@ -16,12 +18,19 @@ public class ProblemEntity extends BaseEntity {
     @Column(nullable = false)
     private String description;
 
+    @Column(name = "created_on", nullable = false)
+    private LocalDateTime createdOn;
+
     @OneToOne
     @JoinColumn(name = "author_id")
     private UserEntity author;
 
     @OneToOne
-    @JoinColumn(name = "category_id")
-    private CategoryEntity category;
+    @JoinColumn(name = "language_id")
+    private LanguageEntity language;
+
+    @OneToOne
+    @JoinColumn(name = "technology_id")
+    private TechnologyEntity technology;
 
 }

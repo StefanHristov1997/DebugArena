@@ -1,5 +1,5 @@
 package com.debugArena.model.entity.enums;
 
-public enum CategoryEnum {
+public enum LanguageEnum {
     JAVA, CSharp, JavaScript, Python;
 }

@@ -13,12 +13,13 @@ import org.hibernate.validator.constraints.Length;
 public class UserRegisterBindingModel {
 
     @NotBlank
-    @Length(min = 3, message = "{user.username.length}")
+    @Length(min = 5, message = "{user.username.length}")
     @UniqueUsername
     private String username;
 
     @NotBlank
-    @Email
+    @Email(message = "{user.email}")
+    //TODO: Add UniqueEmail Validation
     private String email;
 
     @NotBlank
