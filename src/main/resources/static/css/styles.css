@@ -171,7 +171,7 @@ footer {
 }
 
 /* Registration CSS */
-.register-page {
+.register-login-page{
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
@@ -251,5 +251,79 @@ footer {
 }
 
 .registration-form p a:hover {
+    text-decoration: underline;
+}
+
+
+/* Login CSS */
+.login-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 100%;
+}
+
+.login-form h2 {
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.login-form .form-group {
+    margin-bottom: 15px;
+}
+
+.login-form .form-group label {
+    display: block;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.login-form .form-group input:focus {
+    border-color: #ff5722;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 87, 34, 0.5);
+}
+
+.login-form .btn {
+    width: 100%;
+    background: #ff5722;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-form .btn:hover {
+    background: #e64a19;
+}
+
+.login-form p {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+.login-form p a {
+    color: #ff5722;
+    text-decoration: none;
+}
+
+.login-form p a:hover {
     text-decoration: underline;
 }

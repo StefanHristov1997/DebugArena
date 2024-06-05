@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - ДебъгАрена</title>
+    <link rel="stylesheet" href="/css/styles.css">>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+</head>
+
+<body class="register-login-page">
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Вход</h2>
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label for="email">Имейл</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Парола</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Влезте</button>
+            </form>
+            <p>Нямате акаунт? <a th:href="">Регистрирайте се тук</a></p>
+        </div>
+    </div>
+</body>
+</html>
