@@ -38,7 +38,7 @@ public class UniqueUsernameValidator implements ConstraintValidator<UniqueUserna
         }
     }
 
-    public void replaceDefaultConstraintViolation(ConstraintValidatorContext context, String message) {
+    private void replaceDefaultConstraintViolation(ConstraintValidatorContext context, String message) {
         context
                 .unwrap(HibernateConstraintValidatorContext.class)
                 .buildConstraintViolationWithTemplate(message)

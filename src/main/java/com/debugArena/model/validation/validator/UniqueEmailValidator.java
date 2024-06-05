@@ -28,17 +28,17 @@ public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, St
         if (email == null) {
             return true;
         } else {
-            boolean isEmailExist = userService.isEmailExist(email);
+            boolean isEmailAlreadyExist = userService.isEmailExist(email);
 
-            if (isEmailExist) {
+            if (isEmailAlreadyExist) {
                 replaceDefaultConstraintViolation(context, message);
             }
 
-            return isEmailExist;
+            return isEmailAlreadyExist;
         }
     }
 
-    public void replaceDefaultConstraintViolation(ConstraintValidatorContext context, String message) {
+    private void replaceDefaultConstraintViolation(ConstraintValidatorContext context, String message) {
         context
                 .unwrap(HibernateConstraintValidatorContext.class)
                 .buildConstraintViolationWithTemplate(message)
