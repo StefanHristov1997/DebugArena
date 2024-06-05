@@ -56,7 +56,7 @@ public class UserRegisterController {
             modelAndView.setViewName("redirect:register");
         } else {
             this.userService.registerUser(userRegisterBindingModel);
-            modelAndView.setViewName("redirect:login");
+            modelAndView.setViewName("redirect:/");
         }
 
         return modelAndView;
