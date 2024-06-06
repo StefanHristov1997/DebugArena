@@ -12,7 +12,7 @@ public class PasswordMatcherValidator implements ConstraintValidator<PasswordMat
 
     @Override
     public void initialize(PasswordMatcher constraintAnnotation) {
-        ConstraintValidator.super.initialize(constraintAnnotation);
+        this.message = constraintAnnotation.message();
     }
 
     @Override
