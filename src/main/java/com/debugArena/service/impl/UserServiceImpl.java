@@ -21,6 +21,7 @@ public class UserServiceImpl implements UserService {
         this.mapper = mapper;
     }
 
+    //TODO: Fix User Roles
     @Override
     public void registerUser(UserRegisterBindingModel userRegisterBindingModel) {
         UserEntity userToSave = mapper.map(userRegisterBindingModel, UserEntity.class);

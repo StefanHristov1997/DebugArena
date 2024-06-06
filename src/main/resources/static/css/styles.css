@@ -89,7 +89,7 @@ header nav ul li a:hover::before {
 }
 
 .hero {
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../images/home-image.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/home-image.jpg') no-repeat center center/cover;
     height: 600px;
     color: #fff;
     text-align: center;
@@ -171,7 +171,7 @@ footer {
 }
 
 /* Registration CSS */
-.register-login-page{
+.register-login-page {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
@@ -224,15 +224,18 @@ footer {
 }
 
 .registration-form .btn {
-    width: 100%;
+    display: block;
+    width: 50%;
+    margin: 0 auto;
     background: #ff5722;
     color: #fff;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s;
+    text-align: center;
 }
 
 .registration-form .btn:hover {
@@ -298,15 +301,18 @@ footer {
 }
 
 .login-form .btn {
-    width: 100%;
+    display: block;
+    width: 50%;
+    margin: 0 auto;
     background: #ff5722;
     color: #fff;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s;
+    text-align: center;
 }
 
 .login-form .btn:hover {
@@ -325,5 +331,81 @@ footer {
 }
 
 .login-form p a:hover {
+    text-decoration: underline;
+}
+
+/* Reset-Password CSS */
+.reset-password-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 100%;
+}
+
+.reset-password-form h2 {
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.reset-password-form .form-group {
+    margin-bottom: 15px;
+}
+
+.reset-password-form .form-group label {
+    display: block;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.reset-password-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.reset-password-form .form-group input:focus {
+    border-color: #ff5722;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 87, 34, 0.5);
+}
+
+.reset-password-form .btn {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    background: #ff5722;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.reset-password-form .btn:hover {
+    background: #e64a19;
+}
+
+.reset-password-form p {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+.reset-password-form p a {
+    color: #ff5722;
+    text-decoration: none;
+}
+
+.reset-password-form p a:hover {
     text-decoration: underline;
 }
