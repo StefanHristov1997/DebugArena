@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bg"  xmlns:th="http://www.thymeleaf.org">
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -12,54 +12,55 @@
 </head>
 
 <body class="home-page">
-    <header>
-        <div class="container">
-            <div class="logo">
-                <span class="logo-text">Дебъг</span><span class="logo-highlight">Арена</span>
-            </div>
-            <nav>
-                <ul>
-                    <li><a th:href="@{/}"><i class="fas fa-home"></i> Начало</a></li>
-                    <li><a href="#"><i class="fas fa-code"></i> Дискусии</a></li>
-                    <li><a href="#"><i class="fas fa-info-circle"></i> За нас</a></li>
-                    <li><a href="#"><i class="fas fa-envelope"></i> Контакти</a></li>
-                    <li><a th:href="@{/users/login}"><i class="fas fa-sign-in-alt"></i> Вход</a></li>
-                </ul>
-            </nav>
+<header>
+    <div class="container">
+        <div class="logo">
+            <span class="logo-text">Дебъг</span><span class="logo-highlight">Арена</span>
         </div>
-    </header>
-    <section class="hero">
-        <div class="container">
-            <h2>Споделяйте и решавайте проблеми с кода</h2>
-            <p>Присъединете се към нашата общност и помогнете на другите да се справят с предизвикателствата в
-                програмирането.</p>
-            <a th:href="@{/users/register}" class="btn">Започнете сега</a>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><a href="#"><i class="fas fa-code"></i> Дискусии</a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i> За нас</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Контакти</a></li>
+                <li><a th:href="@{/users/login}"><i class="fas fa-sign-in-alt"></i> Вход</a></li>
+                <li><a th:href="@{/users/logout}"><i class="fas fa-sign-out-alt"></i> Излизане</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<section class="hero">
+    <div class="container">
+        <h2>Споделяйте и решавайте проблеми с кода</h2>
+        <p>Присъединете се към нашата общност и помогнете на другите да се справят с предизвикателствата в
+            програмирането.</p>
+        <a th:href="@{/users/register}" class="btn">Започнете сега</a>
+    </div>
+</section>
+<section class="features">
+    <div class="container">
+        <div class="feature">
+            <i class="fas fa-share-alt fa-3x"></i>
+            <h3>Споделяне на проблеми</h3>
+            <p>Публикувайте своите проблеми с кода и получете помощ от други потребители.</p>
         </div>
-    </section>
-    <section class="features">
-        <div class="container">
-            <div class="feature">
-                <i class="fas fa-share-alt fa-3x"></i>
-                <h3>Споделяне на проблеми</h3>
-                <p>Публикувайте своите проблеми с кода и получете помощ от други потребители.</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-thumbs-up fa-3x"></i>
-                <h3>Оценяване и коментари</h3>
-                <p>Оценявайте и коментирайте решенията на проблемите, за да помогнете на другите.</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-search fa-3x"></i>
-                <h3>Намиране на решения</h3>
-                <p>Търсете и намирайте решения на различни проблеми с кода в нашата платформа.</p>
-            </div>
+        <div class="feature">
+            <i class="fas fa-thumbs-up fa-3x"></i>
+            <h3>Оценяване и коментари</h3>
+            <p>Оценявайте и коментирайте решенията на проблемите, за да помогнете на другите.</p>
         </div>
-    </section>
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 ДебъгАрена - All Rights Reserved.</p>
+        <div class="feature">
+            <i class="fas fa-search fa-3x"></i>
+            <h3>Намиране на решения</h3>
+            <p>Търсете и намирайте решения на различни проблеми с кода в нашата платформа.</p>
         </div>
-    </footer>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <p>&copy; 2024 ДебъгАрена - All Rights Reserved.</p>
+    </div>
+</footer>
 </body>
 
 </html>

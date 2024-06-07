@@ -88,6 +88,8 @@ header nav ul li a:hover::before {
     width: 100%;
 }
 
+
+
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/home-image.jpg') no-repeat center center/cover;
     height: 600px;
