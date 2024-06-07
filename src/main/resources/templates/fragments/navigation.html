@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="bg"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Навигация</title>
+</head>
+<body>
+<header th:fragment="navigation">
+    <div class="container">
+        <div class="logo">
+            <span class="logo-text">Дебъг</span><span class="logo-highlight">Арена</span>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a th:href="@{/}"><i class="fas fa-home"></i> Начало</a></li>
+                <li><a href="#"><i class="fas fa-code"></i> Дискусии</a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i> За нас</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Контакти</a></li>
+                <li sec:authorize="!isAuthenticated()"><a th:href="@{/users/login}"><i class="fas fa-sign-in-alt"></i>
+                    Вход</a></li>
+                <li sec:authorize="isAuthenticated()">
+                    <form th:method="POST" th:action="@{/users/logout}" class="logout-form">
+                        <button type="submit" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Излизане</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+</body>
+</html>

@@ -45,7 +45,7 @@ header {
     margin-left: 0.3rem;
     border-radius: 3px;
 }
-
+/* Навигация */
 header nav ul {
     list-style: none;
     margin: 0;
@@ -83,12 +83,36 @@ header nav ul li a::before {
     transition: all 0.3s ease-in-out;
 }
 
-header nav ul li a:hover::before {
+header nav ul li a:hover::before{
     visibility: visible;
     width: 100%;
 }
+/* Форма за излизане */
+.logout-form {
+    display: flex;
+    align-items: center;
+}
 
+.navbar .btn-logout {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    color: #fff;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s;
+}
 
+.navbar .btn-logout i {
+    margin-right: 5px;
+}
+
+.navbar .btn-logout:hover {
+    color: #ff5722;
+}
 
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/home-image.jpg') no-repeat center center/cover;
@@ -172,7 +196,7 @@ footer {
     bottom: 0;
 }
 
-/* Registration CSS */
+/* Регистрация */
 .register-login-page {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -260,7 +284,7 @@ footer {
 }
 
 
-/* Login CSS */
+/* Логин */
 .login-container {
     background: #fff;
     padding: 40px;
@@ -336,7 +360,7 @@ footer {
     text-decoration: underline;
 }
 
-/* Reset-Password CSS */
+/* Възстановяване на паролата */
 .reset-password-container {
     background: #fff;
     padding: 40px;
