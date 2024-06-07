@@ -5,13 +5,20 @@ import com.debugArena.model.entity.dto.binding.UserRegisterBindingModel;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.Provider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class AppConfig {
+
+    private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public AppConfig(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Bean
     public ModelMapper mapper() {
@@ -22,7 +29,7 @@ public class AppConfig {
         Converter<String, String> passwordConverter
                 = ctx -> (ctx.getSource() == null)
                 ? null
-                : passwordEncoder().encode(ctx.getSource());
+                : passwordEncoder.encode(ctx.getSource());
 
         modelMapper
                 .createTypeMap(UserRegisterBindingModel.class, UserEntity.class)
@@ -33,12 +40,6 @@ public class AppConfig {
 
 
         return modelMapper;
-    }
-
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 
 }

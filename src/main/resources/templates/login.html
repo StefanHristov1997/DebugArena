@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="bg">
+<html lang="bg"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +15,10 @@
 <div class="login-container">
     <div class="login-form">
         <h2>Вход</h2>
-        <form action="/login" method="POST">
+        <form
+                th:action="@{/users/login}"
+                th:method="POST"
+        >
             <div class="form-group">
                 <label for="email">Имейл</label>
                 <input type="email" id="email" name="email" required>
@@ -23,6 +27,10 @@
                 <label for="password">Парола</label>
                 <input type="password" id="password" name="password" required>
             </div>
+            <p th:if="${loginError}"
+               class="alert-danger">
+                Invalid username and/or password
+            </p>
             <button type="submit" class="btn">Влезте</button>
         </form>
         <p>Нямате акаунт? <a th:href="@{/users/register}">Регистрирайте се от тук</a></p>
