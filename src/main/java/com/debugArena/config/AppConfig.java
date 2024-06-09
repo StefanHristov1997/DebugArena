@@ -2,6 +2,9 @@ package com.debugArena.config;
 
 import com.debugArena.model.entity.UserEntity;
 import com.debugArena.model.entity.dto.binding.UserRegisterBindingModel;
+import com.debugArena.model.entity.enums.UserRoleEnum;
+import com.debugArena.repository.UserRepository;
+import com.debugArena.service.RoleService;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.Provider;
@@ -10,13 +13,20 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.List;
+
 @Configuration
 public class AppConfig {
+
+    private final UserRepository userRepository;
+    private final RoleService roleService;
 
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AppConfig(PasswordEncoder passwordEncoder) {
+    public AppConfig(UserRepository userRepository, RoleService roleService, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.roleService = roleService;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -24,7 +34,20 @@ public class AppConfig {
     public ModelMapper mapper() {
         ModelMapper modelMapper = new ModelMapper();
 
-        Provider<UserEntity> newUserProvider = req -> new UserEntity();
+        Provider<UserEntity> newUserProvider = req -> {
+            UserEntity user = new UserEntity();
+
+            if (userRepository.count() == 0) {
+                user.setRoles(roleService.
+                        getRolesByName(List.of(UserRoleEnum.USER,
+                                UserRoleEnum.MODERATOR,
+                                UserRoleEnum.ADMIN)));
+            } else {
+                user.setRoles(roleService.getRolesByName(List.of(UserRoleEnum.USER)));
+            }
+
+            return user;
+        };
 
         Converter<String, String> passwordConverter
                 = ctx -> (ctx.getSource() == null)

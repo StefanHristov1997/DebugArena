@@ -48,11 +48,12 @@ public class UserRegisterController {
 
         final String attributeName = "userRegisterBindingModel";
 
-        final ModelAndView modelAndView = new ModelAndView("register");
+        final ModelAndView modelAndView = new ModelAndView();
 
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attributeName, userRegisterBindingModel);
             rAtt.addFlashAttribute(bindingResultPath + DOT + bindingResult);
+            modelAndView.setViewName("register");
             return modelAndView;
         } else {
             this.userService.registerUser(userRegisterBindingModel);
