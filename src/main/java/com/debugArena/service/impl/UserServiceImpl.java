@@ -2,12 +2,14 @@ package com.debugArena.service.impl;
 
 import com.debugArena.model.entity.UserEntity;
 import com.debugArena.model.entity.dto.binding.UserRegisterBindingModel;
+import com.debugArena.model.entity.dto.binding.UserResetPasswordBindingModel;
 import com.debugArena.model.entity.enums.UserRoleEnum;
 import com.debugArena.repository.UserRepository;
 import com.debugArena.service.RoleService;
 import com.debugArena.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,18 +22,20 @@ public class UserServiceImpl implements UserService {
     private final RoleService roleService;
 
     private final ModelMapper mapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleService roleService, ModelMapper mapper) {
+    public UserServiceImpl(UserRepository userRepository, RoleService roleService, ModelMapper mapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleService = roleService;
         this.mapper = mapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void registerUser(UserRegisterBindingModel userRegisterBindingModel) {
 
-        UserEntity userToSave = mapper.map(userRegisterBindingModel, UserEntity.class);
+        final UserEntity userToSave = mapper.map(userRegisterBindingModel, UserEntity.class);
 
         if (userRepository.count() == 0) {
             userToSave.setRoles(roleService.getRolesByName(
@@ -42,6 +46,18 @@ public class UserServiceImpl implements UserService {
         } else {
             userToSave.setRoles(roleService.getRolesByName(List.of(UserRoleEnum.USER)));
         }
+
+        this.userRepository.save(userToSave);
+    }
+
+    @Override
+    public void resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel) {
+
+        final UserEntity userToSave = this.userRepository.findByEmail(userResetPasswordBindingModel.getEmail()).get();
+
+        final String encodedPassword = passwordEncoder.encode(userResetPasswordBindingModel.getPassword());
+
+        userToSave.setPassword(encodedPassword);
 
         this.userRepository.save(userToSave);
     }

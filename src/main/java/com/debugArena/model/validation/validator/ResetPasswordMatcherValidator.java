@@ -1,29 +1,28 @@
 package com.debugArena.model.validation.validator;
 
-import com.debugArena.model.entity.dto.binding.UserRegisterBindingModel;
-import com.debugArena.model.validation.anotation.PasswordMatcher;
+import com.debugArena.model.entity.dto.binding.UserResetPasswordBindingModel;
+import com.debugArena.model.validation.anotation.ResetPasswordMatcher;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 
-public class PasswordMatcherValidator implements ConstraintValidator<PasswordMatcher, UserRegisterBindingModel> {
+public class ResetPasswordMatcherValidator implements ConstraintValidator<ResetPasswordMatcher, UserResetPasswordBindingModel> {
 
     private String message;
 
+
     @Override
-    public void initialize(PasswordMatcher constraintAnnotation) {
+    public void initialize(ResetPasswordMatcher constraintAnnotation) {
         this.message = constraintAnnotation.message();
     }
 
     @Override
-    public boolean isValid(UserRegisterBindingModel userRegisterBindingModel, ConstraintValidatorContext context) {
-
-
-        if (userRegisterBindingModel == null) {
+    public boolean isValid(UserResetPasswordBindingModel userResetPasswordBindingModel, ConstraintValidatorContext context) {
+        if (userResetPasswordBindingModel == null) {
             return true;
         } else {
-            final String password = userRegisterBindingModel.getPassword();
-            final String confirmedPassword = userRegisterBindingModel.getConfirmPassword();
+            final String password = userResetPasswordBindingModel.getPassword();
+            final String confirmedPassword = userResetPasswordBindingModel.getConfirmPassword();
 
             boolean isPasswordMatch = password != null && password.equals(confirmedPassword);
 

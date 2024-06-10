@@ -1,6 +1,6 @@
 package com.debugArena.model.entity.dto.binding;
 
-import com.debugArena.model.validation.anotation.PasswordMatcher;
+import com.debugArena.model.validation.anotation.RegisterPasswordMatcher;
 import com.debugArena.model.validation.anotation.UniqueEmail;
 import com.debugArena.model.validation.anotation.UniqueUsername;
 import jakarta.validation.constraints.Email;
@@ -12,7 +12,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Getter
 @Setter
-@PasswordMatcher
+@RegisterPasswordMatcher
 public class UserRegisterBindingModel {
 
     @NotBlank

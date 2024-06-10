@@ -1,6 +1,6 @@
 package com.debugArena.model.validation.anotation;
 
-import com.debugArena.model.validation.validator.PasswordMatcherValidator;
+import com.debugArena.model.validation.validator.ResetPasswordMatcherValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -11,12 +11,13 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Constraint(validatedBy = PasswordMatcherValidator.class)
-public @interface PasswordMatcher {
+@Constraint(validatedBy = ResetPasswordMatcherValidator.class)
+public @interface ResetPasswordMatcher {
 
-    String message() default "{user.password-match}";
+        String message() default "{user.password-match}";
 
-    Class<?>[] groups() default {};
+        Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+        Class<? extends Payload>[] payload() default {};
+
 }

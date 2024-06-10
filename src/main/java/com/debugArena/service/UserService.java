@@ -1,6 +1,7 @@
 package com.debugArena.service;
 
 import com.debugArena.model.entity.dto.binding.UserRegisterBindingModel;
+import com.debugArena.model.entity.dto.binding.UserResetPasswordBindingModel;
 
 public interface UserService {
 
@@ -10,5 +11,5 @@ public interface UserService {
 
     void registerUser(UserRegisterBindingModel user);
 
-    void resetPassword(String email, String password);
+    void resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel);
 }
