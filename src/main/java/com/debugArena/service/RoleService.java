@@ -9,7 +9,4 @@ import java.util.Set;
 public interface RoleService {
 
     Set<RoleEntity> getRolesByName(List<UserRoleEnum> roles);
-
-
-
 }

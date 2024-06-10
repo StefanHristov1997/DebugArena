@@ -9,4 +9,6 @@ public interface UserService {
     boolean isEmailExist(String email);
 
     void registerUser(UserRegisterBindingModel user);
+
+    void resetPassword(String email, String password);
 }
