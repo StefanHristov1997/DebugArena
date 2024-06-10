@@ -31,12 +31,9 @@ public class UserEntity extends BaseEntity {
     @Column
     private String interests;
 
-    @OneToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private Set<RoleEntity> roles;
+    private Set<RoleEntity> roles = new HashSet<>();
 
-    public UserEntity() {
-        this.roles = new HashSet<>();
-    }
 }

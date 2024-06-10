@@ -26,4 +26,5 @@ public class RoleServiceImpl implements RoleService {
                 .findAllByNameIn
                         (roles);
     }
+
 }

@@ -10,4 +10,6 @@ public interface RoleService {
 
     Set<RoleEntity> getRolesByName(List<UserRoleEnum> roles);
 
+
+
 }

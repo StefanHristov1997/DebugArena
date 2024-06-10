@@ -34,20 +34,7 @@ public class AppConfig {
     public ModelMapper mapper() {
         ModelMapper modelMapper = new ModelMapper();
 
-        Provider<UserEntity> newUserProvider = req -> {
-            UserEntity user = new UserEntity();
-
-            if (userRepository.count() == 0) {
-                user.setRoles(roleService.
-                        getRolesByName(List.of(UserRoleEnum.USER,
-                                UserRoleEnum.MODERATOR,
-                                UserRoleEnum.ADMIN)));
-            } else {
-                user.setRoles(roleService.getRolesByName(List.of(UserRoleEnum.USER)));
-            }
-
-            return user;
-        };
+        Provider<UserEntity> newUserProvider = req -> new UserEntity();;
 
         Converter<String, String> passwordConverter
                 = ctx -> (ctx.getSource() == null)
