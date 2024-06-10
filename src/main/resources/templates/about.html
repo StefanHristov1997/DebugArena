@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>За нас - ДебъгАрена</title>
+    <link rel="stylesheet" href="/css/styles.css"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"/>
+  </head>
+  <body>
+   <div th:replace="~{fragments/navigation}"></div>
+   <div class="about-container">
+     <section class="about-intro">
+       <h1>За нас</h1>
+       <p>Добре дошли в ДебъгАрена! Ние сме посветени на предоставянето на платформа, където софтуерните инженери могат да
+         споделят и решават проблеми с кода.</p>
+     </section>
+
+     <section class="about-mission">
+       <h2>Нашата мисия</h2>
+       <p>Нашата мисия е да улесним процеса на решаване на проблеми в програмирането чрез създаване на общност, която да
+         споделя опит и знания.</p>
+     </section>
+
+     <section class="about-team">
+       <h2>Нашият екип</h2>
+       <div class="team-members">
+         <div class="team-member">
+           <img src="team-member-1.jpg" alt="Член на екипа">
+           <h3>Име Фамилия</h3>
+           <p>Роля в екипа</p>
+         </div>
+         <div class="team-member">
+           <img src="team-member-2.jpg" alt="Член на екипа">
+           <h3>Име Фамилия</h3>
+           <p>Роля в екипа</p>
+         </div>
+         <div class="team-member">
+           <img src="team-member-3.jpg" alt="Член на екипа">
+           <h3>Име Фамилия</h3>
+           <p>Роля в екипа</p>
+         </div>
+       </div>
+     </section>
+     <section class="about-values">
+       <h2>Нашите ценности</h2>
+       <ul>
+         <li>Сътрудничество: Вярваме в силата на екипната работа.</li>
+         <li>Иновация: Постоянно търсим нови начини за подобряване на нашата платформа.</li>
+         <li>Отговорност: Отнасяме се сериозно към нашите потребители и тяхната информация.</li>
+       </ul>
+     </section>
+   </div>
+   <footer class="about-footer" th:replace="~{fragments/footer}"></footer>
+  </body>
+</html>
