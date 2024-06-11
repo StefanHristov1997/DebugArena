@@ -116,7 +116,7 @@ header nav ul li a:hover::before{
 
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/home-image.jpg') no-repeat center center/cover;
-    height: 600px;
+    height: 650px;
     color: #fff;
     text-align: center;
     display: flex;
@@ -191,7 +191,6 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem 0;
-    position: absolute;
     width: 100%;
     bottom: 0;
 }
@@ -437,6 +436,19 @@ footer {
 }
 
 /* За нас */
+.about-page {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
 .about-container {
     max-width: 900px;
     margin: 50px auto;
@@ -476,8 +488,8 @@ footer {
 }
 
 .team-member img {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     margin-bottom: 10px;
 }
