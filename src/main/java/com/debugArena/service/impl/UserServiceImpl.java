@@ -7,6 +7,7 @@ import com.debugArena.model.entity.enums.UserRoleEnum;
 import com.debugArena.repository.UserRepository;
 import com.debugArena.service.RoleService;
 import com.debugArena.service.UserService;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
