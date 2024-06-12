@@ -6,7 +6,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import com.debugArena.model.entity.enums.UserRoleEnum;
+import com.debugArena.model.enums.UserRoleEnum;
 
 @Getter
 @Setter

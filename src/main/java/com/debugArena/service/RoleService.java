@@ -1,7 +1,7 @@
 package com.debugArena.service;
 
 import com.debugArena.model.entity.RoleEntity;
-import com.debugArena.model.entity.enums.UserRoleEnum;
+import com.debugArena.model.enums.UserRoleEnum;
 
 import java.util.List;
 import java.util.Set;

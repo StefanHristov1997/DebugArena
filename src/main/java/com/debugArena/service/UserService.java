@@ -1,7 +1,7 @@
 package com.debugArena.service;
 
-import com.debugArena.model.entity.dto.binding.UserRegisterBindingModel;
-import com.debugArena.model.entity.dto.binding.UserResetPasswordBindingModel;
+import com.debugArena.model.dto.binding.UserRegisterBindingModel;
+import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
 
 public interface UserService {
 

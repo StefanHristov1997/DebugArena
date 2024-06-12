@@ -1,4 +1,4 @@
-package com.debugArena.model.entity.enums;
+package com.debugArena.model.enums;
 
 public enum LanguageEnum {
     JAVA, CSharp, JavaScript, Python;

@@ -1,13 +1,12 @@
 package com.debugArena.service.impl;
 
 import com.debugArena.model.entity.UserEntity;
-import com.debugArena.model.entity.dto.binding.UserRegisterBindingModel;
-import com.debugArena.model.entity.dto.binding.UserResetPasswordBindingModel;
-import com.debugArena.model.entity.enums.UserRoleEnum;
+import com.debugArena.model.dto.binding.UserRegisterBindingModel;
+import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
+import com.debugArena.model.enums.UserRoleEnum;
 import com.debugArena.repository.UserRepository;
 import com.debugArena.service.RoleService;
 import com.debugArena.service.UserService;
-import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

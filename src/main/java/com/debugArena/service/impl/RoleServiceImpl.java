@@ -1,7 +1,7 @@
 package com.debugArena.service.impl;
 
 import com.debugArena.model.entity.RoleEntity;
-import com.debugArena.model.entity.enums.UserRoleEnum;
+import com.debugArena.model.enums.UserRoleEnum;
 import com.debugArena.repository.RoleRepository;
 import com.debugArena.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;

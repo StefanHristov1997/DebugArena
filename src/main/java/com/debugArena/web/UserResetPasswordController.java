@@ -1,6 +1,6 @@
 package com.debugArena.web;
 
-import com.debugArena.model.entity.dto.binding.UserResetPasswordBindingModel;
+import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
 import com.debugArena.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
