@@ -42,5 +42,10 @@ server:
   error:
     include-binding-errors: always
     include-message: always
+mail:
+  host: localhost
+  port: 1025
+  username: ${DEFAULT_EMAIL_SERVER_USERNAME}
+  password: ${DEFAULT_EMAIL_SERVER_PASSWORD}
 
 binding-result-package: org.springframework.validation.BindingResult
