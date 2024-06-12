@@ -36,7 +36,7 @@
                 <label th:for="inputEmail">Имейл</label>
                 <input th:field="*{email}"
                        th:errorclass="is-invalid"
-                       th:type="email"
+                       th:type="text"
                        th:id="inputEmail"
                        th:aria-describedby="emailHelpInline">
                 <th:block th:errors="*{email}"
