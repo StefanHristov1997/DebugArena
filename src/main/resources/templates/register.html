@@ -29,7 +29,7 @@
                        th:id="inputUsername"
                        th:aria-describedby="usernameHelpInline">
                 <th:block th:errors="*{username}"
-                          class="invalid-feedback alert-danger">error message
+                          class="invalid-feedback alert-danger rounded">error message
                 </th:block>
             </div>
             <div class="form-group">
@@ -40,7 +40,7 @@
                        th:id="inputEmail"
                        th:aria-describedby="emailHelpInline">
                 <th:block th:errors="*{email}"
-                          class="invalid-feedback alert-danger">error message
+                          class="invalid-feedback alert-danger rounded">error message
                 </th:block>
             </div>
             <div class="form-group">
@@ -49,7 +49,9 @@
                        th:errorclass="is-invalid"
                        th:type="password"
                        th:id="inputPassword">
-                <th:block th:errors="*{password}" class="invalid-feedback alert-danger">error message</th:block>
+                <th:block th:errors="*{password}"
+                          class="invalid-feedback alert-danger rounded">error message
+                </th:block>
             </div>
             <div class="form-group">
                 <label th:for="inputConfirmPassword">Потвърдете паролата</label>
@@ -58,7 +60,7 @@
                        th:type="password"
                        th:id="inputConfirmPassword">
                 <th:block th:errors="*{confirmPassword}"
-                          class="invalid-feedback alert-danger">error message
+                          class="invalid-feedback alert-danger rounded">error message
                 </th:block>
             </div>
             <button type="submit" class="btn">Регистрирайте се</button>

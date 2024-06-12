@@ -595,3 +595,7 @@ footer {
 .contact-form button:hover {
     background-color: #ff3d00;
 }
+
+.is-invalid {
+    color: #F44336 !important;
+}
