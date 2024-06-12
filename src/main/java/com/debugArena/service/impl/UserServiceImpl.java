@@ -4,11 +4,14 @@ import com.debugArena.model.entity.UserEntity;
 import com.debugArena.model.dto.binding.UserRegisterBindingModel;
 import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
 import com.debugArena.model.enums.UserRoleEnum;
+import com.debugArena.model.events.UserContactedUsEvent;
 import com.debugArena.repository.UserRepository;
 import com.debugArena.service.RoleService;
 import com.debugArena.service.UserService;
+import com.debugArena.service.helpers.LoggedUserHelper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,16 +21,20 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-
     private final RoleService roleService;
+
+    private final LoggedUserHelper loggedUserHelper;
+    private final ApplicationEventPublisher publisher;
 
     private final ModelMapper mapper;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleService roleService, ModelMapper mapper, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, RoleService roleService, LoggedUserHelper loggedUserHelper, ApplicationEventPublisher publisher, ModelMapper mapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleService = roleService;
+        this.loggedUserHelper = loggedUserHelper;
+        this.publisher = publisher;
         this.mapper = mapper;
         this.passwordEncoder = passwordEncoder;
     }
@@ -61,6 +68,12 @@ public class UserServiceImpl implements UserService {
         userToSave.setPassword(encodedPassword);
 
         this.userRepository.save(userToSave);
+    }
+
+    @Override
+    public void contactUs() {
+        final String userEmail =  loggedUserHelper.get().getEmail();
+        publisher.publishEvent(new UserContactedUsEvent("Contact Service", userEmail));
     }
 
     @Override

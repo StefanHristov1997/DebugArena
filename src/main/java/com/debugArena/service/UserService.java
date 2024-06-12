@@ -12,4 +12,6 @@ public interface UserService {
     void registerUser(UserRegisterBindingModel user);
 
     void resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel);
+
+    void contactUs();
 }

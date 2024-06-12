@@ -30,11 +30,11 @@
     </section>
     <section class="contact-form">
         <h2>Форма за контакт</h2>
-        <form action="/send-message" method="POST">
+        <form th:action="@{contact-us}" th:method="POST">
             <label for="name">Име:</label>
             <input type="text" id="name" name="name" required>
 
-            <label for="email">Имейл:</label>
+            <label for="email">До имейл:</label>
             <input type="email" id="email" name="email" required>
 
             <label for="message">Съобщение:</label>

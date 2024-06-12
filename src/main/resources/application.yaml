@@ -38,9 +38,9 @@ logging:
     org.hibernate.SQL: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
 
-binding-result-package: org.springframework.validation.BindingResult
-
 server:
   error:
     include-binding-errors: always
     include-message: always
+
+binding-result-package: org.springframework.validation.BindingResult
