@@ -28,6 +28,21 @@
         <p><i class="fas fa-envelope"></i> Имейл: <a href="mailto:contact@debugarena.com">contact@debugarena.com</a>
         </p>
     </section>
+    <section class="contact-form">
+        <h2>Форма за контакт</h2>
+        <form action="/send-message" method="POST">
+            <label for="name">Име:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Имейл:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Съобщение:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit" class="btn-submit">Изпрати</button>
+        </form>
+    </section>
 </div>
 <div th:replace="~{fragments/footer}"></div>
 </body>
