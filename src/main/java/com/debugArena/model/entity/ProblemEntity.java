@@ -25,11 +25,11 @@ public class ProblemEntity extends BaseEntity {
     @JoinColumn(name = "author_id")
     private UserEntity author;
 
-    @OneToOne
+    @OneToOne(optional = false)
     @JoinColumn(name = "language_id")
     private LanguageEntity language;
 
-    @OneToOne
+    @OneToOne(optional = false)
     @JoinColumn(name = "technology_id")
     private TechnologyEntity technology;
 

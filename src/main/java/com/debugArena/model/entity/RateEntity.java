@@ -18,7 +18,7 @@ public class RateEntity extends BaseEntity {
     @ManyToOne
     private UserEntity author;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private CommentEntity comment;
 
     private int rating;

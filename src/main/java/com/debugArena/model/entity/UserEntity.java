@@ -32,8 +32,8 @@ public class UserEntity extends BaseEntity {
     private String interests;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false))
     private Set<RoleEntity> roles = new HashSet<>();
 
 }

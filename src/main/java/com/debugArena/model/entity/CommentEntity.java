@@ -21,11 +21,11 @@ public class CommentEntity extends BaseEntity {
     @Column(name = "text_content", nullable = false)
     private String textContent;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "author_id")
     private UserEntity author;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "problem_id")
     private ProblemEntity problem;
 }
