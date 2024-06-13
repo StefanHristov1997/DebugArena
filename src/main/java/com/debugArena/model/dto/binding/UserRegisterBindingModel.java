@@ -5,6 +5,7 @@ import com.debugArena.model.validation.anotation.UniqueEmail;
 import com.debugArena.model.validation.anotation.UniqueUsername;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -16,7 +17,7 @@ import org.hibernate.validator.constraints.Length;
 public class UserRegisterBindingModel {
 
     @NotBlank(message = "{not.blank}")
-    @Length(min = 5, message = "{user.username.length}")
+    @Size(min = 5, message = "{user.username.length}")
     @UniqueUsername
     private String username;
 
@@ -26,10 +27,10 @@ public class UserRegisterBindingModel {
     private String email;
 
     @NotBlank(message = "{not.blank}")
-    @Length(min = 6, message = "{user.password.length}")
+    @Size(min = 6, message = "{user.password.length}")
     private String password;
 
     @NotBlank(message = "{not.blank}")
-    @Length(min = 6, message = "{user.confirm-password.length}")
+    @Size(min = 6, message = "{user.confirm-password.length}")
     private String confirmPassword;
 }
