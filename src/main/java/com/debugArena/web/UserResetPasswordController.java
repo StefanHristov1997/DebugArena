@@ -30,7 +30,7 @@ public class UserResetPasswordController {
     @GetMapping("reset-password")
     public ModelAndView resetPassword(Model model) {
 
-        if(!model.containsAttribute("userResetPasswordBindingModel")) {
+        if (!model.containsAttribute("userResetPasswordBindingModel")) {
             model.addAttribute("userResetPasswordBindingModel", new UserResetPasswordBindingModel());
         }
 
@@ -38,9 +38,9 @@ public class UserResetPasswordController {
     }
 
     @PostMapping("reset-password")
-    public ModelAndView resetPasswordSubmit(@Valid UserResetPasswordBindingModel userResetPasswordBindingModel,
-                                            BindingResult bindingResult,
-                                            RedirectAttributes rAtt) {
+    public ModelAndView doResetPassword(@Valid UserResetPasswordBindingModel userResetPasswordBindingModel,
+                                        BindingResult bindingResult,
+                                        RedirectAttributes rAtt) {
 
         final ModelAndView modelAndView = new ModelAndView();
         final String attribute = "userResetPasswordBindingModel";
