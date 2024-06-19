@@ -35,7 +35,7 @@ public class UserRegisterController {
             model.addAttribute("userRegisterBindingModel", new UserRegisterBindingModel());
         }
 
-        return ("register");
+        return "register";
     }
 
 
@@ -49,10 +49,11 @@ public class UserRegisterController {
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attributeName, userRegisterBindingModel);
             rAtt.addFlashAttribute(bindingResultPath + DOT + attributeName, bindingResult);
-            return ("redirect:register");
-        } else {
-            this.userService.registerUser(userRegisterBindingModel);
-            return ("redirect:login");
+            return "redirect:/users/register";
         }
+
+        this.userService.registerUser(userRegisterBindingModel);
+        return "redirect:/users/login";
+
     }
 }

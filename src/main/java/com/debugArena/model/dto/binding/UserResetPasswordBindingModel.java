@@ -7,22 +7,23 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import messages.ValidationErrorMessages;
 
 @Getter
 @Setter
 @ResetPasswordMatcher
 public class UserResetPasswordBindingModel {
 
-    @NotBlank(message = "{not.blank}")
+    @NotBlank(message = ValidationErrorMessages.BLANK_FIELD_MESSAGE)
     @ValidUser
-    @Email(message = "{user.email}")
+    @Email(message = ValidationErrorMessages.EMAIL_MESSAGE)
     private String email;
 
-    @NotBlank(message = "{not.blank}")
-    @Size(min = 6, message = "{user.password.length}")
+    @NotBlank(message = ValidationErrorMessages.BLANK_FIELD_MESSAGE)
+    @Size(min = 6, message = ValidationErrorMessages.PASSWORD_LENGTH_MESSAGE)
     private String password;
 
-    @NotBlank(message = "{not.blank}")
-    @Size(min = 6, message = "{user.password.length}")
+    @NotBlank(message = ValidationErrorMessages.BLANK_FIELD_MESSAGE)
+    @Size(min = 6, message = ValidationErrorMessages.PASSWORD_LENGTH_MESSAGE)
     private String confirmPassword;
 }

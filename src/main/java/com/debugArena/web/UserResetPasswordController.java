@@ -33,7 +33,7 @@ public class UserResetPasswordController {
             model.addAttribute("userResetPasswordBindingModel", new UserResetPasswordBindingModel());
         }
 
-        return ("reset-password");
+        return "reset-password";
     }
 
     @PostMapping("reset-password")
@@ -46,11 +46,12 @@ public class UserResetPasswordController {
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attribute, userResetPasswordBindingModel);
             rAtt.addFlashAttribute(bindingResultPath + DOT + attribute, bindingResult);
-            return ("redirect:reset-password");
+            return "redirect:/users/reset-password";
 
-        } else {
-            this.userService.resetPassword(userResetPasswordBindingModel);
-            return ("redirect:login");
         }
+
+        this.userService.resetPassword(userResetPasswordBindingModel);
+        return "redirect:/users/login";
+
     }
 }

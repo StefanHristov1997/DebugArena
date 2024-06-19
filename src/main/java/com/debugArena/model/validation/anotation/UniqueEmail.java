@@ -3,6 +3,7 @@ package com.debugArena.model.validation.anotation;
 import com.debugArena.model.validation.validator.UniqueEmailValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
+import messages.ValidationErrorMessages;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -14,7 +15,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = UniqueEmailValidator.class)
 public @interface UniqueEmail {
 
-    String message() default "{user.email.not.unique}";
+    String message() default ValidationErrorMessages.EMAIL_EXIST_MESSAGE;
 
     Class<?>[] groups() default {};
 

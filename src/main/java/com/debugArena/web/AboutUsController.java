@@ -8,6 +8,6 @@ public class AboutUsController {
 
     @GetMapping("about-us")
     public String aboutUs() {
-        return ("about");
+        return "about";
     }
 }

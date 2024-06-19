@@ -12,13 +12,13 @@ public class UserLoginController {
 
     @GetMapping("/login")
     public String login() {
-        return ("login");
+        return "login";
     }
 
     @PostMapping("/login-error")
     public String loginError(Model model) {
         model.addAttribute("loginError", true);
 
-        return ("login");
+        return "login";
     }
 }

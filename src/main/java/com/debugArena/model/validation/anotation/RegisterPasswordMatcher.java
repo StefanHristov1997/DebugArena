@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = RegisterPasswordMatcherValidator.class)
 public @interface RegisterPasswordMatcher {
 
-    String message() default "{user.password-match}";
+    String message() default "Паролите не съвпадат.";
 
     Class<?>[] groups() default {};
 

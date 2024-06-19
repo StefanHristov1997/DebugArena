@@ -27,8 +27,8 @@
                 <label for="password">Парола</label>
                 <input type="password" id="password" name="password">
             </div>
-            <p th:if="${loginError}" style="color: red">
-                Invalid username and/or password
+            <p th:if="${loginError}" class="text-danger">
+                Невалидно потребителско име и/или парола!
             </p>
             <button type="submit" class="btn">Влезте</button>
         </form>

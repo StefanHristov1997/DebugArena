@@ -24,47 +24,47 @@
             <div class="form-group">
                 <label th:for="inputUsername">Потребителско име</label>
                 <input th:field="*{username}"
-                       th:errorclass="is-invalid"
+                       th:errorclass="'is-invalid alert-danger'"
                        th:class="form-control"
                        th:type="text"
                        th:id="inputUsername"
                        th:aria-describedby="usernameHelpInline">
                 <small th:errors="*{username}"
-                          class="invalid-feedback alert-danger rounded">error message
+                          class="invalid-feedback text-danger">error message
                 </small>
             </div>
             <div class="form-group">
                 <label th:for="inputEmail">Имейл</label>
                 <input th:field="*{email}"
-                       th:errorclass="is-invalid"
+                       th:errorclass="'is-invalid alert-danger'"
                        th:class="form-control"
                        th:type="text"
                        th:id="inputEmail"
                        th:aria-describedby="emailHelpInline">
                 <small th:errors="*{email}"
-                          class="invalid-feedback alert-danger rounded">error message
+                          class="invalid-feedback text-danger">error message
                 </small>
             </div>
             <div class="form-group">
                 <label th:for="inputPassword">Парола</label>
                 <input th:field="*{password}"
-                       th:errorclass="is-invalid"
+                       th:errorclass="'is-invalid alert-danger'"
                        th:class="form-control"
                        th:type="password"
                        th:id="inputPassword">
                 <small th:errors="*{password}"
-                          class="invalid-feedback alert-danger rounded">error message
+                          class="invalid-feedback text-danger">error message
                 </small>
             </div>
             <div class="form-group">
                 <label th:for="inputConfirmPassword">Потвърдете паролата</label>
                 <input th:field="*{confirmPassword}"
-                       th:errorclass="is-invalid"
+                       th:errorclass="'is-invalid alert-danger'"
                        th:class="form-control"
                        th:type="password"
                        th:id="inputConfirmPassword">
                 <small th:errors="*{confirmPassword}"
-                          class="invalid-feedback alert-danger rounded">error message
+                          class="invalid-feedback text-danger">error message
                 </small>
             </div>
             <button type="submit" class="btn">Регистрирайте се</button>
