@@ -1,4 +1,4 @@
-.home-page {
+body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
@@ -195,7 +195,7 @@ footer {
     bottom: 0;
 }
 
-/* Регистрация */
+/* Форми */
 .register-login-page {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -435,20 +435,6 @@ footer {
     text-decoration: underline;
 }
 
-/* За нас */
-/*.about-page {*/
-/*    font-family: 'Roboto', sans-serif;*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    background: #f4f4f4;*/
-/*    color: #333;*/
-/*}*/
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
 .about-container {
     max-width: 900px;
     margin: 50px auto;
@@ -594,4 +580,113 @@ footer {
 
 .contact-form button:hover {
     background-color: #ff3d00;
+}
+
+.btn-cta {
+    background: #ff5722;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn-cta:hover {
+    background: #ff3d00;
+}
+
+/* Стилове за секцията "Вашата активност" */
+.user-dashboard {
+    background: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.user-dashboard h2 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.activity-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.stat-item i {
+    font-size: 2rem;
+    color: #ff5722;
+    margin-bottom: 10px;
+}
+
+.stat-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.stat-item p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Стилове за секцията "Бързи връзки" */
+.quick-links {
+    background: #f4f4f4;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.quick-links h2 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.links-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.link-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.link-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.link-item i {
+    font-size: 2rem;
+    color: #ff5722;
+    margin-bottom: 10px;
+}
+
+.link-item span {
+    font-size: 1.2rem;
 }

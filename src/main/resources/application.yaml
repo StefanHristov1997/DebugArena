@@ -33,6 +33,10 @@ spring:
   #api-key:
   #api-secret:
   #cloud-name:
+#  sql:
+#    init:
+#      mode: always
+#      continue-on-error: on
 logging:
   level:
     org.hibernate.SQL: DEBUG

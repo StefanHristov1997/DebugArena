@@ -3,7 +3,6 @@ package com.debugArena.service.helpers;
 import com.debugArena.model.entity.UserEntity;
 import com.debugArena.model.enums.UserRoleEnum;
 import com.debugArena.repository.UserRepository;
-import com.debugArena.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,9 +25,9 @@ public class LoggedUserHelper {
                 .orElseThrow(() -> new UsernameNotFoundException("User with username: " + username + " was not found"));
     }
 
-//    public boolean isLogged() {
-//        return !hasRole(Use.ANONYMOUS);
-//    }
+    public boolean isLogged() {
+        return !hasRole(UserRoleEnum.ANONYMOUS);
+    }
 
     public boolean isAdmin() {
         return hasRole(UserRoleEnum.ADMIN);

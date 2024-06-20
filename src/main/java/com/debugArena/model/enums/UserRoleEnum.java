@@ -1,5 +1,5 @@
 package com.debugArena.model.enums;
 
 public enum UserRoleEnum {
-    USER, MODERATOR, ADMIN
+    USER, MODERATOR, ADMIN, ANONYMOUS
 }
