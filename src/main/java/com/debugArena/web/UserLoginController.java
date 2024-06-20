@@ -23,7 +23,7 @@ public class UserLoginController {
     public String login() {
 
         if(loggedUserHelper.isLogged()){
-            return "redirect:home";
+            return "redirect:/home";
         }
         return "login";
     }

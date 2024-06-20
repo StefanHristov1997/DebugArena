@@ -2,6 +2,7 @@ package com.debugArena.web;
 
 import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
 import com.debugArena.service.UserService;
+import com.debugArena.service.helpers.LoggedUserHelper;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -17,17 +18,23 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class UserResetPasswordController {
 
     private final UserService userService;
+    private final LoggedUserHelper loggedUserHelper;
 
     @Value("${binding-result-package}")
     private String bindingResultPath;
     private static final String DOT = ".";
 
-    public UserResetPasswordController(UserService userService) {
+    public UserResetPasswordController(UserService userService, LoggedUserHelper loggedUserHelper) {
         this.userService = userService;
+        this.loggedUserHelper = loggedUserHelper;
     }
 
     @GetMapping("reset-password")
     public String resetPassword(Model model) {
+
+        if (loggedUserHelper.isLogged()){
+            return "redirect:/home";
+        }
 
         if (!model.containsAttribute("userResetPasswordBindingModel")) {
             model.addAttribute("userResetPasswordBindingModel", new UserResetPasswordBindingModel());
@@ -40,6 +47,10 @@ public class UserResetPasswordController {
     public String doResetPassword(@Valid UserResetPasswordBindingModel userResetPasswordBindingModel,
                                   BindingResult bindingResult,
                                   RedirectAttributes rAtt) {
+
+        if (loggedUserHelper.isLogged()){
+            return "redirect:/home";
+        }
 
         final String attribute = "userResetPasswordBindingModel";
 

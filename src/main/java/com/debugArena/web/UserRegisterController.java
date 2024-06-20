@@ -2,6 +2,7 @@ package com.debugArena.web;
 
 import com.debugArena.model.dto.binding.UserRegisterBindingModel;
 import com.debugArena.service.UserService;
+import com.debugArena.service.helpers.LoggedUserHelper;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,18 +19,24 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class UserRegisterController {
 
     private final UserService userService;
+    private final LoggedUserHelper loggedUserHelper;
 
     @Value("${binding-result-package}")
     private String bindingResultPath;
     private static final String DOT = ".";
 
     @Autowired
-    public UserRegisterController(UserService userService) {
+    public UserRegisterController(UserService userService, LoggedUserHelper loggedUserHelper) {
         this.userService = userService;
+        this.loggedUserHelper = loggedUserHelper;
     }
 
     @GetMapping("/register")
     public String register(Model model) {
+
+        if (loggedUserHelper.isLogged()){
+            return "redirect:/home";
+        }
 
         if (!model.containsAttribute("userRegisterBindingModel")) {
             model.addAttribute("userRegisterBindingModel", new UserRegisterBindingModel());
@@ -44,6 +51,10 @@ public class UserRegisterController {
                              BindingResult bindingResult,
                              RedirectAttributes rAtt) {
 
+        if (loggedUserHelper.isLogged()) {
+            return "redirect:/home";
+        }
+
         final String attributeName = "userRegisterBindingModel";
 
         if (bindingResult.hasErrors()) {
@@ -53,7 +64,7 @@ public class UserRegisterController {
         }
 
         this.userService.registerUser(userRegisterBindingModel);
-        return "redirect:/users/login";
+        return "redirect:/home";
 
     }
 }
