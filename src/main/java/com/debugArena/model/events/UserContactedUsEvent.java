@@ -1,5 +1,6 @@
 package com.debugArena.model.events;
 
+import com.debugArena.model.dto.binding.EmailSenderBindingModel;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.context.ApplicationEvent;
@@ -8,10 +9,10 @@ import org.springframework.context.ApplicationEvent;
 @Setter
 public class UserContactedUsEvent extends ApplicationEvent {
 
-    private final String userEmail;
+    private final EmailSenderBindingModel emailSenderBindingModel;
 
-    public UserContactedUsEvent(Object source, String userEmail) {
+    public UserContactedUsEvent(Object source, EmailSenderBindingModel emailSenderBindingModel) {
         super(source);
-        this.userEmail = userEmail;
+        this.emailSenderBindingModel = emailSenderBindingModel;
     }
 }

@@ -1,8 +1,8 @@
 package com.debugArena.service;
 
-import com.debugArena.model.events.UserContactedUsEvent;
+import com.debugArena.model.dto.binding.EmailSenderBindingModel;
 
 public interface MailService {
 
-    public void receiveEmail(UserContactedUsEvent event);
+    void receiveEmail(EmailSenderBindingModel emailSenderBindingModel);
 }

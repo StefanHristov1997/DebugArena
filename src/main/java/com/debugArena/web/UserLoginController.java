@@ -25,11 +25,17 @@ public class UserLoginController {
         if(loggedUserHelper.isLogged()){
             return "redirect:/home";
         }
+
         return "login";
     }
 
     @PostMapping("/login-error")
     public String loginError(Model model) {
+
+        if(loggedUserHelper.isLogged()){
+            return "redirect:/home";
+        }
+
         model.addAttribute("loginError", true);
 
         return "login";

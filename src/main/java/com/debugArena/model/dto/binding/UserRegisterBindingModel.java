@@ -8,8 +8,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import messages.ValidationErrorMessages;
-import org.modelmapper.spi.ErrorMessage;
+
+import static messages.ValidationErrorMessages.*;
 
 
 @Getter
@@ -17,21 +17,21 @@ import org.modelmapper.spi.ErrorMessage;
 @RegisterPasswordMatcher
 public class UserRegisterBindingModel {
 
-    @NotBlank(message = ValidationErrorMessages.BLANK_FIELD_MESSAGE)
-    @Size(min = 5, message = ValidationErrorMessages.USERNAME_LENGTH_MESSAGE)
+    @NotBlank(message = BLANK_FIELD_MESSAGE)
+    @Size(min = 5, message = USERNAME_LENGTH_MESSAGE)
     @UniqueUsername
     private String username;
 
-    @NotBlank(message = ValidationErrorMessages.BLANK_FIELD_MESSAGE)
-    @Email(message = ValidationErrorMessages.EMAIL_MESSAGE)
+    @NotBlank(message = BLANK_FIELD_MESSAGE)
+    @Email(message = EMAIL_MESSAGE)
     @UniqueEmail
     private String email;
 
-    @NotBlank(message = ValidationErrorMessages.BLANK_FIELD_MESSAGE)
-    @Size(min = 6, message = ValidationErrorMessages.PASSWORD_LENGTH_MESSAGE)
+    @NotBlank(message = BLANK_FIELD_MESSAGE)
+    @Size(min = 6, message = PASSWORD_LENGTH_MESSAGE)
     private String password;
 
-    @NotBlank(message = ValidationErrorMessages.BLANK_FIELD_MESSAGE)
-    @Size(min = 6, message = ValidationErrorMessages.PASSWORD_LENGTH_MESSAGE)
+    @NotBlank(message = BLANK_FIELD_MESSAGE)
+    @Size(min = 6, message = PASSWORD_LENGTH_MESSAGE)
     private String confirmPassword;
 }

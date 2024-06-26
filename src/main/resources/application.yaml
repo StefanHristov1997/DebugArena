@@ -47,6 +47,7 @@ server:
     include-binding-errors: always
     include-message: always
 mail:
+  receiver: "contact@debugarena.com"
   host: localhost
   port: 1025
   username: ${DEFAULT_EMAIL_SERVER_USERNAME}
