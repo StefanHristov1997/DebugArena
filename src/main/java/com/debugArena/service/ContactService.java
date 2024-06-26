@@ -4,5 +4,5 @@ import com.debugArena.model.events.UserContactedUsEvent;
 
 public interface ContactService {
 
-    void userContactedUs(UserContactedUsEvent event);
+    void receiveUserEmail(UserContactedUsEvent event);
 }

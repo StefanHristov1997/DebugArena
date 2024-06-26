@@ -29,7 +29,7 @@ public class MailServiceImpl implements MailService {
     }
 
     @Override
-    public void receiveEmail(EmailSenderBindingModel emailSenderBindingModel) {
+    public void sendEmail(EmailSenderBindingModel emailSenderBindingModel) {
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();
 
@@ -47,6 +47,5 @@ public class MailServiceImpl implements MailService {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

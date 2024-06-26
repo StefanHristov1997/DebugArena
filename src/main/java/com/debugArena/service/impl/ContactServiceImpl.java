@@ -19,8 +19,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     @EventListener(UserContactedUsEvent.class)
-    public void userContactedUs(UserContactedUsEvent event) {
-
-        mailService.receiveEmail(event.getEmailSenderBindingModel());
+    public void receiveUserEmail(UserContactedUsEvent event) {
+        mailService.sendEmail(event.getEmailSenderBindingModel());
     }
 }
