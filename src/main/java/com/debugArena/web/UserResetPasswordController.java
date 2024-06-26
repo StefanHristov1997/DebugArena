@@ -23,6 +23,7 @@ public class UserResetPasswordController {
     @Value("${binding-result-package}")
     private String bindingResultPath;
     private static final String DOT = ".";
+    final String attribute = "userResetPasswordBindingModel";
 
     public UserResetPasswordController(UserService userService, LoggedUserHelper loggedUserHelper) {
         this.userService = userService;
@@ -32,11 +33,11 @@ public class UserResetPasswordController {
     @GetMapping("reset-password")
     public String resetPassword(Model model) {
 
-        if (loggedUserHelper.isLogged()){
+        if (loggedUserHelper.isLogged()) {
             return "redirect:/home";
         }
 
-        if (!model.containsAttribute("userResetPasswordBindingModel")) {
+        if (!model.containsAttribute(attribute)) {
             model.addAttribute("userResetPasswordBindingModel", new UserResetPasswordBindingModel());
         }
 
@@ -44,15 +45,14 @@ public class UserResetPasswordController {
     }
 
     @PostMapping("reset-password")
-    public String doResetPassword(@Valid UserResetPasswordBindingModel userResetPasswordBindingModel,
-                                  BindingResult bindingResult,
-                                  RedirectAttributes rAtt) {
+    public String doResetPassword(
+            @Valid UserResetPasswordBindingModel userResetPasswordBindingModel,
+            BindingResult bindingResult,
+            RedirectAttributes rAtt) {
 
-        if (loggedUserHelper.isLogged()){
+        if (loggedUserHelper.isLogged()) {
             return "redirect:/home";
         }
-
-        final String attribute = "userResetPasswordBindingModel";
 
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attribute, userResetPasswordBindingModel);
@@ -62,7 +62,7 @@ public class UserResetPasswordController {
         }
 
         this.userService.resetPassword(userResetPasswordBindingModel);
-        return "redirect:/users/login";
 
+        return "redirect:/users/login";
     }
 }

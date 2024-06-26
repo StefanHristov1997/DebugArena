@@ -29,11 +29,10 @@ public class ContactUsController {
         this.userService = userService;
     }
 
-    @GetMapping("/successfully-sent-message")
+    @GetMapping("/successfully-contact-message")
     public String viewSuccessfullySentMessage() {
-        return "/messages/successfully-sent-message";
+        return "/messages/successfully-contact-message";
     }
-
 
     @GetMapping
     public String viewContactUs(Model model) {
@@ -58,6 +57,6 @@ public class ContactUsController {
 
         userService.contactUs(emailSenderBindingModel);
 
-        return "redirect:/contact-us/successfully-sent-message";
+        return "redirect:/contact-us/successfully-contact-message";
     }
 }

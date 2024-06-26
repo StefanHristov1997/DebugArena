@@ -24,6 +24,7 @@ public class UserRegisterController {
     @Value("${binding-result-package}")
     private String bindingResultPath;
     private static final String DOT = ".";
+    final String attributeName = "userRegisterBindingModel";
 
     @Autowired
     public UserRegisterController(UserService userService, LoggedUserHelper loggedUserHelper) {
@@ -34,11 +35,11 @@ public class UserRegisterController {
     @GetMapping("/register")
     public String register(Model model) {
 
-        if (loggedUserHelper.isLogged()){
+        if (loggedUserHelper.isLogged()) {
             return "redirect:/home";
         }
 
-        if (!model.containsAttribute("userRegisterBindingModel")) {
+        if (!model.containsAttribute(attributeName)) {
             model.addAttribute("userRegisterBindingModel", new UserRegisterBindingModel());
         }
 
@@ -47,15 +48,14 @@ public class UserRegisterController {
 
 
     @PostMapping("/register")
-    public String doRegister(@Valid UserRegisterBindingModel userRegisterBindingModel,
-                             BindingResult bindingResult,
-                             RedirectAttributes rAtt) {
+    public String doRegister(
+            @Valid UserRegisterBindingModel userRegisterBindingModel,
+            BindingResult bindingResult,
+            RedirectAttributes rAtt) {
 
         if (loggedUserHelper.isLogged()) {
             return "redirect:/home";
         }
-
-        final String attributeName = "userRegisterBindingModel";
 
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attributeName, userRegisterBindingModel);
@@ -64,7 +64,7 @@ public class UserRegisterController {
         }
 
         this.userService.registerUser(userRegisterBindingModel);
-        return "redirect:/home";
 
+        return "redirect:/home";
     }
 }
