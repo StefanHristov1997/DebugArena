@@ -14,9 +14,9 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Добре дошли обратно, [Име на потребителя]!</h1>
-            <p>Готови ли сте да решите нови проблеми и да се свържете с общността?</p>
-            <a href="/problems" class="btn-cta">Вижте проблемите</a>
+            <h1>Добре дошли обратно, <span th:text="${@loggedUserHelper.getUsername()}"></span></h1>
+            <p>Готови ли сте да помогнете за решаването на нови проблеми и да се свържете с общността?</p>
+            <a href="/problems" class="btn-cta">Вижте дискусиите</a>
         </div>
     </section>
 
