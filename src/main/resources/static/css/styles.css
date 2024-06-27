@@ -435,6 +435,7 @@ footer {
     text-decoration: underline;
 }
 
+/* Стилове за нас страница */
 .about-container {
     max-width: 900px;
     margin: 50px auto;
@@ -505,7 +506,7 @@ footer {
     line-height: 1.5;
 }
 
-/* Contact-Us */
+/* Стилове за контактната страница */
 .contact-container {
     max-width: 600px;
     margin: 50px auto;
@@ -691,7 +692,7 @@ footer {
     font-size: 1.2rem;
 }
 
-/* Стилове за съобщението за успех */
+/* Стилове за успешно изпратено съобщение */
 .success-message {
     text-align: center;
     padding: 50px 0;
@@ -736,4 +737,80 @@ footer {
 
 .btn-cta:hover {
     background: #ff3d00;
+}
+
+/* Стилове за профилната страница */
+.profile {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ff5722;
+    margin-bottom: 20px;
+}
+
+.profile-info h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.btn-edit {
+    background: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.btn-edit i {
+    margin-right: 5px;
+}
+
+.btn-edit:hover {
+    background: #ff3d00;
+}
+
+.profile-details {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.profile-section {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    margin: 10px;
+}
+
+.profile-section h2 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.profile-section p {
+    font-size: 1rem;
+    margin-bottom: 10px;
 }

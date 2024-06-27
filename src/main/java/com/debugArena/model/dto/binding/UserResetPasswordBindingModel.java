@@ -1,7 +1,7 @@
 package com.debugArena.model.dto.binding;
 
-import com.debugArena.model.validation.anotation.ResetPasswordMatcher;
-import com.debugArena.model.validation.anotation.ValidUser;
+import com.debugArena.model.validation.annotation.ResetPasswordMatcher;
+import com.debugArena.model.validation.annotation.ValidUser;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

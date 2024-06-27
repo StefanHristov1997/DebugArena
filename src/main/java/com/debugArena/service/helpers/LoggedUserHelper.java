@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LoggedUserHelper {
+
     private final UserRepository userRepository;
 
     @Autowired
@@ -20,9 +21,9 @@ public class LoggedUserHelper {
     }
 
     public UserEntity get() {
-        String username = getUsername();
-        return userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User with username: " + username + " was not found"));
+        String email = getEmail();
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User with email: " + email + " was not found"));
     }
 
     public boolean isLogged() {
@@ -42,7 +43,7 @@ public class LoggedUserHelper {
                 .allMatch(role -> role.getAuthority().equals("ROLE_" + UserRoleEnum.USER));
     }
 
-    public String getUsername() {
+    public String getEmail() {
         return getUserDetails().getUsername();
     }
 

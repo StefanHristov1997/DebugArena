@@ -1,6 +1,6 @@
 package com.debugArena.model.validation.validator;
 
-import com.debugArena.model.validation.anotation.UniqueEmail;
+import com.debugArena.model.validation.annotation.UniqueEmail;
 import com.debugArena.service.UserService;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

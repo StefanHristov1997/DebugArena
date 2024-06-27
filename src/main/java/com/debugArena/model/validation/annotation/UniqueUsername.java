@@ -1,4 +1,4 @@
-package com.debugArena.model.validation.anotation;
+package com.debugArena.model.validation.annotation;
 
 import com.debugArena.model.validation.validator.UniqueUsernameValidator;
 import jakarta.validation.Constraint;

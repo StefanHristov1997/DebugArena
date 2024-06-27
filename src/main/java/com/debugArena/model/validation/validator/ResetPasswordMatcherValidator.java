@@ -1,7 +1,7 @@
 package com.debugArena.model.validation.validator;
 
 import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
-import com.debugArena.model.validation.anotation.ResetPasswordMatcher;
+import com.debugArena.model.validation.annotation.ResetPasswordMatcher;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;

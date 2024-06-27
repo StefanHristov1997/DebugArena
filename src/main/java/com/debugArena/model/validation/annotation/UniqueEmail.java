@@ -1,6 +1,6 @@
-package com.debugArena.model.validation.anotation;
+package com.debugArena.model.validation.annotation;
 
-import com.debugArena.model.validation.validator.ValidUserValidator;
+import com.debugArena.model.validation.validator.UniqueEmailValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 import messages.ValidationErrorMessages;
@@ -12,10 +12,10 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-@Constraint(validatedBy = ValidUserValidator.class)
-public @interface ValidUser {
+@Constraint(validatedBy = UniqueEmailValidator.class)
+public @interface UniqueEmail {
 
-    String message() default ValidationErrorMessages.ACCOUNT_NOT_EXIST_MESSAGE;
+    String message() default ValidationErrorMessages.EMAIL_EXIST_MESSAGE;
 
     Class<?>[] groups() default {};
 

@@ -1,6 +1,6 @@
 package com.debugArena.model.validation.validator;
 
-import com.debugArena.model.validation.anotation.UniqueUsername;
+import com.debugArena.model.validation.annotation.UniqueUsername;
 import com.debugArena.service.UserService;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

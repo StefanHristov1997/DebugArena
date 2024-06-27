@@ -1,8 +1,9 @@
-package com.debugArena.model.validation.anotation;
+package com.debugArena.model.validation.annotation;
 
-import com.debugArena.model.validation.validator.RegisterPasswordMatcherValidator;
+import com.debugArena.model.validation.validator.ValidUserValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
+import messages.ValidationErrorMessages;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,11 +11,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-@Constraint(validatedBy = RegisterPasswordMatcherValidator.class)
-public @interface RegisterPasswordMatcher {
+@Target(ElementType.FIELD)
+@Constraint(validatedBy = ValidUserValidator.class)
+public @interface ValidUser {
 
-    String message() default "Паролите не съвпадат.";
+    String message() default ValidationErrorMessages.ACCOUNT_NOT_EXIST_MESSAGE;
 
     Class<?>[] groups() default {};
 

@@ -1,7 +1,7 @@
 package com.debugArena.model.validation.validator;
 
 import com.debugArena.model.dto.binding.UserRegisterBindingModel;
-import com.debugArena.model.validation.anotation.RegisterPasswordMatcher;
+import com.debugArena.model.validation.annotation.RegisterPasswordMatcher;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
