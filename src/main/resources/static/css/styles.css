@@ -745,10 +745,17 @@ footer {
     text-align: center;
 }
 
+.profile-container {
+    width: 500px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
 .profile-header {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     margin-bottom: 30px;
 }
@@ -768,40 +775,9 @@ footer {
     margin-bottom: 10px;
 }
 
-.btn-edit {
-    background: #ff5722;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s;
-    display: flex;
-    align-items: center;
-}
-
-.btn-edit i {
-    margin-right: 5px;
-}
-
-.btn-edit:hover {
-    background: #ff3d00;
-}
-
-.profile-details {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
 .profile-section {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
-    margin: 10px;
+    text-align: left;
+    margin-bottom: 30px;
 }
 
 .profile-section h2 {
@@ -813,4 +789,40 @@ footer {
 .profile-section p {
     font-size: 1rem;
     margin-bottom: 10px;
+}
+
+.profile-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-section textarea {
+    resize: vertical;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.btn-edit, .btn-save {
+    background: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-edit i, .btn-save i {
+    margin-right: 5px;
+}
+
+.btn-edit:hover, .btn-save:hover {
+    background: #ff3d00;
 }

@@ -11,38 +11,38 @@
 </head>
 <body>
 <header th:replace="~{fragments/navigation}"></header>
-
 <main class="profile">
-    <div>
+    <div class="container profile-container">
         <div class="profile-header">
-            <div class="profile-picture">
-                <img src="profile-picture-placeholder.png" alt="Профилна снимка">
-            </div>
             <div class="profile-info">
-                <h1 th:text="${@loggedUserHelper.getEmail()}"></h1>
-                <button class="btn-edit"><i class="fas fa-camera"></i> Промяна на снимка</button>
+                <h1 th:text="${@loggedUserHelper.get().getUsername()}"></h1>
             </div>
         </div>
-        <div class="profile-details">
-            <div class="profile-section">
-                <h2>Интереси</h2>
-                <p>Вашите интереси...</p>
-                <button class="btn-edit"><i class="fas fa-edit"></i> Промяна на интереси</button>
-            </div>
-            <div class="profile-section">
-                <h2>Умения</h2>
-                <p>Вашите умения...</p>
-                <button class="btn-edit"><i class="fas fa-edit"></i> Промяна на умения</button>
-            </div>
-            <div class="profile-section">
-                <h2>Описание</h2>
-                <p>Вашето описание...</p>
-                <button class="btn-edit"><i class="fas fa-edit"></i> Промяна на описание</button>
-            </div>
+        <div class="profile-section">
+            <h2>Описание</h2>
+            <p th:unless="${@loggedUserHelper.get().getDescription() == null}" th:text="${@loggedUserHelper.get().getDescription()}"></p>
+            <form th:action="@{/users/profile/edit-description}" th:method="POST">
+                <textarea name="description" placeholder="Кратко описание"></textarea>
+                <button th:if="${@loggedUserHelper.get().getDescription() == null}" class="btn-save"><i class="fas fa-save"></i> Запазване</button>
+                <button th:unless="${@loggedUserHelper.get().getDescription() == null}" class="btn-edit"><i class="fas fa-edit"></i> Промяна на описание</button>
+            </form>
+        </div>
+        <div class="profile-section">
+            <h2>Умения</h2>
+            <form th:if="${@loggedUserHelper.get().getSkills() == null}">
+                <textarea placeholder="Добавете вашите умения"></textarea>
+                <button class="btn-save"><i class="fas fa-save"></i> Запазване</button>
+            </form>
+        </div>
+        <div class="profile-section">
+            <h2>Интереси</h2>
+            <form  th:if="${@loggedUserHelper.get().getInterests() == null}">
+                <textarea placeholder="Добавете вашите интереси"></textarea>
+                <button class="btn-save"><i class="fas fa-save"></i> Запазване</button>
+            </form>
         </div>
     </div>
 </main>
-
 <footer th:replace="~{fragments/footer}"></footer>
 </body>
 </html>

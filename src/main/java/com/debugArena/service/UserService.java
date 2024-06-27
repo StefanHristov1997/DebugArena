@@ -1,6 +1,7 @@
 package com.debugArena.service;
 
 import com.debugArena.model.dto.binding.EmailSenderBindingModel;
+import com.debugArena.model.dto.binding.UserDescriptionBindingModel;
 import com.debugArena.model.dto.binding.UserRegisterBindingModel;
 import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
 
@@ -15,4 +16,6 @@ public interface UserService {
     void resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel);
 
     void contactUs(EmailSenderBindingModel emailSenderBindingModel);
+
+    void editUserDescription(UserDescriptionBindingModel userDescriptionBindingModel);
 }

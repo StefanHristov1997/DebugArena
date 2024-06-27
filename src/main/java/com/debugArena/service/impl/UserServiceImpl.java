@@ -1,6 +1,7 @@
 package com.debugArena.service.impl;
 
 import com.debugArena.model.dto.binding.EmailSenderBindingModel;
+import com.debugArena.model.dto.binding.UserDescriptionBindingModel;
 import com.debugArena.model.entity.UserEntity;
 import com.debugArena.model.dto.binding.UserRegisterBindingModel;
 import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
@@ -75,6 +76,15 @@ public class UserServiceImpl implements UserService {
     public void contactUs(EmailSenderBindingModel emailSenderBindingModel) {
 
         publisher.publishEvent(new UserContactedUsEvent("Contact Service", emailSenderBindingModel));
+    }
+
+    @Override
+    public void editUserDescription(UserDescriptionBindingModel userDescriptionBindingModel) {
+
+        UserEntity currentUser = loggedUserHelper.get();
+        currentUser.setDescription(userDescriptionBindingModel.getDescription());
+
+        this.userRepository.save(currentUser);
     }
 
     @Override
