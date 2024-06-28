@@ -15,22 +15,18 @@ public class ProblemEntity extends BaseEntity {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
     @Column(name = "created_on", nullable = false)
     private LocalDateTime createdOn;
 
-    @OneToOne
+    @OneToOne(optional = false)
     @JoinColumn(name = "author_id")
     private UserEntity author;
 
     @OneToOne(optional = false)
     @JoinColumn(name = "language_id")
     private LanguageEntity language;
-
-    @OneToOne(optional = false)
-    @JoinColumn(name = "technology_id")
-    private TechnologyEntity technology;
 
 }

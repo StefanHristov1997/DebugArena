@@ -24,7 +24,7 @@
 <div class="contact-container">
     <section class="contact-info">
         <h2>Информация за контакт</h2>
-        <p><i class="fas fa-map-marker-alt"></i> Адрес: Ул. Софтуерна, No. 123, София</p>
+        <p><i class="fas fa-map-marker-alt"></i> Адрес: ул. Софтуерна, No. 123, София</p>
         <p><i class="fas fa-phone"></i> Телефон: +359 123 456 789</p>
         <p><i class="fas fa-envelope"></i> Имейл: <a href="mailto:contact@debugarena.com">contact@debugarena.com</a>
         </p>
@@ -41,7 +41,7 @@
                        type="text"
                        id="name">
                 <small th:errors="*{fullName}"
-                       class="invalid-feedback text-danger">error message
+                       class="invalid-feedback text-danger" style="color: red">error message
                 </small>
             </div>
 
@@ -53,7 +53,7 @@
                        type="text"
                        id="email">
                 <small th:errors="*{email}"
-                       class="invalid-feedback text-danger">error message
+                       class="invalid-feedback text-danger" style="color: red">error message
                 </small>
             </div>
 
@@ -66,7 +66,7 @@
                           rows="5">
                 </textarea>
                 <small th:errors="*{message}"
-                       class="invalid-feedback text-danger">error message
+                       class="invalid-feedback text-danger" style="color: red">error message
                 </small>
             </div>
             <button type="submit" class="btn-submit">Изпрати</button>
