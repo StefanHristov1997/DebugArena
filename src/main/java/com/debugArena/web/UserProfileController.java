@@ -1,12 +1,12 @@
 package com.debugArena.web;
 
-import com.debugArena.model.dto.binding.UserDescriptionBindingModel;
+import com.debugArena.model.dto.binding.UserProfileBindingModel;
 import com.debugArena.service.UserService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -22,16 +22,20 @@ public class UserProfileController {
 
 
     @GetMapping("/profile")
-    public String viewProfile() {
+    public String viewProfile(Model model) {
+
+        model.addAttribute("userProfile", userService.getUserProfile());
+
         return "profile";
     }
 
-    @PostMapping("/profile/edit-description")
-    public String doEditDescription(
-            @Valid UserDescriptionBindingModel userDescriptionBindingModel
-            ) {
+    @PatchMapping("/profile/edit-profile")
+    public String doEditProfile(
+            UserProfileBindingModel userProfileBindingModel) {
 
-        userService.editUserDescription(userDescriptionBindingModel);
+        userService.editProfile(userProfileBindingModel);
+
         return "redirect:/users/profile";
     }
+
 }

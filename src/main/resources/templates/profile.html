@@ -15,30 +15,24 @@
     <div class="container profile-container">
         <div class="profile-header">
             <div class="profile-info">
-                <h1 th:text="${@loggedUserHelper.get().getUsername()}"></h1>
+                <h1 th:text="${userProfile.getUsername()}"></h1>
             </div>
         </div>
         <div class="profile-section">
-            <h2>Описание</h2>
-            <p th:unless="${@loggedUserHelper.get().getDescription() == null}" th:text="${@loggedUserHelper.get().getDescription()}"></p>
-            <form th:action="@{/users/profile/edit-description}" th:method="POST">
-                <textarea name="description" placeholder="Кратко описание"></textarea>
-                <button th:if="${@loggedUserHelper.get().getDescription() == null}" class="btn-save"><i class="fas fa-save"></i> Запазване</button>
-                <button th:unless="${@loggedUserHelper.get().getDescription() == null}" class="btn-edit"><i class="fas fa-edit"></i> Промяна на описание</button>
-            </form>
-        </div>
-        <div class="profile-section">
-            <h2>Умения</h2>
-            <form th:if="${@loggedUserHelper.get().getSkills() == null}">
-                <textarea placeholder="Добавете вашите умения"></textarea>
-                <button class="btn-save"><i class="fas fa-save"></i> Запазване</button>
-            </form>
-        </div>
-        <div class="profile-section">
-            <h2>Интереси</h2>
-            <form  th:if="${@loggedUserHelper.get().getInterests() == null}">
-                <textarea placeholder="Добавете вашите интереси"></textarea>
-                <button class="btn-save"><i class="fas fa-save"></i> Запазване</button>
+            <form th:action="@{/users/profile/edit-profile}" th:method="PATCH">
+                <h2>Описание</h2>
+                <p th:unless="${userProfile.getDescription() == null}" th:text="${userProfile.getDescription()}"></p>
+                <textarea name="description" placeholder="Добавате кратко описание"></textarea>
+
+                <h2>Умения</h2>
+                <p th:unless="${userProfile.getSkills() == null}" th:text="${userProfile.getSkills()}"></p>
+                <textarea name="skills" placeholder="Добавете вашите умения"></textarea>
+
+                <h2>Интереси</h2>
+                <p th:unless="${userProfile.getInterests() == null}" th:text="${userProfile.getInterests()}"></p>
+                <textarea name="interests" placeholder="Добавете вашите интереси"></textarea>
+
+                <button class="btn-save"><i class="fas fa-save"></i> Запазване на промените</button>
             </form>
         </div>
     </div>

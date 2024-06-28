@@ -1,9 +1,10 @@
 package com.debugArena.service;
 
 import com.debugArena.model.dto.binding.EmailSenderBindingModel;
-import com.debugArena.model.dto.binding.UserDescriptionBindingModel;
+import com.debugArena.model.dto.binding.UserProfileBindingModel;
 import com.debugArena.model.dto.binding.UserRegisterBindingModel;
 import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
+import com.debugArena.model.dto.view.UserProfileViewModel;
 
 public interface UserService {
 
@@ -17,5 +18,8 @@ public interface UserService {
 
     void contactUs(EmailSenderBindingModel emailSenderBindingModel);
 
-    void editUserDescription(UserDescriptionBindingModel userDescriptionBindingModel);
+    void editProfile(UserProfileBindingModel userProfileBindingModel);
+
+    UserProfileViewModel getUserProfile();
+
 }

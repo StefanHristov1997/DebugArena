@@ -1,10 +1,11 @@
 package com.debugArena.service.impl;
 
 import com.debugArena.model.dto.binding.EmailSenderBindingModel;
-import com.debugArena.model.dto.binding.UserDescriptionBindingModel;
-import com.debugArena.model.entity.UserEntity;
+import com.debugArena.model.dto.binding.UserProfileBindingModel;
 import com.debugArena.model.dto.binding.UserRegisterBindingModel;
 import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
+import com.debugArena.model.dto.view.UserProfileViewModel;
+import com.debugArena.model.entity.UserEntity;
 import com.debugArena.model.enums.UserRoleEnum;
 import com.debugArena.model.events.UserContactedUsEvent;
 import com.debugArena.repository.UserRepository;
@@ -79,12 +80,34 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editUserDescription(UserDescriptionBindingModel userDescriptionBindingModel) {
+    public void editProfile(UserProfileBindingModel userProfileBindingModel) {
 
         UserEntity currentUser = loggedUserHelper.get();
-        currentUser.setDescription(userDescriptionBindingModel.getDescription());
 
-        this.userRepository.save(currentUser);
+        String userDescription = userProfileBindingModel.getDescription();
+
+        if (!userDescription.isEmpty() || !userDescription.isBlank()) {
+            currentUser.setDescription(userDescription);
+        }
+
+        String userSkills = userProfileBindingModel.getSkills();
+
+        if (!userSkills.isEmpty() || !userSkills.isBlank()) {
+            currentUser.setSkills(userSkills);
+        }
+
+        String userInterests = userProfileBindingModel.getInterests();
+
+        if (!userInterests.isEmpty() || !userInterests.isBlank()) {
+            currentUser.setInterests(userInterests);
+        }
+
+        userRepository.saveAndFlush(currentUser);
+    }
+
+    @Override
+    public UserProfileViewModel getUserProfile() {
+        return mapper.map(loggedUserHelper.get(), UserProfileViewModel.class);
     }
 
     @Override
