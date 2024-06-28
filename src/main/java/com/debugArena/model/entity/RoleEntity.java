@@ -17,11 +17,10 @@ public class RoleEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private UserRoleEnum name;
 
-    public RoleEntity() {
-
-    }
+    public RoleEntity() {}
 
     public RoleEntity(Long id, UserRoleEnum userRoleEnum) {
+        super();
         this.name = userRoleEnum;
     }
 }

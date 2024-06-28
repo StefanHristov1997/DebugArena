@@ -14,6 +14,10 @@ public class LanguageEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private LanguageEnum name;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
-    private String description;
+    public LanguageEntity() {}
+
+    public LanguageEntity(Long id, LanguageEnum languageEnum) {
+        super();
+        this.name = languageEnum;
+    }
 }
