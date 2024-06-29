@@ -14,9 +14,9 @@ public class InitLanguages implements CommandLineRunner {
 
     private final Map<Long, LanguageEnum> languages = Map.of(
             1L, LanguageEnum.JAVA,
-            2L, LanguageEnum.CSharp,
-            3L, LanguageEnum.JavaScript,
-            4L,  LanguageEnum.Python
+            2L, LanguageEnum.CSHARP,
+            3L, LanguageEnum.JAVASCRIPT,
+            4L,  LanguageEnum.PYTHON
     );
 
     private final LanguageRepository languageRepository;

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -19,9 +19,9 @@ public class ProblemEntity extends BaseEntity {
     private String description;
 
     @Column(name = "created_on", nullable = false)
-    private LocalDateTime createdOn;
+    private LocalDate createdOn;
 
-    @OneToOne(optional = false)
+    @ManyToOne (optional = false)
     @JoinColumn(name = "author_id")
     private UserEntity author;
 

@@ -1,5 +1,5 @@
 package com.debugArena.model.enums;
 
 public enum LanguageEnum {
-    JAVA, CSharp, JavaScript, Python;
+    JAVA, CSHARP, JAVASCRIPT, PYTHON;
 }

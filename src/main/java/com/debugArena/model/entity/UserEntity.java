@@ -31,6 +31,9 @@ public class UserEntity extends BaseEntity {
     @Column
     private String interests;
 
+    @OneToMany(mappedBy = "author", targetEntity = ProblemEntity.class)
+    private Set<ProblemEntity> addedProblems;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false))
@@ -41,6 +44,6 @@ public class UserEntity extends BaseEntity {
         this.skills = "";
         this.interests = "";
         this.roles = new HashSet<>();
-
+        this.addedProblems = new HashSet<>();
     }
 }
