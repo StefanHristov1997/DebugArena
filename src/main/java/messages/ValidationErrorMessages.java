@@ -26,6 +26,9 @@ public enum ValidationErrorMessages {
 
     public final static String VALID_DATE_MESSAGE = "Датата не може да бъде в бъдеще време!";
 
+    public final static String DATE_NOT_NULL_MESSAGE = "Датата не може да бъде празна!";
+
     public final static String LANGUAGE__NOT_NULL_MESSAGE = "Езикът не може да бъде празен!";
+
 
 }

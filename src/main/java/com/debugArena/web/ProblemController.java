@@ -39,7 +39,7 @@ public class ProblemController {
 
         if(bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attributeName, addProblemBindingModel);
-            rAtt.addFlashAttribute(bindingResult + DOT + attributeName, bindingResult);
+            rAtt.addFlashAttribute(bindingResultPath + DOT + attributeName, bindingResult);
             return "redirect:/problems/add-problem";
         }
 
