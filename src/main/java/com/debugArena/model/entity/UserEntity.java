@@ -31,7 +31,7 @@ public class UserEntity extends BaseEntity {
     @Column
     private String interests;
 
-    @OneToMany(mappedBy = "author", targetEntity = ProblemEntity.class)
+    @OneToMany(mappedBy = "author", targetEntity = ProblemEntity.class, fetch = FetchType.EAGER)
     private Set<ProblemEntity> addedProblems;
 
     @ManyToMany(fetch = FetchType.EAGER)

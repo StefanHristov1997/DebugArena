@@ -4,7 +4,7 @@ public enum ValidationErrorMessages {
     ;
 
     /* Общи */
-    public final static String BLANK_FIELD_MESSAGE = "Полето не може да бъде празно!";
+    public final static String BLANK_FIELD_MESSAGE = "Полето трябва да бъде попълнено!";
 
     /* Валидация за добавяне на юзър */
     public final static String USERNAME_LENGTH_MESSAGE = "Потребителското име трябва да съдържа поне {min} символа!";
@@ -26,9 +26,8 @@ public enum ValidationErrorMessages {
 
     public final static String VALID_DATE_MESSAGE = "Датата не може да бъде в бъдеще време!";
 
-    public final static String DATE_NOT_NULL_MESSAGE = "Датата не може да бъде празна!";
+    public final static String DATE_NOT_NULL_MESSAGE = "Датата трябва да бъде попълнена!";
 
-    public final static String LANGUAGE__NOT_NULL_MESSAGE = "Езикът не може да бъде празен!";
-
+    public final static String LANGUAGE__NOT_NULL_MESSAGE = "Езикът трябва да бъде попълнен!";
 
 }

@@ -20,7 +20,6 @@ public class UserProfileController {
         this.userService = userService;
     }
 
-
     @GetMapping("/profile")
     public String viewProfile(Model model) {
 
