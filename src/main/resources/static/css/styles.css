@@ -733,3 +733,52 @@ footer {
 .add-problem.btn-submit:hover {
     background: #ff3d00;
 }
+
+/* Стилове за секциите с езиците за програмиране */
+.programming-languages {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.programming-languages h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.category {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    flex-basis: 20%;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.category a {
+    text-decoration: none;
+    color: #333;
+}
+
+.category i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.category h2 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.category:hover {
+    transform: translateY(-10px);
+}
