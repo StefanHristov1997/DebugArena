@@ -16,7 +16,7 @@
         <div class="container">
             <h1>Добре дошли обратно, <span th:text="${@loggedUserHelper.get().getUsername()}"></span></h1>
             <p>Готови ли сте да помогнете за решаването на нови проблеми и да се свържете с общността?</p>
-            <a href="/problems" class="btn-cta">Вижте дискусиите</a>
+            <a th:href="@{/problems}" class="btn-cta">Вижте дискусиите</a>
         </div>
     </section>
 
@@ -47,10 +47,6 @@
         <div class="container">
             <h2>Бързи връзки</h2>
             <div class="links-list">
-                <a href="/problems" class="link-item">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <span>Проблеми</span>
-                </a>
                 <a th:href="@{/problems/add-problem}" class="link-item">
                     <i class="fas fa-plus-circle"></i>
                     <span>Добавете проблем</span>
