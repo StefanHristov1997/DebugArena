@@ -34,10 +34,15 @@ public class ProblemController {
         return "problem-categories";
     }
 
+    @GetMapping("/java")
+    public String viewProblemsWithJava() {
+        return "java-articles";
+    }
+
     @GetMapping("/add-problem")
     public String viewAddProblem(Model model) {
 
-        if(!model.containsAttribute(attributeName)) {
+        if (!model.containsAttribute(attributeName)) {
             model.addAttribute(attributeName, new AddProblemBindingModel());
         }
 
@@ -51,7 +56,7 @@ public class ProblemController {
             RedirectAttributes rAtt
     ) {
 
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attributeName, addProblemBindingModel);
             rAtt.addFlashAttribute(bindingResultPath + DOT + attributeName, bindingResult);
             return "redirect:/problems/add-problem";
