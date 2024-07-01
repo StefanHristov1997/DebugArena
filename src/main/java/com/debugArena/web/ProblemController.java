@@ -29,6 +29,11 @@ public class ProblemController {
         this.problemService = problemService;
     }
 
+    @GetMapping
+    public String viewProblemCategories() {
+        return "problem-categories";
+    }
+
     @GetMapping("/add-problem")
     public String viewAddProblem(Model model) {
 

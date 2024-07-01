@@ -768,10 +768,11 @@ footer {
     color: #333;
 }
 
-.category i {
-    font-size: 3rem;
-    margin-bottom: 10px;
+.category .category-image {
+    height: 200px;
+    width: 200px;
 }
+
 
 .category h2 {
     font-family: 'Russo One', sans-serif;
