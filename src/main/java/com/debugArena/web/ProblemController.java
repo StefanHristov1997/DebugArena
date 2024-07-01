@@ -1,6 +1,8 @@
 package com.debugArena.web;
 
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
+import com.debugArena.model.dto.view.ArticleViewModel;
+import com.debugArena.model.enums.LanguageEnum;
 import com.debugArena.service.ProblemService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/problems")
@@ -35,7 +39,12 @@ public class ProblemController {
     }
 
     @GetMapping("/java")
-    public String viewProblemsWithJava() {
+    public String viewProblemsWithJava(Model model) {
+
+        List<ArticleViewModel> javaArticles = problemService.getArticlesByLanguage(LanguageEnum.JAVA);
+
+        model.addAttribute("javaArticles", javaArticles);
+
         return "java-articles";
     }
 

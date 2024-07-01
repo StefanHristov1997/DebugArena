@@ -25,7 +25,7 @@ public class ProblemEntity extends BaseEntity {
     @JoinColumn(name = "author_id")
     private UserEntity author;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "language_id")
     private LanguageEntity language;
 

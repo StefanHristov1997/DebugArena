@@ -17,22 +17,14 @@
 <main class="article-list">
     <div class="container">
         <h1>Списък със Java публикации</h1>
-        <ul class="articles">
+        <ul th:each="javaArticle: ${javaArticles}" class="articles">
             <li class="article-item">
-                <h2 class="article-title"><a href="/articles/1">Проблем със свързване към база данни</a></h2>
+                <h2 class="article-title"><a href="/articles/1"><span th:text="${javaArticle.getTitle()}"></span></a></h2>
                 <div class="article-meta">
-                    <span class="article-user">Потребител: Иван Иванов</span>
-                    <span class="article-date">Дата на публикуване: 01.06.2024</span>
+                    <span class="article-user">Потребител: <span th:text="${javaArticle.getAuthorUsername()}"></span></span>
+                    <span class="article-date">Дата на публикуване: <span th:text="${javaArticle.getCreatedOn()}"></span></span>
                 </div>
             </li>
-            <li class="article-item">
-                <h2 class="article-title"><a href="/articles/2">Грешка при компилация на Java код</a></h2>
-                <div class="article-meta">
-                    <span class="article-user">Потребител: Петър Петров</span>
-                    <span class="article-date">Дата на публикуване: 02.06.2024</span>
-                </div>
-            </li>
-            <!-- Повече статии могат да бъдат добавени тук -->
         </ul>
     </div>
 </main>

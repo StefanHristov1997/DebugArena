@@ -1,9 +1,11 @@
 package com.debugArena.service.impl;
 
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
+import com.debugArena.model.dto.view.ArticleViewModel;
 import com.debugArena.model.entity.LanguageEntity;
 import com.debugArena.model.entity.ProblemEntity;
 import com.debugArena.model.entity.UserEntity;
+import com.debugArena.model.enums.LanguageEnum;
 import com.debugArena.repository.LanguageRepository;
 import com.debugArena.repository.ProblemRepository;
 import com.debugArena.repository.UserRepository;
@@ -13,6 +15,8 @@ import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProblemServiceImpl implements ProblemService {
@@ -51,6 +55,17 @@ public class ProblemServiceImpl implements ProblemService {
         problemRepository.save(problemToSave);
 
         currentUser.getAddedProblems().add(problemToSave);
-        userRepository.save(loggedUserHelper.get());
+        userRepository.save(currentUser);
+    }
+
+    @Override
+    public List<ArticleViewModel> getArticlesByLanguage(LanguageEnum language) {
+
+        List<ProblemEntity> problemsByLanguageName = problemRepository.findProblemsByLanguageName(language);
+
+        return problemsByLanguageName
+                .stream()
+                .map(problem ->
+                        modelMapper.map(problem, ArticleViewModel.class)).toList();
     }
 }
