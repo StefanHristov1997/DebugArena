@@ -11,4 +11,6 @@ import java.util.List;
 public interface ProblemRepository extends JpaRepository<ProblemEntity, Long> {
 
     List<ProblemEntity> findProblemsByLanguageName(LanguageEnum language);
+
+    ProblemEntity findProblemById(Long id);
 }

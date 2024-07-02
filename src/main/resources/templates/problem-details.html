@@ -16,15 +16,14 @@
 
 <main class="problem-details">
     <div class="container">
-        <h1>Проблем със свързване към база данни</h1>
+        <h1 th:text="${problem.getTitle()}"></h1>
         <div class="problem-meta">
-            <span class="problem-user">Потребител: Иван Иванов</span>
-            <span class="problem-date">Дата на публикуване: 01.06.2024</span>
+            <span class="problem-user">Потребител: <span th:text="${problem.getAuthorUsername()}"></span></span>
+            <span class="problem-date">Дата на публикуване: <span th:text="${problem.getCreatedOn()}"></span></span>
         </div>
         <div class="problem-description">
-            <p>Описание на проблема: При опит за свързване към базата данни получавам грешка, която гласи "Unable to
-                establish connection". Опитах да проверя конфигурацията на базата данни, но не открих проблеми там.
-                Моля за помощ.</p>
+            <p>Описание на проблема:</p>
+            <p th:text="${problem.getDescription()}"></p>
         </div>
         <div class="comments-section">
             <h2>Коментари</h2>

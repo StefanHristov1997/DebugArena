@@ -1,6 +1,7 @@
 package com.debugArena.service;
 
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
+import com.debugArena.model.dto.view.ProblemDetailsInfoViewModel;
 import com.debugArena.model.dto.view.ProblemShortInfoViewModel;
 import com.debugArena.model.enums.LanguageEnum;
 
@@ -11,5 +12,7 @@ public interface ProblemService {
     void addProblem(AddProblemBindingModel addProblemBindingModel);
 
     List<ProblemShortInfoViewModel> getArticlesByLanguage(LanguageEnum language);
+
+    ProblemDetailsInfoViewModel getProblemDetails(Long id);
 
 }

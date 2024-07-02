@@ -9,6 +9,8 @@ import java.time.LocalDate;
 @Setter
 public class ProblemDetailsInfoViewModel {
 
+    private Long id;
+
     private String title;
 
     private String description;

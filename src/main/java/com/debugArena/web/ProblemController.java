@@ -1,6 +1,7 @@
 package com.debugArena.web;
 
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
+import com.debugArena.model.dto.view.ProblemDetailsInfoViewModel;
 import com.debugArena.model.dto.view.ProblemShortInfoViewModel;
 import com.debugArena.model.enums.LanguageEnum;
 import com.debugArena.service.ProblemService;
@@ -40,8 +41,11 @@ public class ProblemController {
     }
 
     @GetMapping("/details/{id}")
-    public String viewProblemDetails(@PathVariable Long id) {
+    public String viewProblemDetails(@PathVariable("id") Long id, Model model) {
 
+        ProblemDetailsInfoViewModel problemDetails = problemService.getProblemDetails(id);
+
+        model.addAttribute("problem", problemDetails);
 
         return "problem-details";
     }

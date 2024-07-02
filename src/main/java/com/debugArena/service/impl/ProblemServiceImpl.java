@@ -1,6 +1,7 @@
 package com.debugArena.service.impl;
 
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
+import com.debugArena.model.dto.view.ProblemDetailsInfoViewModel;
 import com.debugArena.model.dto.view.ProblemShortInfoViewModel;
 import com.debugArena.model.entity.LanguageEntity;
 import com.debugArena.model.entity.ProblemEntity;
@@ -67,5 +68,13 @@ public class ProblemServiceImpl implements ProblemService {
                 .stream()
                 .map(problem ->
                         modelMapper.map(problem, ProblemShortInfoViewModel.class)).toList();
+    }
+
+    @Override
+    public ProblemDetailsInfoViewModel getProblemDetails(Long id) {
+
+        ProblemEntity problem = problemRepository.findProblemById(id);
+
+        return modelMapper.map(problem, ProblemDetailsInfoViewModel.class);
     }
 }

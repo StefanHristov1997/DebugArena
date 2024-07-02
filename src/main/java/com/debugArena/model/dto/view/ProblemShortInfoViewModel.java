@@ -9,6 +9,8 @@ import java.time.LocalDate;
 @Setter
 public class ProblemShortInfoViewModel {
 
+    private Long id;
+
     private String title;
 
     private String authorUsername;
