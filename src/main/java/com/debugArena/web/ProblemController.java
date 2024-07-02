@@ -68,6 +68,16 @@ public class ProblemController {
         return "javascript-articles";
     }
 
+    @GetMapping("/python")
+    public String viewProblemsWithPython(Model model) {
+
+        List<ArticleViewModel> pythonArticles = problemService.getArticlesByLanguage(LanguageEnum.PYTHON);
+
+        model.addAttribute("pythonArticles", pythonArticles);
+
+        return "python-articles";
+    }
+
     @GetMapping("/add-problem")
     public String viewAddProblem(Model model) {
 
