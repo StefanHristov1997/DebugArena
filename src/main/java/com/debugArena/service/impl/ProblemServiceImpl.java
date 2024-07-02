@@ -1,7 +1,7 @@
 package com.debugArena.service.impl;
 
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
-import com.debugArena.model.dto.view.ArticleViewModel;
+import com.debugArena.model.dto.view.ProblemShortInfoViewModel;
 import com.debugArena.model.entity.LanguageEntity;
 import com.debugArena.model.entity.ProblemEntity;
 import com.debugArena.model.entity.UserEntity;
@@ -59,13 +59,13 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     @Override
-    public List<ArticleViewModel> getArticlesByLanguage(LanguageEnum language) {
+    public List<ProblemShortInfoViewModel> getArticlesByLanguage(LanguageEnum language) {
 
         List<ProblemEntity> problemsByLanguageName = problemRepository.findProblemsByLanguageName(language);
 
         return problemsByLanguageName
                 .stream()
                 .map(problem ->
-                        modelMapper.map(problem, ArticleViewModel.class)).toList();
+                        modelMapper.map(problem, ProblemShortInfoViewModel.class)).toList();
     }
 }

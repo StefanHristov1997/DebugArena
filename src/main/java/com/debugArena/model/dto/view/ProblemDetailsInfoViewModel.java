@@ -7,9 +7,11 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class ArticleViewModel {
+public class ProblemDetailsInfoViewModel {
 
     private String title;
+
+    private String description;
 
     private String authorUsername;
 

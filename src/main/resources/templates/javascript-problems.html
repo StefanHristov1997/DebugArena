@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Java статии</title>
+    <title>JavaScript статии</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
@@ -16,13 +16,13 @@
 
 <main class="article-list">
     <div class="container">
-        <h1>Списък със Java публикации</h1>
-        <ul th:each="javaArticle: ${javaArticles}" class="articles">
+        <h1>Списък със JavaScript публикации</h1>
+        <ul th:each="javascriptProblem: ${javaScriptProblems}" class="articles">
             <li class="article-item">
-                <h2 class="article-title"><a href="/articles/1"><span th:text="${javaArticle.getTitle()}"></span></a></h2>
+                <h2 class="article-title"><a href="/articles/1"><span th:text="${javascriptProblem.getTitle()}"></span></a></h2>
                 <div class="article-meta">
-                    <span class="article-user">Потребител: <span th:text="${javaArticle.getAuthorUsername()}"></span></span>
-                    <span class="article-date">Дата на публикуване: <span th:text="${javaArticle.getCreatedOn()}"></span></span>
+                    <span class="article-user">Потребител: <span th:text="${javascriptProblem.getAuthorUsername()}"></span></span>
+                    <span class="article-date">Дата на публикуване: <span th:text="${javascriptProblem.getCreatedOn()}"></span></span>
                 </div>
             </li>
         </ul>

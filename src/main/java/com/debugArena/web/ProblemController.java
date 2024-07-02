@@ -1,7 +1,7 @@
 package com.debugArena.web;
 
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
-import com.debugArena.model.dto.view.ArticleViewModel;
+import com.debugArena.model.dto.view.ProblemShortInfoViewModel;
 import com.debugArena.model.enums.LanguageEnum;
 import com.debugArena.service.ProblemService;
 import jakarta.validation.Valid;
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -38,44 +39,51 @@ public class ProblemController {
         return "problem-categories";
     }
 
+    @GetMapping("/details/{id}")
+    public String viewProblemDetails(@PathVariable Long id) {
+
+
+        return "problem-details";
+    }
+
     @GetMapping("/java")
     public String viewProblemsWithJava(Model model) {
 
-        List<ArticleViewModel> javaArticles = problemService.getArticlesByLanguage(LanguageEnum.JAVA);
+        List<ProblemShortInfoViewModel> javaProblems = problemService.getArticlesByLanguage(LanguageEnum.JAVA);
 
-        model.addAttribute("javaArticles", javaArticles);
+        model.addAttribute("javaProblems", javaProblems);
 
-        return "java-articles";
+        return "java-problems";
     }
 
     @GetMapping("/csharp")
     public String viewProblemsWithCsharp(Model model) {
 
-        List<ArticleViewModel> csharpArticles = problemService.getArticlesByLanguage(LanguageEnum.CSHARP);
+        List<ProblemShortInfoViewModel> csharpProblems = problemService.getArticlesByLanguage(LanguageEnum.CSHARP);
 
-        model.addAttribute("csharpArticles", csharpArticles);
+        model.addAttribute("csharpProblems", csharpProblems);
 
-        return "csharp-articles";
+        return "csharp-problems";
     }
 
     @GetMapping("/javascript")
     public String viewProblemsWithJavaScript(Model model) {
 
-        List<ArticleViewModel> javaScriptArticles = problemService.getArticlesByLanguage(LanguageEnum.JAVASCRIPT);
+        List<ProblemShortInfoViewModel> javaScriptProblems = problemService.getArticlesByLanguage(LanguageEnum.JAVASCRIPT);
 
-        model.addAttribute("javaScriptArticles", javaScriptArticles);
+        model.addAttribute("javaScriptProblems", javaScriptProblems);
 
-        return "javascript-articles";
+        return "javascript-problems";
     }
 
     @GetMapping("/python")
     public String viewProblemsWithPython(Model model) {
 
-        List<ArticleViewModel> pythonArticles = problemService.getArticlesByLanguage(LanguageEnum.PYTHON);
+        List<ProblemShortInfoViewModel> pythonProblems = problemService.getArticlesByLanguage(LanguageEnum.PYTHON);
 
-        model.addAttribute("pythonArticles", pythonArticles);
+        model.addAttribute("pythonProblems", pythonProblems);
 
-        return "python-articles";
+        return "python-problems";
     }
 
     @GetMapping("/add-problem")
