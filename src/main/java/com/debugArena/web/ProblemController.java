@@ -58,6 +58,16 @@ public class ProblemController {
         return "csharp-articles";
     }
 
+    @GetMapping("/javascript")
+    public String viewProblemsWithJavaScript(Model model) {
+
+        List<ArticleViewModel> javaScriptArticles = problemService.getArticlesByLanguage(LanguageEnum.JAVASCRIPT);
+
+        model.addAttribute("javaScriptArticles", javaScriptArticles);
+
+        return "javascript-articles";
+    }
+
     @GetMapping("/add-problem")
     public String viewAddProblem(Model model) {
 
