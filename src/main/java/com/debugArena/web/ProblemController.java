@@ -48,6 +48,16 @@ public class ProblemController {
         return "java-articles";
     }
 
+    @GetMapping("/csharp")
+    public String viewProblemsWithCsharp(Model model) {
+
+        List<ArticleViewModel> csharpArticles = problemService.getArticlesByLanguage(LanguageEnum.CSHARP);
+
+        model.addAttribute("csharpArticles", csharpArticles);
+
+        return "csharp-articles";
+    }
+
     @GetMapping("/add-problem")
     public String viewAddProblem(Model model) {
 
@@ -73,6 +83,6 @@ public class ProblemController {
 
         problemService.addProblem(addProblemBindingModel);
 
-        return "redirect:/home";
+        return "redirect:/problems";
     }
 }

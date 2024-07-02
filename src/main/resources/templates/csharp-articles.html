@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java статии</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+<header th:replace="~{fragments/navigation}"></header>
+
+<main class="article-list">
+    <div class="container">
+        <h1>Списък със C# публикации</h1>
+        <ul th:each="csharpArticle: ${csharpArticles}" class="articles">
+            <li class="article-item">
+                <h2 class="article-title"><a href="/articles/1"><span th:text="${csharpArticle.getTitle()}"></span></a></h2>
+                <div class="article-meta">
+                    <span class="article-user">Потребител: <span th:text="${csharpArticle.getAuthorUsername()}"></span></span>
+                    <span class="article-date">Дата на публикуване: <span th:text="${csharpArticle.getCreatedOn()}"></span></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/footer}"></footer>
+</body>
+
+</html>
