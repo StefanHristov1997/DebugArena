@@ -30,4 +30,7 @@ public enum ValidationErrorMessages {
 
     public final static String LANGUAGE__NOT_NULL_MESSAGE = "Езикът трябва да бъде попълнен!";
 
+
+    /* Валидация за добавяне на коментар */
+    public final static String COMMENT_NOT_BLANK_MESSAGE = "Коментарът не може да бъде празен!";
 }

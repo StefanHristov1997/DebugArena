@@ -48,6 +48,18 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public void updateCommentRating(Long id, int rating) {
+
+        CommentEntity comment = commentRepository
+                .findById(id)
+                .orElseThrow(() -> new RuntimeException("Comment not found"));
+
+        comment.setRating(rating);
+
+        commentRepository.save(comment);
+    }
+
+    @Override
     public List<CommentViewModel> getCommentsByProblem(Long id) {
 
         List<CommentEntity> comments = commentRepository.findAllByProblemId(id);

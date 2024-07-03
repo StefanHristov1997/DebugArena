@@ -1,5 +1,6 @@
 package com.debugArena.web;
 
+import com.debugArena.model.dto.binding.AddCommentBindingModel;
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
 import com.debugArena.model.dto.view.CommentViewModel;
 import com.debugArena.model.dto.view.ProblemDetailsInfoViewModel;
@@ -46,6 +47,10 @@ public class ProblemController {
 
     @GetMapping("/details/{id}")
     public String viewProblemDetails(@PathVariable("id") Long id, Model model) {
+
+        if(!model.containsAttribute("addCommentBindingModel")){
+            model.addAttribute("addCommentBindingModel", new AddCommentBindingModel());
+        }
 
         ProblemDetailsInfoViewModel problemDetails = problemService.getProblemDetails(id);
         List<CommentViewModel> commentsByProblem = commentService.getCommentsByProblem(id);

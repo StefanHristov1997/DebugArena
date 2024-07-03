@@ -9,5 +9,7 @@ public interface CommentService {
 
     void addComment(AddCommentBindingModel addCommentBindingModel, Long problemId);
 
+    void updateCommentRating(Long id, int rating);
+
     List<CommentViewModel> getCommentsByProblem(Long id);
 }

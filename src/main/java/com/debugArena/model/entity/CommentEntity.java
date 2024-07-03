@@ -15,6 +15,9 @@ public class CommentEntity extends BaseEntity {
     @Column(name = "created_on", nullable = false)
     private LocalDate createdOn;
 
+    @Column(name = "comment_rating")
+    private int rating;
+
     @Column(name = "text_content", nullable = false)
     private String textContent;
 

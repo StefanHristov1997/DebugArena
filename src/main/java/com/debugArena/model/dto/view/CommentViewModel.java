@@ -9,6 +9,8 @@ import java.time.LocalDate;
 @Setter
 public class CommentViewModel {
 
+    private Long id;
+
     private String authorUsername;
 
     private String textContent;

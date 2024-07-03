@@ -27,20 +27,30 @@
         </div>
         <div class="comments-section">
             <h2>Коментари</h2>
-            <div th:each="comment: ${comments}" class="comment">
+            <div th:each="comment: ${comments}" class="comment" data-comment-id="1">
                 <p class="comment-user">Коментар от <span th:text="${comment.getAuthorUsername()}"></span></p>
                 <span class="problem-date">Дата на публикуване: <span th:text="${comment.getCreatedOn()}"></span></span>
                 <p th:text="${comment.getTextContent()}"></p>
-                <div class="rating">
-                    <span class="fa fa-star" data-rating="1"></span>
-                    <span class="fa fa-star" data-rating="2"></span>
-                    <span class="fa fa-star" data-rating="3"></span>
-                    <span class="fa fa-star" data-rating="4"></span>
-                    <span class="fa fa-star" data-rating="5"></span>
-                </div>
+                <form class="rating" th:action="@{/comments/{id}(id=${comment.id})/rating}" th:method="PUT">
+                    <button type="submit" class="fa fa-star" data-rating="1"></button>
+                    <button class="fa fa-star" data-rating="2"></button>
+                    <button class="fa fa-star" data-rating="3"></button>
+                    <button class="fa fa-star" data-rating="4"></button>
+                    <button class="fa fa-star" data-rating="5"></button>
+                </form>
             </div>
-            <form class="comment-form" th:action="@{/comments/add-comment/{id}(id=${problem.getId()})}" th:method="POST">
-                <textarea name="textContent" placeholder="Добави коментар"></textarea>
+            <form class="comment-form"
+                  th:action="@{/comments/add-comment/{id}(id=${problem.getId()})}"
+                  th:method="POST"
+                  th:object="${addCommentBindingModel}">
+
+                <textarea  th:field="*{textContent}"
+                           th:errorclass="'is-invalid alert-danger'"
+                           th:class="form-control"
+                          placeholder="Добави коментар"></textarea>
+                <small th:errors="*{textContent}"
+                       class="invalid-feedback text-danger" style="color: red">error message
+                </small>
                 <button type="submit">Изпрати коментара</button>
             </form>
         </div>
@@ -53,12 +63,29 @@
     document.querySelectorAll('.rating .fa').forEach(star => {
         star.addEventListener('click', function () {
             let rating = this.dataset.rating;
+            let commentId = this.closest('.comment').dataset.commentId;
+
+            // Update UI
             let stars = this.parentNode.querySelectorAll('.fa');
             stars.forEach((s, index) => {
                 if (index < rating) {
                     s.classList.add('checked');
                 } else {
                     s.classList.remove('checked');
+                }
+            });
+
+            // Send rating to server
+            fetch(`/comments/${commentId}/rating?rating=${rating}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Rating updated successfully.');
+                } else {
+                    console.error('Failed to update rating.');
                 }
             });
         });
