@@ -36,8 +36,8 @@
                 </div>
                 <div class="stat-item">
                     <i class="fas fa-comments"></i>
-                    <h3>Коментари</h3>
-                    <p>23</p>
+                    <h3 >Коментари</h3>
+                    <p th:text="${@loggedUserHelper.get().getAddedComments().size()}"></p>
                 </div>
             </div>
         </div>

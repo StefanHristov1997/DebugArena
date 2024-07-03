@@ -4,6 +4,7 @@ import com.debugArena.model.dto.binding.AddCommentBindingModel;
 import com.debugArena.model.dto.view.CommentViewModel;
 import com.debugArena.model.entity.CommentEntity;
 import com.debugArena.model.entity.ProblemEntity;
+import com.debugArena.model.entity.UserEntity;
 import com.debugArena.repository.CommentRepository;
 import com.debugArena.repository.ProblemRepository;
 import com.debugArena.service.CommentService;
@@ -36,10 +37,11 @@ public class CommentServiceImpl implements CommentService {
 
         CommentEntity commentToSave = modelMapper.map(addCommentBindingModel, CommentEntity.class);
 
-        commentToSave.setAuthor(loggedUserHelper.get());
+        UserEntity currentUser = loggedUserHelper.get();
+        commentToSave.setAuthor(currentUser);
+        currentUser.getAddedComments().add(commentToSave);
 
         ProblemEntity problem = problemRepository.findById(problemId).orElseThrow();
-
         commentToSave.setProblem(problem);
 
         commentRepository.save(commentToSave);
