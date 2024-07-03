@@ -16,6 +16,10 @@
 
 <main class="article-list">
     <div class="container">
+        <a th:href="@{/problems/add-problem}" class="link-item">
+            <i class="fas fa-plus-circle"></i>
+            <span>Добавете проблем</span>
+        </a>
         <h1>Списък със JavaScript публикации</h1>
         <ul th:each="javascriptProblem: ${javaScriptProblems}" class="articles">
             <li class="article-item">
