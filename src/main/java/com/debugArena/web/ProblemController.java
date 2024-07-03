@@ -1,9 +1,11 @@
 package com.debugArena.web;
 
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
+import com.debugArena.model.dto.view.CommentViewModel;
 import com.debugArena.model.dto.view.ProblemDetailsInfoViewModel;
 import com.debugArena.model.dto.view.ProblemShortInfoViewModel;
 import com.debugArena.model.enums.LanguageEnum;
+import com.debugArena.service.CommentService;
 import com.debugArena.service.ProblemService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,7 @@ import java.util.List;
 public class ProblemController {
 
     private final ProblemService problemService;
+    private final CommentService commentService;
 
     @Value("${binding-result-package}")
     private String bindingResultPath;
@@ -31,8 +34,9 @@ public class ProblemController {
     final String attributeName = "addProblemBindingModel";
 
     @Autowired
-    public ProblemController(ProblemService problemService) {
+    public ProblemController(ProblemService problemService, CommentService commentService) {
         this.problemService = problemService;
+        this.commentService = commentService;
     }
 
     @GetMapping
@@ -44,8 +48,10 @@ public class ProblemController {
     public String viewProblemDetails(@PathVariable("id") Long id, Model model) {
 
         ProblemDetailsInfoViewModel problemDetails = problemService.getProblemDetails(id);
+        List<CommentViewModel> commentsByProblem = commentService.getCommentsByProblem(id);
 
         model.addAttribute("problem", problemDetails);
+        model.addAttribute("comments", commentsByProblem);
 
         return "problem-details";
     }

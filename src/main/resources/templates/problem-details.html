@@ -27,9 +27,10 @@
         </div>
         <div class="comments-section">
             <h2>Коментари</h2>
-            <div class="comment">
-                <p class="comment-user">Коментар от Петър Петров:</p>
-                <p>Опитай да провериш дали базата данни работи правилно и дали имаш достъп до нея.</p>
+            <div th:each="comment: ${comments}" class="comment">
+                <p class="comment-user">Коментар от <span th:text="${comment.getAuthorUsername()}"></span></p>
+                <span class="problem-date">Дата на публикуване: <span th:text="${comment.getCreatedOn()}"></span></span>
+                <p th:text="${comment.getTextContent()}"></p>
                 <div class="rating">
                     <span class="fa fa-star" data-rating="1"></span>
                     <span class="fa fa-star" data-rating="2"></span>
@@ -38,8 +39,8 @@
                     <span class="fa fa-star" data-rating="5"></span>
                 </div>
             </div>
-            <form class="comment-form">
-                <textarea placeholder="Добави коментар" required></textarea>
+            <form class="comment-form" th:action="@{/comments/add-comment/{id}(id=${problem.getId()})}" th:method="POST">
+                <textarea name="textContent" placeholder="Добави коментар"></textarea>
                 <button type="submit">Изпрати коментара</button>
             </form>
         </div>
