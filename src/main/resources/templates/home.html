@@ -11,10 +11,10 @@
 </head>
 <body>
     <header th:replace="~{fragments/navigation}"></header>
-
+    <a href="?lang=en">English</a> | <a href="?lang=bg">Български</a>
     <section class="hero">
         <div class="container">
-            <h1>Добре дошли обратно, <span th:text="${@loggedUserHelper.get().getUsername()}"></span></h1>
+            <h1 th:text="#{welcome.message}">Добре дошли обратно, <span th:text="${@loggedUserHelper.get().getUsername()}"></span></h1>
             <p>Готови ли сте да помогнете за решаването на нови проблеми и да се свържете с общността?</p>
             <a th:href="@{/problems}" class="btn-cta">Вижте дискусиите</a>
         </div>

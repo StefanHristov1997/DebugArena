@@ -8,6 +8,7 @@ import java.time.LocalDate;
 
 import static messages.ValidationErrorMessages.COMMENT_NOT_BLANK_MESSAGE;
 
+
 @Getter
 @Setter
 public class AddCommentBindingModel {
