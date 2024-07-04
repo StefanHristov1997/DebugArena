@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +11,10 @@
 </head>
 <body>
     <header th:replace="~{fragments/navigation}"></header>
-    <a href="?lang=en">English</a> | <a href="?lang=bg">Български</a>
+    <a th:href="@{/home?lang=en}">English</a> | <a th:href="@{/home?lang=bg}">Български</a>
     <section class="hero">
         <div class="container">
-            <h1 th:text="#{welcome.message}">Добре дошли обратно, <span th:text="${@loggedUserHelper.get().getUsername()}"></span></h1>
+            <h1 th:text="#{welcome.message}"></h1><h1 th:text="${@loggedUserHelper.get().getUsername()}"></h1>
             <p>Готови ли сте да помогнете за решаването на нови проблеми и да се свържете с общността?</p>
             <a th:href="@{/problems}" class="btn-cta">Вижте дискусиите</a>
         </div>

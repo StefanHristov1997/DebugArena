@@ -39,7 +39,7 @@ spring:
 #      continue-on-error: on
 logging:
   level:
-    org.hibernate.SQL: DEBUG
+    org.hibernate.SQL: FALSE
     org.hibernate.orm.jdbc.bind: TRACE
 server:
   error:

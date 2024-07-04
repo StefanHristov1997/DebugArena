@@ -33,6 +33,7 @@ public class HomeController {
     @GetMapping("/home")
     public String viewHome(Locale locale) {
         String welcomeMessage = messageSource.getMessage("welcome.message", null, locale);
+        System.out.println("msg: " + welcomeMessage);
         return "home";
     }
 }
