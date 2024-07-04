@@ -53,7 +53,7 @@ public class ProblemController {
         }
 
         ProblemDetailsInfoViewModel problemDetails = problemService.getProblemDetails(id);
-        List<CommentViewModel> commentsByProblem = commentService.getCommentsByProblem(id);
+        List<CommentViewModel> commentsByProblem = commentService.getCommentsByProblemOrderByRatingDesc(id);
 
         model.addAttribute("problem", problemDetails);
         model.addAttribute("comments", commentsByProblem);

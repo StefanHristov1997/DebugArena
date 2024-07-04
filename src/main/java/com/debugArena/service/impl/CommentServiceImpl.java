@@ -60,9 +60,9 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<CommentViewModel> getCommentsByProblem(Long id) {
+    public List<CommentViewModel> getCommentsByProblemOrderByRatingDesc(Long id) {
 
-        List<CommentEntity> comments = commentRepository.findAllByProblemId(id);
+        List<CommentEntity> comments = commentRepository.findAllByProblemIdOrderByRatingDesc(id);
 
         return comments
                 .stream()
