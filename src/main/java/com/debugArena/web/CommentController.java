@@ -44,10 +44,14 @@ public class CommentController {
         return "redirect:/problems/details/" + problemId;
     }
 
-    @PutMapping("/{id}/rating")
-    public String updateCommentRating(@PathVariable Long id, @RequestParam int rating) {
-        commentService.updateCommentRating(id, rating);
+    @PatchMapping("/rating/{commentId}/{problemId}")
+    public String updateCommentRating(
+            @PathVariable(value = "commentId") Long commentId,
+            @PathVariable(value = "problemId") Long problemId,
+            @RequestParam(value = "rating") int rating) {
 
-        return "redirect:/problems/details/";
+        commentService.updateCommentRating(commentId, rating);
+
+        return "redirect:/problems/details/" + problemId;
     }
 }

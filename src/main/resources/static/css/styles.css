@@ -940,3 +940,13 @@ footer {
 .comment-form button:hover {
     background: #e64a19;
 }
+
+.fa-star {
+    font-size: 24px;
+    cursor: pointer;
+    color: #ddd;
+}
+
+.fa-star.checked {
+    color: #ffca08;
+}

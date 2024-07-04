@@ -27,16 +27,18 @@
         </div>
         <div class="comments-section">
             <h2>Коментари</h2>
-            <div th:each="comment: ${comments}" class="comment" data-comment-id="1">
+            <div th:each="comment: ${comments}" class="comment" th:data-comment-id="${comment.id}" th:data-current-rating="${comment.rating}">
                 <p class="comment-user">Коментар от <span th:text="${comment.getAuthorUsername()}"></span></p>
                 <span class="problem-date">Дата на публикуване: <span th:text="${comment.getCreatedOn()}"></span></span>
                 <p th:text="${comment.getTextContent()}"></p>
-                <form class="rating" th:action="@{/comments/{id}(id=${comment.id})/rating}" th:method="PUT">
-                    <button type="submit" class="fa fa-star" data-rating="1"></button>
-                    <button class="fa fa-star" data-rating="2"></button>
-                    <button class="fa fa-star" data-rating="3"></button>
-                    <button class="fa fa-star" data-rating="4"></button>
-                    <button class="fa fa-star" data-rating="5"></button>
+                <form class="rating"
+                      th:action="@{/comments/rating/{commentId}/{problemId}(commentId=${comment.id},problemId=${problem.id})}"
+                      th:method="PATCH">
+                    <button type="submit" th:name="rating" value="1" class="fa fa-star" data-rating="1"></button>
+                    <button type="submit" th:name="rating" value="2" class="fa fa-star" data-rating="2"></button>
+                    <button type="submit" th:name="rating" value="3" class="fa fa-star" data-rating="3"></button>
+                    <button type="submit" th:name="rating" value="4" class="fa fa-star" data-rating="4"></button>
+                    <button type="submit" th:name="rating" value="5" class="fa fa-star" data-rating="5"></button>
                 </form>
             </div>
             <form class="comment-form"
@@ -44,9 +46,9 @@
                   th:method="POST"
                   th:object="${addCommentBindingModel}">
 
-                <textarea  th:field="*{textContent}"
-                           th:errorclass="'is-invalid alert-danger'"
-                           th:class="form-control"
+                <textarea th:field="*{textContent}"
+                          th:errorclass="'is-invalid alert-danger'"
+                          th:class="form-control"
                           placeholder="Добави коментар"></textarea>
                 <small th:errors="*{textContent}"
                        class="invalid-feedback text-danger" style="color: red">error message
@@ -60,13 +62,9 @@
 <footer th:replace="~{fragments/footer}"></footer>
 
 <script>
-    document.querySelectorAll('.rating .fa').forEach(star => {
-        star.addEventListener('click', function () {
-            let rating = this.dataset.rating;
-            let commentId = this.closest('.comment').dataset.commentId;
-
-            // Update UI
-            let stars = this.parentNode.querySelectorAll('.fa');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to update the UI based on rating
+        function updateStars(stars, rating) {
             stars.forEach((s, index) => {
                 if (index < rating) {
                     s.classList.add('checked');
@@ -74,23 +72,42 @@
                     s.classList.remove('checked');
                 }
             });
+        }
 
-            // Send rating to server
-            fetch(`/comments/${commentId}/rating?rating=${rating}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    console.log('Rating updated successfully.');
-                } else {
-                    console.error('Failed to update rating.');
-                }
+        // Initialize the stars based on the current rating
+        document.querySelectorAll('.comment').forEach(comment => {
+            let rating = comment.dataset.currentRating;
+            let stars = comment.querySelectorAll('.fa-star');
+            updateStars(stars, rating);
+        });
+
+        // Add click event to the stars
+        document.querySelectorAll('.rating .fa').forEach(star => {
+            star.addEventListener('click', function() {
+                let rating = this.dataset.rating;
+                let commentId = this.closest('.comment').dataset.commentId;
+
+                // Update UI
+                let stars = this.parentNode.querySelectorAll('.fa');
+                updateStars(stars, rating);
+
+                // Send rating to server
+                fetch(`/comments/${commentId}/rating?rating=${rating}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        console.log('Rating updated successfully.');
+                    } else {
+                        console.error('Failed to update rating.');
+                    }
+                });
             });
         });
     });
+
 </script>
 </body>
-
 </html>

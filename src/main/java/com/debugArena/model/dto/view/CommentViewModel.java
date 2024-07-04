@@ -11,6 +11,8 @@ public class CommentViewModel {
 
     private Long id;
 
+    private int rating;
+
     private String authorUsername;
 
     private String textContent;
