@@ -13,8 +13,8 @@
 <header th:replace="~{fragments/navigation}"></header>
 <section class="hero">
     <div class="container">
-        <h2 th:text="#{index.h2}"></h2>
-        <p th:text="#{index.h3}"></p>
+        <h2 th:text="#{index.hero.h2}"></h2>
+        <p th:text="#{index.hero.h3}"></p>
         <a th:href="@{/users/register}" class="btn"><span th:text="#{index.start.now.btm}"></span></a>
     </div>
 </section>
@@ -22,18 +22,18 @@
     <div class="container">
         <div class="feature">
             <i class="fas fa-share-alt fa-3x"></i>
-            <h3>Споделяне на проблеми</h3>
-            <p>Публикувайте своите проблеми с кода и получете помощ от други потребители.</p>
+            <h3 th:text="#{index.features.share.h3}"></h3>
+            <p th:text="#{index.features.share.p}"></p>
         </div>
         <div class="feature">
             <i class="fas fa-thumbs-up fa-3x"></i>
-            <h3>Оценяване и коментари</h3>
-            <p>Оценявайте и коментирайте решенията на проблемите, за да помогнете на другите.</p>
+            <h3 th:text="#{index.features.vote.h3}"></h3>
+            <p th:text="#{index.features.vote.p}"></p>
         </div>
         <div class="feature">
             <i class="fas fa-search fa-3x"></i>
-            <h3>Намиране на решения</h3>
-            <p>Търсете и намирайте решения на различни проблеми с кода в нашата платформа.</p>
+            <h3 th:text="#{index.features.solution.h3}"></h3>
+            <p th:text="#{index.features.solution.p}"></p>
         </div>
     </div>
 </section>
