@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
 public @interface UniqueUsername {
 
 
-    String message() default ValidationErrorMessages.USERNAME_EXIST_MESSAGE;
+    String message() default "{username_exist_message}";
 
     Class<?>[] groups() default {};
 

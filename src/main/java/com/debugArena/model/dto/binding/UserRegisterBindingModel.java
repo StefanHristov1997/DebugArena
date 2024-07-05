@@ -17,21 +17,21 @@ import static messages.ValidationErrorMessages.*;
 @RegisterPasswordMatcher
 public class UserRegisterBindingModel {
 
-    @NotBlank(message = BLANK_FIELD_MESSAGE)
+    @NotBlank(message = "{blank_field_message}")
     @Size(min = 5, message = "{username.length.message}")
     @UniqueUsername
     private String username;
 
-    @NotBlank(message = BLANK_FIELD_MESSAGE)
-    @Email(message = EMAIL_MESSAGE)
+    @NotBlank(message = "{blank_field_message}")
+    @Email(message = "{email_message}")
     @UniqueEmail
     private String email;
 
-    @NotBlank(message = BLANK_FIELD_MESSAGE)
-    @Size(min = 6, message = PASSWORD_LENGTH_MESSAGE)
+    @NotBlank(message = "{blank_field_message}")
+    @Size(min = 6, message = "{password_length_message}")
     private String password;
 
-    @NotBlank(message = BLANK_FIELD_MESSAGE)
-    @Size(min = 6, message = PASSWORD_LENGTH_MESSAGE)
+    @NotBlank(message = "{blank_field_message}")
+    @Size(min = 6, message = "{password_length_message}")
     private String confirmPassword;
 }

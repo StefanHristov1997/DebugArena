@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = UniqueEmailValidator.class)
 public @interface UniqueEmail {
 
-    String message() default ValidationErrorMessages.EMAIL_EXIST_MESSAGE;
+    String message() default "{email_exist_message}";
 
     Class<?>[] groups() default {};
 
