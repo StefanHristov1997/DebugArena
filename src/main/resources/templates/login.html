@@ -15,25 +15,26 @@
 <body class="form-body">
 <div class="form-container">
     <div>
-        <h2>Вход</h2>
+        <h2 th:text="#{login.h2}"></h2>
         <form
                 th:action="@{/users/login}"
                 th:method="POST">
             <div class="form-group">
-                <label for="email">Имейл</label>
+                <label for="email" th:text="#{login.input.email}"></label>
                 <input type="email" id="email" name="email">
             </div>
             <div class="form-group">
-                <label for="password">Парола</label>
+                <label for="password" th:text="#{login.input.password}"></label>
                 <input type="password" id="password" name="password">
             </div>
-            <p th:if="${loginError}" class="text-danger">
-                Невалидно потребителско име и/или парола!
+            <p th:if="${loginError}" class="text-danger" th:text="#{login.error.message}">
             </p>
-            <button type="submit" class="btn">Влезте</button>
+            <button type="submit" class="btn" th:text="#{login.btn}"></button>
         </form>
-        <p>Нямате акаунт? <a th:href="@{/users/register}">Регистрирайте се от тук</a></p>
-        <p>Забравена парола? <a th:href="@{/users/reset-password}">Натиснете тук</a></p>
+        <p th:text="#{login.not.have.account.message}">/p>
+        <p><a th:href="@{/users/register}" th:text="#{login.register.link}"></a></p>
+        <p th:text="#{login.reset.password.message}"></p>
+        <p><a th:href="@{/users/reset-password}" th:text="#{login.reset.password.link}"></a></p>
     </div>
 </div>
 </body>
