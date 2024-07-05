@@ -18,7 +18,7 @@ import static messages.ValidationErrorMessages.*;
 public class UserRegisterBindingModel {
 
     @NotBlank(message = BLANK_FIELD_MESSAGE)
-    @Size(min = 5, message = USERNAME_LENGTH_MESSAGE)
+    @Size(min = 5, message = "{username.length.message}")
     @UniqueUsername
     private String username;
 

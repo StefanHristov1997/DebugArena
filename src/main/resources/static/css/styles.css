@@ -318,6 +318,7 @@ footer {
     display: block;
     width: 50%;
     margin: 0 auto;
+    margin-bottom: 10px;
     background: #ff5722;
     color: #fff;
     padding: 10px;
@@ -334,6 +335,7 @@ footer {
 }
 
 .form-container p {
+    display: inline;
     text-align: center;
     color: #333;
     margin-top: 20px;
