@@ -15,8 +15,7 @@ public class InitRoles implements CommandLineRunner {
     private final Map<Long, UserRoleEnum> roles = Map.of(
            1L, UserRoleEnum.USER,
            2L, UserRoleEnum.ANONYMOUS,
-           3L, UserRoleEnum.ADMIN,
-           4L,  UserRoleEnum.MODERATOR
+           3L, UserRoleEnum.ADMIN
     );
 
     private final RoleRepository roleRepository;

@@ -51,7 +51,6 @@ public class UserServiceImpl implements UserService {
             userToSave.setRoles(roleService.getRolesByName(
                     List.of(
                             UserRoleEnum.USER,
-                            UserRoleEnum.MODERATOR,
                             UserRoleEnum.ADMIN)));
         } else {
             userToSave.setRoles(roleService.getRolesByName(

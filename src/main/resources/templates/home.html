@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,59 +10,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header th:replace="~{fragments/navigation}"></header>
-    <a th:href="@{/home?lang=en}">English</a> | <a th:href="@{/home?lang=bg}">Български</a>
-    <section class="hero">
-        <div class="container">
-            <h1 th:text="#{welcome.message}"></h1><h1 th:text="${@loggedUserHelper.get().getUsername()}"></h1>
-            <p>Готови ли сте да помогнете за решаването на нови проблеми и да се свържете с общността?</p>
-            <a th:href="@{/problems}" class="btn-cta">Вижте дискусиите</a>
-        </div>
-    </section>
-
-    <section class="user-dashboard">
-        <div class="container">
-            <h2>Вашата активност</h2>
-            <div class="activity-stats">
-                <div class="stat-item">
-                    <i class="fas fa-code"></i>
-                    <h3>Решени проблеми</h3>
-                    <p>10</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-question-circle"></i>
-                    <h3>Публикувани въпроси</h3>
-                    <p th:text="${@loggedUserHelper.get().getAddedProblems().size()}"></p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-comments"></i>
-                    <h3 >Коментари</h3>
-                    <p th:text="${@loggedUserHelper.get().getAddedComments().size()}"></p>
-                </div>
+<header th:replace="~{fragments/navigation}"></header>
+<section class="hero">
+    <div class="container">
+        <h1 th:text="#{welcome.message}"></h1>
+        <h1 th:text="${@loggedUserHelper.get().getUsername()}"></h1>
+        <p>Готови ли сте да помогнете за решаването на нови проблеми и да се свържете с общността?</p>
+        <a th:href="@{/problems}" class="btn-cta">Вижте дискусиите</a>
+    </div>
+</section>
+<section class="user-dashboard">
+    <div class="container">
+        <h2>Вашата активност</h2>
+        <div class="activity-stats">
+            <div class="stat-item">
+                <i class="fas fa-code"></i>
+                <h3>Решени проблеми</h3>
+                <p>10</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-question-circle"></i>
+                <h3>Публикувани въпроси</h3>
+                <p th:text="${@loggedUserHelper.get().getAddedProblems().size()}"></p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-comments"></i>
+                <h3>Коментари</h3>
+                <p th:text="${@loggedUserHelper.get().getAddedComments().size()}"></p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="quick-links">
-        <div class="container">
-            <h2>Бързи връзки</h2>
-            <div class="links-list">
-                <a th:href="@{/problems/add-problem}" class="link-item">
-                    <i class="fas fa-plus-circle"></i>
-                    <span>Добавете проблем</span>
-                </a>
-                <a th:href="@{/users/profile}" class="link-item">
-                    <i class="fas fa-user"></i>
-                    <span>Вашият профил</span>
-                </a>
-                <a href="/settings" class="link-item">
-                    <i class="fas fa-cog"></i>
-                    <span>Настройки</span>
-                </a>
-            </div>
+<section class="quick-links">
+    <div class="container">
+        <h2>Бързи връзки</h2>
+        <div class="links-list">
+            <a th:href="@{/problems/add-problem}" class="link-item">
+                <i class="fas fa-plus-circle"></i>
+                <span>Добавете проблем</span>
+            </a>
+            <a th:href="@{/users/profile}" class="link-item">
+                <i class="fas fa-user"></i>
+                <span>Вашият профил</span>
+            </a>
+            <a href="/settings" class="link-item">
+                <i class="fas fa-cog"></i>
+                <span>Настройки</span>
+            </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer th:replace="~{fragments/footer}"></footer>
+<footer th:replace="~{fragments/footer}"></footer>
+<script src="/js/language-script.js"></script>
 </body>
 </html>
