@@ -13,10 +13,9 @@
 <header th:replace="~{fragments/navigation}"></header>
 <section class="hero">
     <div class="container">
-        <h2>Споделяйте и решавайте проблеми с кода</h2>
-        <p>Присъединете се към нашата общност и помогнете на другите да се справят с предизвикателствата в
-            програмирането.</p>
-        <a th:href="@{/users/register}" class="btn">Започнете сега</a>
+        <h2 th:text="#{index.h2}"></h2>
+        <p th:text="#{index.h3}"></p>
+        <a th:href="@{/users/register}" class="btn"><span th:text="#{index.start.now.btm}"></span></a>
     </div>
 </section>
 <section class="features">
