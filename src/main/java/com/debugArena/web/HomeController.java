@@ -12,12 +12,11 @@ import java.util.Locale;
 public class HomeController {
 
     private final LoggedUserHelper loggedUserHelper;
-    private final MessageSource messageSource;
+
 
     @Autowired
-    public HomeController(LoggedUserHelper loggedUserHelper, MessageSource messageSource) {
+    public HomeController(LoggedUserHelper loggedUserHelper) {
         this.loggedUserHelper = loggedUserHelper;
-        this.messageSource = messageSource;
     }
 
     @GetMapping("/")
@@ -32,8 +31,6 @@ public class HomeController {
 
     @GetMapping("/home")
     public String viewHome(Locale locale) {
-        String welcomeMessage = messageSource.getMessage("welcome.message", null, locale);
-        System.out.println("msg: " + welcomeMessage);
         return "home";
     }
 }
