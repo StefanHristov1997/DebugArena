@@ -3,7 +3,6 @@ package com.debugArena.model.validation.annotation;
 import com.debugArena.model.validation.validator.UniqueUsernameValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import messages.ValidationErrorMessages;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -14,7 +13,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Constraint(validatedBy = UniqueUsernameValidator.class)
 public @interface UniqueUsername {
-
 
     String message() default "{username_exist_message}";
 
