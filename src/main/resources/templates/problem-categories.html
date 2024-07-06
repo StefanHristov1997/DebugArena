@@ -15,7 +15,7 @@
 
 <main class="programming-languages">
     <div class="container">
-        <h1>Изберете категория</h1>
+        <h1 th:text="#{choose.category}"></h1>
         <div class="categories">
             <div class="category">
                 <a th:href="@{/problems/java}">
@@ -46,6 +46,7 @@
 </main>
 
 <footer th:replace="~{fragments/footer}"></footer>
+<script src="/js/language-script.js"></script>
 </body>
 
 </html>

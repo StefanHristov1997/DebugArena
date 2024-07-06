@@ -13,39 +13,39 @@
 <header th:replace="~{fragments/navigation}"></header>
 <section class="hero">
     <div class="container">
-        <h1>Добре дошли в <span class="logo-text" style="font-size: xxx-large">Дебъг</span><span class="logo-highlight" style="font-size: xxx-large">Арена</span>
-        </h1>
-        <p> Платформата, в която начинаещи софтуерните инженери могат
-            да споделят и да помогнат за решаването на проблеми с кода.
+        <h1 th:text="#{welcome.in.message}"></h1>
+        <span class="logo-text" style="font-size: xxx-large" th:text="#{logo.debug}"></span>
+        <span class="logo-highlight" style="font-size: xxx-large" th:text="#{logo.arena}"></span>
+
+        <p th:text="#{about.main.message}">
         </p>
     </div>
 </section>
 <div class="about-container">
     <section class="about-mission">
-        <h2>Нашата мисия</h2>
-        <p>Нашата мисия е да улесним процеса на решаване на проблеми в програмирането чрез създаване на общност, която
-            да
-            споделя опит и знания.</p>
+        <h2 th:text="#{about.our.mission}"></h2>
+        <p th:text="#{about.our.mission.message}"></p>
     </section>
     <section class="about-team">
-        <h2>Нашият екип</h2>
+        <h2 th:text="#{about.our.team}"></h2>
         <div class="team-members">
             <div class="team-member">
                 <img src="/images/founder.jpg" alt="Член на екипа">
-                <h3>Стефан Христов</h3>
-                <p>основател и главен разработчик</p>
+                <h3 th:text="#{about.our.founder.name}"></h3>
+                <p th:text="#{about.our.founder.profession}"></p>
             </div>
         </div>
     </section>
     <section class="about-values">
-        <h2>Нашите ценности</h2>
+        <h2 th:text="#{about.our.culture}"></h2>
         <ul>
-            <li>Сътрудничество: Вярваме в силата на екипната работа.</li>
-            <li>Иновация: Постоянно търсим нови начини за подобряване на нашата платформа.</li>
-            <li>Отговорност: Отнасяме се сериозно към нашите потребители и тяхната информация.</li>
+            <li th:text="#{about.our.culture.teamwork}"></li>
+            <li th:text="#{about.our.culture.innovation}"></li>
+            <li th:text="#{about.our.culture.responsibility}"></li>
         </ul>
     </section>
 </div>
 <footer th:replace="~{fragments/footer}"></footer>
+<script src="/js/language-script.js"></script>
 </body>
 </html>
