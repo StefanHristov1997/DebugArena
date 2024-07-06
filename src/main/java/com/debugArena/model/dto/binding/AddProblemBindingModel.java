@@ -10,24 +10,23 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
-import static messages.ValidationErrorMessages.*;
 
 @Getter
 @Setter
 public class AddProblemBindingModel {
 
-    @NotBlank(message = BLANK_FIELD_MESSAGE)
-    @Size(min = 6, message = TITLE_LENGTH_MESSAGE)
+    @NotBlank
+    @Size(min = 6)
     private String title;
 
-    @NotBlank(message = BLANK_FIELD_MESSAGE)
-    @Size(min = 20, message = DESCRIPTION_LENGTH_MESSAGE)
+    @NotBlank
+    @Size(min = 20)
     private String description;
 
-    @NotNull(message = DATE_NOT_NULL_MESSAGE)
-    @PastOrPresent(message = VALID_DATE_MESSAGE)
+    @NotNull
+    @PastOrPresent
     private LocalDate createdOn;
 
-    @NotNull(message = LANGUAGE__NOT_NULL_MESSAGE)
+    @NotNull
     private LanguageEnum language;
 }

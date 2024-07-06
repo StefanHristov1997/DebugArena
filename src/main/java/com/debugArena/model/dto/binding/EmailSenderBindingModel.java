@@ -5,20 +5,18 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
-import static messages.ValidationErrorMessages.BLANK_FIELD_MESSAGE;
-import static messages.ValidationErrorMessages.EMAIL_MESSAGE;
 
 @Getter
 @Setter
 public class EmailSenderBindingModel {
 
-    @NotBlank(message = BLANK_FIELD_MESSAGE)
+    @NotBlank(message = "{blank_field_message}")
     private String fullName;
 
-    @NotBlank(message = BLANK_FIELD_MESSAGE)
-    @Email(message = EMAIL_MESSAGE)
+    @NotBlank(message = "{blank_field_message}")
+    @Email(message = "{email_message}")
     private String email;
 
-    @NotBlank(message = BLANK_FIELD_MESSAGE)
+    @NotBlank(message ="{blank_field_message}")
     private String message;
 }

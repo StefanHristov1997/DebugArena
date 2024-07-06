@@ -6,14 +6,14 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
-import static messages.ValidationErrorMessages.COMMENT_NOT_BLANK_MESSAGE;
+
 
 
 @Getter
 @Setter
 public class AddCommentBindingModel {
 
-    @NotBlank(message = COMMENT_NOT_BLANK_MESSAGE)
+    @NotBlank(message = "{blank_field_message}")
     private String textContent;
 
     private LocalDate createdOn;

@@ -15,27 +15,27 @@
     <div class="container">
         <h1 th:text="#{welcome.message}"></h1>
         <h1 th:text="${@loggedUserHelper.get().getUsername()}"></h1>
-        <p>Готови ли сте да помогнете за решаването на нови проблеми и да се свържете с общността?</p>
-        <a th:href="@{/problems}" class="btn-cta">Вижте дискусиите</a>
+        <p th:text="#{home.p1}"></p>
+        <a th:href="@{/problems}" class="btn-cta" th:text="#{home.discuss.btn}"></a>
     </div>
 </section>
 <section class="user-dashboard">
     <div class="container">
-        <h2>Вашата активност</h2>
+        <h2 th:text="#{home.p2}"></h2>
         <div class="activity-stats">
             <div class="stat-item">
                 <i class="fas fa-code"></i>
-                <h3>Решени проблеми</h3>
+                <h3 th:text="#{home.your.solutions}"></h3>
                 <p>10</p>
             </div>
             <div class="stat-item">
                 <i class="fas fa-question-circle"></i>
-                <h3>Публикувани въпроси</h3>
+                <h3 th:text="#{home.your.problems}"></h3>
                 <p th:text="${@loggedUserHelper.get().getAddedProblems().size()}"></p>
             </div>
             <div class="stat-item">
                 <i class="fas fa-comments"></i>
-                <h3>Коментари</h3>
+                <h3 th:text="#{home.your.comments}"></h3>
                 <p th:text="${@loggedUserHelper.get().getAddedComments().size()}"></p>
             </div>
         </div>
@@ -44,19 +44,19 @@
 
 <section class="quick-links">
     <div class="container">
-        <h2>Бързи връзки</h2>
+        <h2 th:text="#{home.fast.links}"></h2>
         <div class="links-list">
             <a th:href="@{/problems/add-problem}" class="link-item">
                 <i class="fas fa-plus-circle"></i>
-                <span>Добавете проблем</span>
+                <span th:text="#{home.fast.links.add.problem}"></span>
             </a>
             <a th:href="@{/users/profile}" class="link-item">
                 <i class="fas fa-user"></i>
-                <span>Вашият профил</span>
+                <span th:text="#{home.fast.links.user.profile}"></span>
             </a>
             <a href="/settings" class="link-item">
                 <i class="fas fa-cog"></i>
-                <span>Настройки</span>
+                <span th:text="#{home.fast.links.user.settings}"></span>
             </a>
         </div>
     </div>

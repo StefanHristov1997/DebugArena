@@ -8,9 +8,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import static messages.ValidationErrorMessages.EMAIL_MESSAGE;
-import static messages.ValidationErrorMessages.PASSWORD_LENGTH_MESSAGE;
-
 @Getter
 @Setter
 @ResetPasswordMatcher

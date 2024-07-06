@@ -3,7 +3,7 @@ package com.debugArena.model.validation.annotation;
 import com.debugArena.model.validation.validator.UniqueEmailValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import messages.ValidationErrorMessages;
+
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
