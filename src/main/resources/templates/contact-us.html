@@ -16,25 +16,26 @@
 
 <section>
     <div>
-        <h1 style="text-align: center">Свържете се с нас</h1>
-        <p style="text-align: center">Моля, използвайте информацията за контакт по-долу, за да се свържете с нас.</p>
+        <h1 style="text-align: center" th:text="#{contact.with.us.message}"></h1>
+        <p style="text-align: center" th:text="#{contact.information.message}"></p>
     </div>
 </section>
 
 <div class="contact-container">
     <section class="contact-info">
-        <h2>Информация за контакт</h2>
-        <p><i class="fas fa-map-marker-alt"></i> Адрес: ул. Софтуерна, No. 123, София</p>
-        <p><i class="fas fa-phone"></i> Телефон: +359 123 456 789</p>
-        <p><i class="fas fa-envelope"></i> Имейл: <a href="mailto:contact@debugarena.com">contact@debugarena.com</a>
+        <h2 th:text="#{contact.main.message}"></h2>
+        <p><i class="fas fa-map-marker-alt"></i> <span th:text="#{contact.address}"></span></p>
+        <p><i class="fas fa-phone"></i> <span th:text="#{contact.number}"></span></p>
+        <p><i class="fas fa-envelope"></i> <span th:text="#{contact.email}"> </span><a
+                href="mailto:contact@debugarena.com">contact@debugarena.com</a>
         </p>
     </section>
     <section class="contact-form">
-        <h2>Форма за контакт</h2>
+        <h2 th:text="#{contact.form}"></h2>
         <form th:action="@{/contact-us}" th:method="POST" th:object="${emailSenderBindingModel}">
 
             <div class="form-group">
-                <label for="name">Име:</label>
+                <label for="name" th:text="#{contact.form.user.name}"></label>
                 <input th:field="*{fullName}"
                        th:errorclass="'is-invalid alert-danger'"
                        th:class="form-control"
@@ -46,7 +47,7 @@
             </div>
 
             <div class="form-group">
-                <label for="email">Имайл:</label>
+                <label for="email" th:text="#{contact.form.user.email}"></label>
                 <input th:field="*{email}"
                        th:errorclass="'is-invalid alert-danger'"
                        th:class="form-control"
@@ -58,7 +59,7 @@
             </div>
 
             <div class="form-group">
-                <label for="message">Съобщение:</label>
+                <label for="message" th:text="#{contact.form.user.message}"></label>
                 <textarea th:field="*{message}"
                           th:errorclass="'is-invalid alert-danger'"
                           th:class="form-control"
@@ -69,11 +70,12 @@
                        class="invalid-feedback text-danger" style="color: red">error message
                 </small>
             </div>
-            <button type="submit" class="btn-submit">Изпрати</button>
+            <button type="submit" class="btn-submit" th:text="#{contact.form.btn}"></button>
         </form>
     </section>
 </div>
 <footer th:replace="~{fragments/footer}"></footer>
+<script src="/js/language-script.js"></script>
 </body>
 
 </html>
