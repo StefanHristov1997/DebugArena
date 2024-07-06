@@ -20,23 +20,24 @@
         </div>
         <div class="profile-section">
             <form th:action="@{/users/profile/edit-profile}" th:method="PATCH">
-                <h2>Описание</h2>
+                <h2 th:text="#{profile.user.description}"></h2>
                 <p th:unless="${userProfile.getDescription() == null}" th:text="${userProfile.getDescription()}"></p>
-                <textarea name="description" placeholder="Добавате кратко описание"></textarea>
+                <textarea name="description" ></textarea>
 
-                <h2>Умения</h2>
+                <h2 th:text="#{profile.user.skills}"></h2>
                 <p th:unless="${userProfile.getSkills() == null}" th:text="${userProfile.getSkills()}"></p>
-                <textarea name="skills" placeholder="Добавете вашите умения"></textarea>
+                <textarea name="skills" ></textarea>
 
-                <h2>Интереси</h2>
+                <h2 th:text="#{profile.user.interests}"></h2>
                 <p th:unless="${userProfile.getInterests() == null}" th:text="${userProfile.getInterests()}"></p>
-                <textarea name="interests" placeholder="Добавете вашите интереси"></textarea>
+                <textarea name="interests"></textarea>
 
-                <button class="btn-save"><i class="fas fa-save"></i> Запазване на промените</button>
+                <button class="btn-save"><i class="fas fa-save"></i> <span th:text="#{profile.save.changes.btn}"></span> </button>
             </form>
         </div>
     </div>
 </main>
 <footer th:replace="~{fragments/footer}"></footer>
+<script src="/js/language-script.js"></script>
 </body>
 </html>
