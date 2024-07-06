@@ -16,9 +16,9 @@
     <div class="container">
         <div class="message-box">
             <i class="fas fa-check-circle"></i>
-            <h1>Съобщението е изпратено успешно!</h1>
-            <p>Благодарим Ви, че се свързахте с нас. Ще се свържем с вас при първа възможност.</p>
-            <a th:href="@{/home}" class="btn-cta">Върнете се към началната страница</a>
+            <h1 th:text="#{successfully.sent.message}"></h1>
+            <p th:text="#{thankful.message}"></p>
+            <a th:href="@{/home}" class="btn-cta"><span th:text="#{back.to.home.page}"></span></a>
         </div>
     </div>
 </main>
