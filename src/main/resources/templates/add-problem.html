@@ -14,14 +14,14 @@
 
 <main class="add-problem">
     <div class="container">
-        <h1>Добавяне на проблем</h1>
+        <h1 th:text="#{add.problem.h1}"></h1>
         <form
                 th:action="@{/problems/add-problem}"
                 th:method="POST"
                 th:object="${addProblemBindingModel}">
 
             <div class="form-group">
-                <label for="title">Заглавие на проблема</label>
+                <label for="title" th:text="#{add.problem.title}"></label>
                 <input th:field="*{title}"
                        th:errorclass="'is-invalid alert-danger'"
                        th:class="form-control"
@@ -32,19 +32,18 @@
                 </small>
             </div>
             <div class="form-group">
-                <label for="description">Описание</label>
+                <label for="description" th:text="#{add.problem.description}"></label>
                 <textarea th:field="*{description}"
                           th:errorclass="'is-invalid alert-danger'"
                           th:class="form-control"
-                          id="description"
-                          rows="4">
+                          id="description">
                 </textarea>
                 <small th:errors="*{description}"
                        class="invalid-feedback text-danger" style="color: red">error message
                 </small>
             </div>
             <div class="form-group">
-                <label for="date">Дата на създаване</label>
+                <label for="date" th:text="#{add.problem.creation.date}"></label>
                 <input th:field="*{createdOn}"
                        th:value="*{createdOn}"
                        th:errorclass="'is-invalid alert-danger'"
@@ -56,13 +55,13 @@
                 </small>
             </div>
             <div class="form-group">
-                <label for="language">Език</label>
+                <label for="language" th:text="#{add.problem.language}"></label>
                 <select th:field="*{language}"
                         type="text"
                         th:errorclass="'is-invalid alert-danger'"
                         th:class="form-control"
                         id="language">
-                    <option value="">Изберете език на програмиране</option>
+                    <option value="" th:text="#{add.problem.choose.language}"></option>
                     <option value="JAVA">Java</option>
                     <option value="CSHARP">C#</option>
                     <option value="JAVASCRIPT">JavaScript</option>
@@ -72,11 +71,12 @@
                        class="invalid-feedback text-danger" style="color: red">error message
                 </small>
             </div>
-            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Изпрати</button>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> <span th:text="#{add.problem.btn}"></span></button>
         </form>
     </div>
 </main>
 
 <footer th:replace="~{fragments/footer}"></footer>
+<script src="/js/language-script.js"></script>
 </body>
 </html>

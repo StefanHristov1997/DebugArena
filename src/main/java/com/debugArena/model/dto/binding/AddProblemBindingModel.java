@@ -15,18 +15,18 @@ import java.time.LocalDate;
 @Setter
 public class AddProblemBindingModel {
 
-    @NotBlank
-    @Size(min = 6)
+    @NotBlank(message = "{blank_field_message}")
+    @Size(min = 6, message = "{title.length.message}")
     private String title;
 
-    @NotBlank
-    @Size(min = 20)
+    @NotBlank(message = "{blank_field_message}")
+    @Size(min = 20, message = "{description.length.message}")
     private String description;
 
-    @NotNull
-    @PastOrPresent
+    @NotNull(message = "{date.not.null.message}")
+    @PastOrPresent(message = "{valid.date.message}")
     private LocalDate createdOn;
 
-    @NotNull
+    @NotNull(message = "{language.not.null.message}")
     private LanguageEnum language;
 }
