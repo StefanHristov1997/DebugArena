@@ -18,9 +18,9 @@
     <div class="container">
         <a th:href="@{/problems/add-problem}" class="link-item">
             <i class="fas fa-plus-circle"></i>
-            <span>Добавете проблем</span>
+            <span th:text="#{home.fast.links.add.problem}"></span>
         </a>
-        <h1>Списък със Java публикации</h1>
+        <h1 th:text="#{java.problems.discussions}"></h1>
         <ul th:each="javaProblem: ${javaProblems}" class="articles">
             <li class="article-item">
                 <h2 class="article-title"><a th:href="@{/problems/details/{id}(id=${javaProblem.getId()})}"><span th:text="${javaProblem.getTitle()}"></span></a></h2>
@@ -34,6 +34,7 @@
 </main>
 
 <footer th:replace="~{fragments/footer}"></footer>
+<script src="/js/language-script.js"></script>
 </body>
 
 </html>
