@@ -1007,6 +1007,21 @@ footer {
     background: #e64a19;
 }
 
+.problem-description .comment-delete-btn {
+    margin-top: 10px;
+    background: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.problem-description .comment-delete-btn:hover {
+    background: #e64a19;
+}
+
 .fa-star {
     font-size: 24px;
     cursor: pointer;
@@ -1016,3 +1031,4 @@ footer {
 .fa-star.checked {
     color: #ffca08;
 }
+

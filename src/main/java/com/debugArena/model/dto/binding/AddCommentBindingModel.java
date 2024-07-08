@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Setter
 public class AddCommentBindingModel {
 
-    @NotBlank(message = "{blank_field_message}")
+    @NotBlank(message = "{comment.not.bland}")
     private String textContent;
 
     private LocalDate createdOn;
