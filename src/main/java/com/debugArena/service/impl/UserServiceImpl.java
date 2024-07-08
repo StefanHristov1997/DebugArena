@@ -5,9 +5,11 @@ import com.debugArena.model.dto.binding.UserProfileBindingModel;
 import com.debugArena.model.dto.binding.UserRegisterBindingModel;
 import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
 import com.debugArena.model.dto.view.UserProfileViewModel;
+import com.debugArena.model.entity.CommentEntity;
 import com.debugArena.model.entity.UserEntity;
 import com.debugArena.model.enums.UserRoleEnum;
 import com.debugArena.model.events.UserContactedUsEvent;
+import com.debugArena.repository.CommentRepository;
 import com.debugArena.repository.UserRepository;
 import com.debugArena.service.RoleService;
 import com.debugArena.service.UserService;
@@ -24,6 +26,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final CommentRepository commentRepository;
     private final RoleService roleService;
 
     private final LoggedUserHelper loggedUserHelper;
@@ -33,8 +36,16 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleService roleService, LoggedUserHelper loggedUserHelper, ApplicationEventPublisher publisher, ModelMapper mapper, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(
+            UserRepository userRepository,
+            CommentRepository commentRepository,
+            RoleService roleService,
+            LoggedUserHelper loggedUserHelper,
+            ApplicationEventPublisher publisher,
+            ModelMapper mapper,
+            PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.commentRepository = commentRepository;
         this.roleService = roleService;
         this.loggedUserHelper = loggedUserHelper;
         this.publisher = publisher;
@@ -107,6 +118,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserProfileViewModel getUserProfile() {
         return mapper.map(loggedUserHelper.get(), UserProfileViewModel.class);
+    }
+
+    @Override
+    public void deleteComment(Long commentId) {
+        CommentEntity comment = commentRepository.findCommentEntityById(commentId);
+        commentRepository.delete(comment);
     }
 
     @Override

@@ -15,6 +15,8 @@ public class CommentViewModel {
 
     private String authorUsername;
 
+    private String authorEmail;
+
     private String textContent;
 
     private LocalDate createdOn;

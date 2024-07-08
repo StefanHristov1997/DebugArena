@@ -27,24 +27,36 @@
         </div>
         <div class="comments-section">
             <h2>Коментари</h2>
-            <div th:each="comment: ${comments}" class="comment" th:data-comment-id="${comment.id}" th:data-current-rating="${comment.rating}">
+            <div th:each="comment: ${comments}" class="comment" th:data-comment-id="${comment.id}"
+                 th:data-current-rating="${comment.rating}">
                 <div class="problem-meta">
                     <p class="comment-user">Коментар от <span th:text="${comment.getAuthorUsername()}"></span></p>
-                    <span class="problem-date">Дата на публикуване: <span th:text="${comment.getCreatedOn()}"></span></span>
+                    <span class="problem-date">Дата на публикуване: <span
+                            th:text="${comment.getCreatedOn()}"></span></span>
                 </div>
-               <div class="problem-description">
-                   <p th:text="${comment.getTextContent()}"></p>
-                   <form class="rating"
-                         th:action="@{/comments/rating/{commentId}/{problemId}(commentId=${comment.id},problemId=${problem.id})}"
-                         th:method="PATCH">
-                       <button type="submit" th:name="rating" value="1" class="fa fa-star" data-rating="1"></button>
-                       <button type="submit" th:name="rating" value="2" class="fa fa-star" data-rating="2"></button>
-                       <button type="submit" th:name="rating" value="3" class="fa fa-star" data-rating="3"></button>
-                       <button type="submit" th:name="rating" value="4" class="fa fa-star" data-rating="4"></button>
-                       <button type="submit" th:name="rating" value="5" class="fa fa-star" data-rating="5"></button>
-                   </form>
-                   <button type="submit" class="comment-delete-btn">Изтрии коментара</button>
-               </div>
+                <div class="problem-description">
+                    <p th:text="${comment.getTextContent()}"></p>
+<!--                    <div  th:each="rate : ${comment.getRating()}" class="comment-rating">-->
+<!--                        <span class="star">&starf;</span>-->
+<!--                    </div>-->
+                    <form th:unless="${currentUserEmail.equals(comment.getAuthorEmail())}"
+                          class="rating"
+                          th:action="@{/comments/rating/{commentId}/{problemId}(commentId=${comment.id},problemId=${problem.id})}"
+                          th:method="PATCH">
+                        <button type="submit" th:name="rating" value="1" class="fa fa-star" data-rating="1"></button>
+                        <button type="submit" th:name="rating" value="2" class="fa fa-star" data-rating="2"></button>
+                        <button type="submit" th:name="rating" value="3" class="fa fa-star" data-rating="3"></button>
+                        <button type="submit" th:name="rating" value="4" class="fa fa-star" data-rating="4"></button>
+                        <button type="submit" th:name="rating" value="5" class="fa fa-star" data-rating="5"></button>
+                    </form>
+                </div>
+                <div th:if="${currentUserEmail.equals(comment.getAuthorEmail())}"
+                     class="delete-form">
+                    <form th:action="@{/comments/delete-comment/{commentId}/{problemId}(commentId=${comment.id},problemId=${problem.id})}"
+                          th:method="DELETE">
+                        <button type="submit" class="comment-delete-btn">Изтриване на коментара</button>
+                    </form>
+                </div>
             </div>
             <form class="comment-form"
                   th:action="@{/comments/add-comment/{id}(id=${problem.getId()})}"
@@ -67,7 +79,7 @@
 <footer th:replace="~{fragments/footer}"></footer>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         // Function to update the UI based on rating
         function updateStars(stars, rating) {
             stars.forEach((s, index) => {
@@ -86,9 +98,24 @@
             updateStars(stars, rating);
         });
 
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const ratings = document.querySelectorAll('.comment-rating');
+            ratings.forEach(rating => {
+                const stars = rating.querySelectorAll('.star');
+                const ratingValue = rating.getAttribute('data-rating');
+                stars.forEach((star, index) => {
+                    if (index < ratingValue) {
+                        star.classList.remove('empty');
+                    } else {
+                        star.classList.add('empty');
+                    }
+                });
+            });
+        });
+
         // Add click event to the stars
         document.querySelectorAll('.rating .fa').forEach(star => {
-            star.addEventListener('click', function() {
+            star.addEventListener('click', function () {
                 let rating = this.dataset.rating;
                 let commentId = this.closest('.comment').dataset.commentId;
 
@@ -96,19 +123,6 @@
                 let stars = this.parentNode.querySelectorAll('.fa');
                 updateStars(stars, rating);
 
-                // Send rating to server
-                fetch(`/comments/${commentId}/rating?rating=${rating}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }).then(response => {
-                    if (response.ok) {
-                        console.log('Rating updated successfully.');
-                    } else {
-                        console.error('Failed to update rating.');
-                    }
-                });
             });
         });
     });

@@ -12,4 +12,6 @@ public interface CommentService {
     List<CommentViewModel> getCommentsByProblemOrderByRatingDesc(Long id);
 
     void updateCommentRating(Long id, int rating);
+
+    boolean canUserDeleteComment(Long currentUserId);
 }

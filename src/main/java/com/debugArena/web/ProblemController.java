@@ -8,6 +8,7 @@ import com.debugArena.model.dto.view.ProblemShortInfoViewModel;
 import com.debugArena.model.enums.LanguageEnum;
 import com.debugArena.service.CommentService;
 import com.debugArena.service.ProblemService;
+import com.debugArena.service.helpers.LoggedUserHelper;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,15 +30,18 @@ public class ProblemController {
     private final ProblemService problemService;
     private final CommentService commentService;
 
+    private final LoggedUserHelper loggedUserHelper;
+
     @Value("${binding-result-package}")
     private String bindingResultPath;
     private static final String DOT = ".";
     final String attributeName = "addProblemBindingModel";
 
     @Autowired
-    public ProblemController(ProblemService problemService, CommentService commentService) {
+    public ProblemController(ProblemService problemService, CommentService commentService, LoggedUserHelper loggedUserHelper) {
         this.problemService = problemService;
         this.commentService = commentService;
+        this.loggedUserHelper = loggedUserHelper;
     }
 
     @GetMapping
@@ -48,16 +52,17 @@ public class ProblemController {
     @GetMapping("/details/{id}")
     public String viewProblemDetails(@PathVariable("id") Long id, Model model) {
 
-        if(!model.containsAttribute("addCommentBindingModel")){
+        if (!model.containsAttribute("addCommentBindingModel")) {
             model.addAttribute("addCommentBindingModel", new AddCommentBindingModel());
         }
+
 
         ProblemDetailsInfoViewModel problemDetails = problemService.getProblemDetails(id);
         List<CommentViewModel> commentsByProblem = commentService.getCommentsByProblemOrderByRatingDesc(id);
 
         model.addAttribute("problem", problemDetails);
         model.addAttribute("comments", commentsByProblem);
-
+        model.addAttribute("currentUserEmail", loggedUserHelper.getEmail());
         return "problem-details";
     }
 
@@ -128,4 +133,5 @@ public class ProblemController {
 
         return "redirect:/problems";
     }
+
 }
