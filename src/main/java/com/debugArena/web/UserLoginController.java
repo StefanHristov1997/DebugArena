@@ -20,7 +20,7 @@ public class UserLoginController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String viewLogin() {
 
         if(loggedUserHelper.isLogged()){
             return "redirect:/home";

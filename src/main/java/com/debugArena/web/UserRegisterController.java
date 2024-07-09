@@ -33,7 +33,7 @@ public class UserRegisterController {
     }
 
     @GetMapping("/register")
-    public String register(Model model) {
+    public String viewRegister(Model model) {
 
         if (loggedUserHelper.isLogged()) {
             return "redirect:/home";

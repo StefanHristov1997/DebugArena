@@ -16,10 +16,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -48,6 +45,11 @@ public class ProblemController {
         this.loggedUserHelper = loggedUserHelper;
     }
 
+    @ModelAttribute("isAdmin")
+    boolean isAdmin() {
+        return loggedUserHelper.isAdmin();
+    }
+
     @GetMapping
     public String viewProblemCategories() {
         return "problem-categories";
@@ -67,7 +69,7 @@ public class ProblemController {
         model.addAttribute("problem", problemDetails);
         model.addAttribute("comments", commentsByProblem);
         model.addAttribute("currentUserEmail", loggedUserHelper.getEmail());
-        model.addAttribute("isAdmin", loggedUserHelper.isAdmin());
+
         return "problem-details";
     }
 

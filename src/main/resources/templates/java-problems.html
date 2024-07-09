@@ -28,6 +28,13 @@
                     <span class="article-user">Потребител: <span th:text="${javaProblem.getAuthorUsername()}"></span></span>
                     <span class="article-date">Дата на публикуване: <span th:text="${javaProblem.getCreatedOn()}"></span></span>
                 </div>
+                <div
+                        th:if="${isAdmin}"
+                        class="delete-form">
+                    <form>
+                        <button type="submit" class="comment-delete-btn">Изтриване на дискусията</button>
+                    </form>
+                </div>
             </li>
         </ul>
     </div>

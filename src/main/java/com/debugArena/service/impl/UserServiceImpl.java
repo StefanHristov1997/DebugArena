@@ -85,7 +85,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void contactUs(EmailSenderBindingModel emailSenderBindingModel) {
-
         publisher.publishEvent(new UserContactedUsEvent("Contact Service", emailSenderBindingModel));
     }
 

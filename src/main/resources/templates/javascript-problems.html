@@ -28,12 +28,20 @@
                     <span class="article-user">Потребител: <span th:text="${javascriptProblem.getAuthorUsername()}"></span></span>
                     <span class="article-date">Дата на публикуване: <span th:text="${javascriptProblem.getCreatedOn()}"></span></span>
                 </div>
+                <div
+                        th:if="${isAdmin}"
+                        class="delete-form">
+                    <form>
+                        <button type="submit" class="comment-delete-btn">Изтриване на дискусията</button>
+                    </form>
+                </div>
             </li>
         </ul>
     </div>
 </main>
 
 <footer th:replace="~{fragments/footer}"></footer>
+<script src="/js/language-script.js"></script>
 </body>
 
 </html>

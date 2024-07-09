@@ -43,7 +43,6 @@ public class MailServiceImpl implements MailService {
             messageHelper.setText(emailSenderBindingModel.getMessage());
 
            mailSender.send(messageHelper.getMimeMessage());
-
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }

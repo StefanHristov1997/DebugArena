@@ -31,7 +31,7 @@ public class UserResetPasswordController {
     }
 
     @GetMapping("reset-password")
-    public String resetPassword(Model model) {
+    public String viewResetPassword(Model model) {
 
         if (loggedUserHelper.isLogged()) {
             return "redirect:/home";
