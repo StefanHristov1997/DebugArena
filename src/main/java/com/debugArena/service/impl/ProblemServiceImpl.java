@@ -77,4 +77,9 @@ public class ProblemServiceImpl implements ProblemService {
 
         return modelMapper.map(problem, ProblemDetailsInfoViewModel.class);
     }
+
+    @Override
+    public void deleteProblemById(Long id) {
+        problemRepository.deleteById(id);
+    }
 }

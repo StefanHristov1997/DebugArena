@@ -13,5 +13,5 @@ public interface CommentService {
 
     void updateCommentRating(Long id, int rating);
 
-    void deleteComment(Long commentId);
+    void deleteCommentById(Long commentId);
 }

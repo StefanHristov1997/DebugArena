@@ -23,15 +23,18 @@
         <h1 th:text="#{java.problems.discussions}"></h1>
         <ul th:each="javaProblem: ${javaProblems}" class="articles">
             <li class="article-item">
-                <h2 class="article-title"><a th:href="@{/problems/details/{id}(id=${javaProblem.getId()})}"><span th:text="${javaProblem.getTitle()}"></span></a></h2>
+                <h2 class="article-title"><a th:href="@{/problems/details/{id}(id=${javaProblem.getId()})}"><span
+                        th:text="${javaProblem.getTitle()}"></span></a></h2>
                 <div class="article-meta">
-                    <span class="article-user">Потребител: <span th:text="${javaProblem.getAuthorUsername()}"></span></span>
-                    <span class="article-date">Дата на публикуване: <span th:text="${javaProblem.getCreatedOn()}"></span></span>
+                    <span class="article-user">Потребител: <span
+                            th:text="${javaProblem.getAuthorUsername()}"></span></span>
+                    <span class="article-date">Дата на публикуване: <span
+                            th:text="${javaProblem.getCreatedOn()}"></span></span>
                 </div>
-                <div
-                        th:if="${isAdmin}"
-                        class="delete-form">
-                    <form>
+                <div th:if="${isAdmin}">
+                    <form th:action="@{/problems/java/delete-problem/{id}(id=${javaProblem.id})}"
+                          th:method="DELETE"
+                          class="delete-form">
                         <button type="submit" class="comment-delete-btn">Изтриване на дискусията</button>
                     </form>
                 </div>

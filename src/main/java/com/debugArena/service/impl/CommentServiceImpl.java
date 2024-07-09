@@ -61,9 +61,8 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void deleteComment(Long commentId) {
-        CommentEntity comment = commentRepository.findCommentEntityById(commentId);
-        commentRepository.delete(comment);
+    public void deleteCommentById(Long commentId) {
+        commentRepository.deleteById(commentId);
     }
 
     @Override

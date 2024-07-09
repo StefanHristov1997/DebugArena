@@ -5,7 +5,6 @@ import com.debugArena.model.dto.binding.AddProblemBindingModel;
 import com.debugArena.model.dto.view.CommentViewModel;
 import com.debugArena.model.dto.view.ProblemDetailsInfoViewModel;
 import com.debugArena.model.dto.view.ProblemShortInfoViewModel;
-import com.debugArena.model.entity.UserEntity;
 import com.debugArena.model.enums.LanguageEnum;
 import com.debugArena.service.CommentService;
 import com.debugArena.service.ProblemService;
@@ -140,4 +139,39 @@ public class ProblemController {
         return "redirect:/problems";
     }
 
+    @DeleteMapping("/java/delete-problem/{id}")
+    public String doDeleteJavaProblemById(
+            @PathVariable("id") Long problemId) {
+
+        problemService.deleteProblemById(problemId);
+
+        return "redirect:/problems/java";
+    }
+
+    @DeleteMapping("/csharp/delete-problem/{id}")
+    public String doDeleteCsharpProblemById(
+            @PathVariable("id") Long problemId) {
+
+        problemService.deleteProblemById(problemId);
+
+        return "redirect:/problems/csharp";
+    }
+
+    @DeleteMapping("/javascript/delete-problem/{id}")
+    public String doDeleteJavaScriptProblemById(
+            @PathVariable("id") Long problemId) {
+
+        problemService.deleteProblemById(problemId);
+
+        return "redirect:/problems/javascript";
+    }
+
+    @DeleteMapping("/python/delete-problem/{id}")
+    public String doDeletePythonProblemById(
+            @PathVariable("id") Long problemId) {
+
+        problemService.deleteProblemById(problemId);
+
+        return "redirect:/problems/python";
+    }
 }

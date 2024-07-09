@@ -64,7 +64,7 @@ public class CommentController {
             @PathVariable(value = "problemId") Long problemId
     )
     {
-        commentService.deleteComment(commentId);
+        commentService.deleteCommentById(commentId);
 
         return "redirect:/problems/details/" + problemId;
     }

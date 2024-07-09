@@ -15,4 +15,6 @@ public interface ProblemService {
 
     ProblemDetailsInfoViewModel getProblemDetails(Long id);
 
+    void deleteProblemById(Long id);
+
 }
