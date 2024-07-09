@@ -51,8 +51,8 @@ public class UserRegisterController {
     public String doRegister(
             @Valid UserRegisterBindingModel userRegisterBindingModel,
             BindingResult bindingResult,
-            RedirectAttributes rAtt) {
-
+            RedirectAttributes rAtt)
+    {
         if (loggedUserHelper.isLogged()) {
             return "redirect:/home";
         }

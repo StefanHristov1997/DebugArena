@@ -5,6 +5,7 @@ import com.debugArena.model.dto.binding.AddProblemBindingModel;
 import com.debugArena.model.dto.view.CommentViewModel;
 import com.debugArena.model.dto.view.ProblemDetailsInfoViewModel;
 import com.debugArena.model.dto.view.ProblemShortInfoViewModel;
+import com.debugArena.model.entity.UserEntity;
 import com.debugArena.model.enums.LanguageEnum;
 import com.debugArena.service.CommentService;
 import com.debugArena.service.ProblemService;
@@ -38,7 +39,10 @@ public class ProblemController {
     final String attributeName = "addProblemBindingModel";
 
     @Autowired
-    public ProblemController(ProblemService problemService, CommentService commentService, LoggedUserHelper loggedUserHelper) {
+    public ProblemController(
+            ProblemService problemService,
+            CommentService commentService,
+            LoggedUserHelper loggedUserHelper) {
         this.problemService = problemService;
         this.commentService = commentService;
         this.loggedUserHelper = loggedUserHelper;
@@ -63,6 +67,7 @@ public class ProblemController {
         model.addAttribute("problem", problemDetails);
         model.addAttribute("comments", commentsByProblem);
         model.addAttribute("currentUserEmail", loggedUserHelper.getEmail());
+        model.addAttribute("isAdmin", loggedUserHelper.isAdmin());
         return "problem-details";
     }
 
@@ -122,7 +127,6 @@ public class ProblemController {
             BindingResult bindingResult,
             RedirectAttributes rAtt
     ) {
-
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attributeName, addProblemBindingModel);
             rAtt.addFlashAttribute(bindingResultPath + DOT + attributeName, bindingResult);

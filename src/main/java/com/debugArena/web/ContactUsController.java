@@ -47,8 +47,8 @@ public class ContactUsController {
     public String doContactUs(
             @Valid EmailSenderBindingModel emailSenderBindingModel,
             BindingResult bindingResult,
-            RedirectAttributes rAtt) {
-
+            RedirectAttributes rAtt)
+    {
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attributeName, emailSenderBindingModel);
             rAtt.addFlashAttribute(bindingResultPath + DOT + attributeName, bindingResult);

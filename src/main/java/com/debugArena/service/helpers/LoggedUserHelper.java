@@ -34,10 +34,6 @@ public class LoggedUserHelper {
         return hasRole(UserRoleEnum.ADMIN);
     }
 
-    public boolean isModerator() {
-        return hasRole(UserRoleEnum.MODERATOR);
-    }
-
     public boolean isOnlyUser() {
         return getAuthentication().getAuthorities().stream()
                 .allMatch(role -> role.getAuthority().equals("ROLE_" + UserRoleEnum.USER));

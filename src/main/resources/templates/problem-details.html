@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+<html lang="bg" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -34,11 +34,12 @@
                     <span class="problem-date">Дата на публикуване: <span
                             th:text="${comment.getCreatedOn()}"></span></span>
                 </div>
+                <div th:if="${currentUserEmail.equals(comment.getAuthorEmail())}"
+                     th:each="rate : ${comment.getRating()}" class="comment-rating">
+                    <span class="star">&starf;</span>
+                </div>
                 <div class="problem-description">
                     <p th:text="${comment.getTextContent()}"></p>
-<!--                    <div  th:each="rate : ${comment.getRating()}" class="comment-rating">-->
-<!--                        <span class="star">&starf;</span>-->
-<!--                    </div>-->
                     <form th:unless="${currentUserEmail.equals(comment.getAuthorEmail())}"
                           class="rating"
                           th:action="@{/comments/rating/{commentId}/{problemId}(commentId=${comment.id},problemId=${problem.id})}"
@@ -50,7 +51,8 @@
                         <button type="submit" th:name="rating" value="5" class="fa fa-star" data-rating="5"></button>
                     </form>
                 </div>
-                <div th:if="${currentUserEmail.equals(comment.getAuthorEmail())}"
+                <div
+                     th:if="${currentUserEmail.equals(comment.getAuthorEmail()) or isAdmin}"
                      class="delete-form">
                     <form th:action="@{/comments/delete-comment/{commentId}/{problemId}(commentId=${comment.id},problemId=${problem.id})}"
                           th:method="DELETE">

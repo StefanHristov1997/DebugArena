@@ -6,10 +6,8 @@ import com.debugArena.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -36,8 +34,8 @@ public class CommentController {
             @PathVariable("id") Long problemId,
             @Valid AddCommentBindingModel addCommentBindingModel,
             BindingResult bindingResult,
-            RedirectAttributes rAtt) {
-
+            RedirectAttributes rAtt)
+    {
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attributeName, addCommentBindingModel);
             rAtt.addFlashAttribute(bindingResultPath + DOT + attributeName, bindingResult);
@@ -54,8 +52,8 @@ public class CommentController {
     public String updateCommentRating(
             @PathVariable(value = "commentId") Long commentId,
             @PathVariable(value = "problemId") Long problemId,
-            @RequestParam(value = "rating") int rating) {
-
+            @RequestParam(value = "rating") int rating)
+    {
         commentService.updateCommentRating(commentId, rating);
 
         return "redirect:/problems/details/" + problemId;
@@ -66,14 +64,9 @@ public class CommentController {
             RedirectAttributes rAtt,
             @PathVariable(value = "commentId") Long commentId,
             @PathVariable(value = "problemId") Long problemId
-    ) {
-
-//        boolean canUserDeleteComment = commentService.canUserDeleteComment(problemId);
-
-//        if (canUserDeleteComment) {
-//            rAtt.addFlashAttribute("canDeleteComment", true);
-            userService.deleteComment(commentId);
-//
+    )
+    {
+        userService.deleteComment(commentId);
 
         return "redirect:/problems/details/" + problemId;
     }
