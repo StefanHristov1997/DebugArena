@@ -15,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CommentController {
 
     private final CommentService commentService;
-    private final UserService userService;
 
     @Value("${binding-result-package}")
     private String bindingResultPath;
@@ -23,10 +22,9 @@ public class CommentController {
     final String attributeName = "addCommentBindingModel";
 
     public CommentController(
-            CommentService commentService,
-            UserService userService) {
+            CommentService commentService
+            ) {
         this.commentService = commentService;
-        this.userService = userService;
     }
 
     @PostMapping("/add-comment/{id}")
@@ -66,7 +64,7 @@ public class CommentController {
             @PathVariable(value = "problemId") Long problemId
     )
     {
-        userService.deleteComment(commentId);
+        commentService.deleteComment(commentId);
 
         return "redirect:/problems/details/" + problemId;
     }

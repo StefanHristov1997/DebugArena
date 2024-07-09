@@ -120,12 +120,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteComment(Long commentId) {
-        CommentEntity comment = commentRepository.findCommentEntityById(commentId);
-        commentRepository.delete(comment);
-    }
-
-    @Override
     public boolean isUsernameExist(String username) {
         return this.userRepository.findByUsername(username).isEmpty();
     }

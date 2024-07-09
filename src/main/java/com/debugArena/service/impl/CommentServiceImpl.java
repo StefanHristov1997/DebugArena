@@ -61,9 +61,9 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public boolean canUserDeleteComment(Long commentId) {
+    public void deleteComment(Long commentId) {
         CommentEntity comment = commentRepository.findCommentEntityById(commentId);
-        return Objects.equals(comment.getAuthor().getId(), loggedUserHelper.get().getId());
+        commentRepository.delete(comment);
     }
 
     @Override

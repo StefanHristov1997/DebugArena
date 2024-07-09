@@ -22,6 +22,6 @@ public interface UserService {
 
     UserProfileViewModel getUserProfile();
 
-    void deleteComment(Long commentId);
+
 
 }
