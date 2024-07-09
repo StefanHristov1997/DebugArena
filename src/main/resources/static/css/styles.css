@@ -1037,18 +1037,27 @@ footer {
     color: #ffca08;
 }
 
+/* Ensure stars are displayed inline */
+.stars-container  {
+    display: flex;
+    align-items: center; /* Aligns stars vertically in the center */
+}
+
 .star {
-    font-size: 24px;
-    color: #ffd700;
-    margin-right: 5px;
+    font-size: 24px; /* Adjust size of stars */
+    color: gold; /* Color of the stars */
+    margin-right: 5px; /* Spacing between stars */
 }
 
-/* Visualize filled and empty stars */
-.star::before {
-    content: "\2605"; /* Unicode for filled star */
+/* Optional: Add hover effect */
+.star:hover{
+    color: darkorange;
 }
 
-.star.empty::before {
-    content: "\2606"; /* Unicode for empty star */
+/* Optional: Add clicked effect */
+.star:active  {
+    color: red;
 }
+
+
 

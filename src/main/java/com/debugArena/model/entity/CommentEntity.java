@@ -28,4 +28,8 @@ public class CommentEntity extends BaseEntity {
     @ManyToOne(optional = false)
     @JoinColumn(name = "problem_id")
     private ProblemEntity problem;
+
+    public CommentEntity() {
+        this.rating = 1;
+    }
 }

@@ -34,12 +34,12 @@
                     <span class="problem-date">Дата на публикуване: <span
                             th:text="${comment.getCreatedOn()}"></span></span>
                 </div>
-                <div th:if="${currentUserEmail.equals(comment.getAuthorEmail())}"
-                     th:each="rate : ${comment.getRating()}" class="comment-rating">
-                    <span class="star">&starf;</span>
+                <div th:if="${currentUserEmail.equals(comment.getAuthorEmail())}" class="stars-container">
+                    <div th:each="i: ${#numbers.sequence(0, comment.getRating() - 1)}" class="star">
+                        <span  class="star">&starf;</span>
+                    </div>
                 </div>
-                <div class="problem-description">
-                    <p th:text="${comment.getTextContent()}"></p>
+                <div class="stars-container">
                     <form th:unless="${currentUserEmail.equals(comment.getAuthorEmail())}"
                           class="rating"
                           th:action="@{/comments/rating/{commentId}/{problemId}(commentId=${comment.id},problemId=${problem.id})}"
@@ -50,6 +50,9 @@
                         <button type="submit" th:name="rating" value="4" class="fa fa-star" data-rating="4"></button>
                         <button type="submit" th:name="rating" value="5" class="fa fa-star" data-rating="5"></button>
                     </form>
+                </div>
+                <div class="problem-description">
+                    <p th:text="${comment.getTextContent()}"></p>
                 </div>
                 <div
                      th:if="${currentUserEmail.equals(comment.getAuthorEmail()) or isAdmin}"
