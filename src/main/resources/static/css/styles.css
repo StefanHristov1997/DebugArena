@@ -50,7 +50,6 @@ header {
     border-radius: 3px;
 }
 
-
 /* Навигация */
 header nav ul {
     list-style: none;
@@ -1038,7 +1037,7 @@ footer {
 }
 
 /* Ensure stars are displayed inline */
-.stars-container  {
+.stars-container {
     display: flex;
     align-items: center; /* Aligns stars vertically in the center */
 }
@@ -1050,12 +1049,12 @@ footer {
 }
 
 /* Optional: Add hover effect */
-.star:hover{
+.star:hover {
     color: darkorange;
 }
 
 /* Optional: Add clicked effect */
-.star:active  {
+.star:active {
     color: red;
 }
 
