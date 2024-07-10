@@ -1,10 +1,10 @@
 package com.debugArena.service;
 
-import com.debugArena.model.dto.binding.EmailSenderBindingModel;
-import com.debugArena.model.dto.binding.UserProfileBindingModel;
-import com.debugArena.model.dto.binding.UserRegisterBindingModel;
-import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
+import com.debugArena.model.dto.binding.*;
 import com.debugArena.model.dto.view.UserProfileViewModel;
+import com.debugArena.model.entity.UserEntity;
+
+import java.util.List;
 
 public interface UserService {
 
@@ -21,6 +21,8 @@ public interface UserService {
     void editProfile(UserProfileBindingModel userProfileBindingModel);
 
     UserProfileViewModel getUserProfile();
+
+    List<UserEmailBindingModel> getUserEmails();
 
 
 

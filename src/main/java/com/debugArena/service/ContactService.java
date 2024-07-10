@@ -1,6 +1,6 @@
 package com.debugArena.service;
 
-import com.debugArena.model.events.UserContactedUsEvent;
+import com.debugArena.events.UserContactedUsEvent;
 
 public interface ContactService {
 

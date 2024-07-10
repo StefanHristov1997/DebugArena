@@ -1,14 +1,10 @@
 package com.debugArena.service.impl;
 
-import com.debugArena.model.dto.binding.EmailSenderBindingModel;
-import com.debugArena.model.dto.binding.UserProfileBindingModel;
-import com.debugArena.model.dto.binding.UserRegisterBindingModel;
-import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
+import com.debugArena.events.UserContactedUsEvent;
+import com.debugArena.model.dto.binding.*;
 import com.debugArena.model.dto.view.UserProfileViewModel;
-import com.debugArena.model.entity.CommentEntity;
 import com.debugArena.model.entity.UserEntity;
 import com.debugArena.model.enums.UserRoleEnum;
-import com.debugArena.model.events.UserContactedUsEvent;
 import com.debugArena.repository.CommentRepository;
 import com.debugArena.repository.UserRepository;
 import com.debugArena.service.RoleService;
@@ -117,6 +113,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserProfileViewModel getUserProfile() {
         return mapper.map(loggedUserHelper.get(), UserProfileViewModel.class);
+    }
+
+    @Override
+    public List<UserEmailBindingModel> getUserEmails() {
+        List<UserEntity> allUsers = userRepository.findAll();
+
+        return allUsers
+                .stream()
+                .map(user ->
+                        mapper.map(user, UserEmailBindingModel.class)).toList();
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.debugArena.service.impl;
 
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
+import com.debugArena.model.dto.view.DailyNotificationProblemViewModel;
 import com.debugArena.model.dto.view.ProblemDetailsInfoViewModel;
 import com.debugArena.model.dto.view.ProblemShortInfoViewModel;
 import com.debugArena.model.entity.LanguageEntity;
@@ -17,6 +18,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -76,6 +78,17 @@ public class ProblemServiceImpl implements ProblemService {
         ProblemEntity problem = problemRepository.findProblemById(id);
 
         return modelMapper.map(problem, ProblemDetailsInfoViewModel.class);
+    }
+
+    @Override
+    public List<DailyNotificationProblemViewModel> getDailyNotificationProblems() {
+
+        List<ProblemEntity> problemsCreatedToday = problemRepository.findProblemsByCreatedOnIs(LocalDate.now());
+
+        return problemsCreatedToday
+                .stream()
+                .map(problem ->
+                        modelMapper.map(problem, DailyNotificationProblemViewModel.class)).toList();
     }
 
     @Override

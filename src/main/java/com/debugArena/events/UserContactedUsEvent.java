@@ -1,4 +1,4 @@
-package com.debugArena.model.events;
+package com.debugArena.events;
 
 import com.debugArena.model.dto.binding.EmailSenderBindingModel;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package com.debugArena.service.impl;
 
-import com.debugArena.model.events.UserContactedUsEvent;
+import com.debugArena.events.UserContactedUsEvent;
 import com.debugArena.service.ContactService;
 import com.debugArena.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,6 @@ public class ContactServiceImpl implements ContactService {
     @Override
     @EventListener(UserContactedUsEvent.class)
     public void receiveUserEmail(UserContactedUsEvent event) {
-        mailService.sendEmail(event.getEmailSenderBindingModel());
+        mailService.sendToOurEmail(event.getEmailSenderBindingModel());
     }
 }
