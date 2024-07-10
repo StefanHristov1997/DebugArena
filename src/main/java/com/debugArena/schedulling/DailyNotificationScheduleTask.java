@@ -24,7 +24,7 @@ public class DailyNotificationScheduleTask {
         this.userService = userService;
     }
 
-    @Scheduled(cron = "1 * * * * * ")
+    @Scheduled(cron = "0 0 22 * * 1-7")
     public void sendDailyNotifications() {
 
         List<DailyNotificationProblemViewModel> dailyNotificationProblems = problemService.getDailyNotificationProblems();

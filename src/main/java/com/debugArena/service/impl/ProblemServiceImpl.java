@@ -83,7 +83,8 @@ public class ProblemServiceImpl implements ProblemService {
     @Override
     public List<DailyNotificationProblemViewModel> getDailyNotificationProblems() {
 
-        List<ProblemEntity> problemsCreatedToday = problemRepository.findProblemsByCreatedOnIs(LocalDate.now());
+        List<ProblemEntity> problemsCreatedToday = problemRepository
+                .findProblemsByCreatedOnIs(LocalDate.now());
 
         return problemsCreatedToday
                 .stream()
