@@ -17,6 +17,7 @@ public class DailyNotificationScheduleTask {
     private final MailService emailService;
     private final ProblemService problemService;
     private final UserService userService;
+
     @Autowired
     public DailyNotificationScheduleTask(MailService emailService, ProblemService problemService, UserService userService) {
         this.emailService = emailService;

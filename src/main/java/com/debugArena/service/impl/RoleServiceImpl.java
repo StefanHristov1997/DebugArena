@@ -22,7 +22,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Set<RoleEntity> getRolesByName(List<UserRoleEnum> roles) {
-        return this.roleRepository
+        return roleRepository
                 .findAllByNameIn
                         (roles);
     }

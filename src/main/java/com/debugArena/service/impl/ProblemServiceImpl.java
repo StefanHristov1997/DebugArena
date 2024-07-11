@@ -93,6 +93,16 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     @Override
+    public void deleteProblemsCreatedLastYear() {
+        List<ProblemEntity> problemsByCreatedOnLastYear = problemRepository
+                .findProblemsByCreatedOnIsBefore(
+                        LocalDate
+                                .parse(LocalDate.now().getYear() + "-01" + "-01"));
+
+        problemRepository.deleteAll(problemsByCreatedOnLastYear);
+    }
+
+    @Override
     public void deleteProblemById(Long id) {
         problemRepository.deleteById(id);
     }

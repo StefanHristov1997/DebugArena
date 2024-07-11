@@ -16,6 +16,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -64,7 +65,7 @@ public class UserServiceImpl implements UserService {
                     List.of(UserRoleEnum.USER)));
         }
 
-        this.userRepository.save(userToSave);
+        userRepository.save(userToSave);
     }
 
     @Override
@@ -76,7 +77,7 @@ public class UserServiceImpl implements UserService {
 
         userToSave.setPassword(encodedPassword);
 
-        this.userRepository.save(userToSave);
+        userRepository.save(userToSave);
     }
 
     @Override
@@ -127,11 +128,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isUsernameExist(String username) {
-        return this.userRepository.findByUsername(username).isEmpty();
+        return userRepository.findByUsername(username).isEmpty();
     }
 
     @Override
     public boolean isEmailExist(String email) {
-        return this.userRepository.findByEmail(email).isEmpty();
+        return userRepository.findByEmail(email).isEmpty();
     }
 }
