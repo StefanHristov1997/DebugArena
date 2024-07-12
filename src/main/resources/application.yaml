@@ -53,4 +53,8 @@ mail:
   username: ${DEFAULT_EMAIL_SERVER_USERNAME}
   password: ${DEFAULT_EMAIL_SERVER_PASSWORD}
 
+event:
+  api:
+    baseUrl: "http://localhost:8081"
+
 binding-result-package: org.springframework.validation.BindingResult
