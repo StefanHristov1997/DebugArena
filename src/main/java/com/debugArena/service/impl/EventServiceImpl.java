@@ -1,8 +1,8 @@
 package com.debugArena.service.impl;
 
+import com.debugArena.model.dto.binding.AddEventBindingModel;
 import com.debugArena.model.dto.view.EventShortInfoViewModel;
 import com.debugArena.service.EventService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -17,6 +17,15 @@ public class EventServiceImpl implements EventService {
 
     public EventServiceImpl(RestClient restClient) {
         this.restClient = restClient;
+    }
+
+    @Override
+    public void registerEvent(AddEventBindingModel addEventBindingModel) {
+        restClient
+                .post()
+                .uri("/events")
+                .body(addEventBindingModel)
+                .retrieve();
     }
 
     @Override

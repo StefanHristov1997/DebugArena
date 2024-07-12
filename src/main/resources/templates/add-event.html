@@ -16,71 +16,71 @@
     <div class="container">
         <h1 th:text="#{add.event.h1}"></h1>
         <form
-                th:action="@{/problems/add-problem}"
-                th:method="POST">
+                th:action="@{/events/add-event}"
+                th:method="POST"
+                th:object="${addEventBindingModel}">
 
             <div class="form-group">
                 <label for="title" th:text="#{add.event.title}"></label>
-                <input
-
+                <input th:field="*{title}"
+                       th:errorclass="'is-invalid alert-danger'"
                        th:class="form-control"
                        type="text"
                        id="title">
-                <small
+                <small th:errors="*{title}"
                        class="invalid-feedback text-danger" style="color: red">error message
                 </small>
             </div>
             <div class="form-group">
                 <label for="description" th:text="#{add.event.description}"></label>
-                <textarea
-
+                <textarea th:field="*{description}"
+                          th:errorclass="'is-invalid alert-danger'"
                           th:class="form-control"
                           id="description">
                 </textarea>
-                <small
-                       class="invalid-feedback text-danger" style="color: red">error message
+                <small th:errors="*{description}"
+                        class="invalid-feedback text-danger" style="color: red">error message
                 </small>
             </div>
             <div class="form-group">
                 <label for="date" th:text="#{add.event.creation.date}"></label>
-                <input
-                       th:class="form-control"
-                       type="datetime-local"
-                       id="date">
-                <small
-                       class="invalid-feedback text-danger" style="color: red">error message
+                <input  th:field="*{date}"
+                        th:errorclass="'is-invalid alert-danger'"
+                        th:class="form-control"
+                        type="datetime-local"
+                        id="date">
+                <small  th:errors="*{date}"
+                        class="invalid-feedback text-danger" style="color: red">error message
                 </small>
             </div>
             <div class="form-group">
                 <label for="authorName" th:text="#{add.event.author.name}"></label>
-                <input
-
-
-                       th:class="form-control"
-                       type="text"
-                       id="authorName">
-                <small
-                       class="invalid-feedback text-danger" style="color: red">error message
+                <input  th:field="*{authorName}"
+                        th:errorclass="'is-invalid alert-danger'"
+                        th:class="form-control"
+                        type="text"
+                        id="authorName">
+                <small  th:errors="*{authorName}"
+                        class="invalid-feedback text-danger" style="color: red">error message
                 </small>
             </div>
 
             <div class="form-group">
                 <label for="authorEmail" th:text="#{add.event.author.email}"></label>
-                <input
-
-
-                       th:class="form-control"
-                       type="text"
-                       id="authorEmail">
-                <small
-                       class="invalid-feedback text-danger" style="color: red">error message
+                <input th:field="*{authorEmail}"
+                       th:errorclass="'is-invalid alert-danger'"
+                        th:class="form-control"
+                        type="text"
+                        id="authorEmail">
+                <small  th:errors="*{authorEmail}"
+                        class="invalid-feedback text-danger" style="color: red">error message
                 </small>
             </div>
             <div class="form-group">
                 <label for="platform" th:text="#{add.event.platform}"></label>
-                <select
+                <select th:field="*{platform}"
+                        th:errorclass="'is-invalid alert-danger'"
                         type="text"
-
                         th:class="form-control"
                         id="platform">
                     <option value="" th:text="#{add.event.choose.platform}"></option>
@@ -88,11 +88,12 @@
                     <option value="DISCORD">Discord</option>
                     <option value="MICROSOFT_TEAMS">Microsoft teams</option>
                 </select>
-                <small
-                       class="invalid-feedback text-danger" style="color: red">error message
+                <small th:errors="*{platform}"
+                        class="invalid-feedback text-danger" style="color: red">error message
                 </small>
             </div>
-            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> <span th:text="#{add.event.btn}"></span></button>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> <span
+                    th:text="#{add.event.btn}"></span></button>
         </form>
     </div>
 </main>
