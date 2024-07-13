@@ -1,5 +1,6 @@
 package com.debugArena.model.dto.view;
 
+import com.debugArena.model.enums.VideoPlatformEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,4 +19,6 @@ public class EventDetailsInfoViewModel {
     private String authorEmail;
 
     private LocalDateTime date;
+
+    private VideoPlatformEnum platform;
 }

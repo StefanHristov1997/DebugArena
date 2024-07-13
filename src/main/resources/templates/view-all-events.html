@@ -92,7 +92,7 @@
                 <h2 th:text="${event.getTitle()}"></h2>
             </div>
             <div class="event-body">
-                <p><i class="fas fa-user"></i> <strong>Организатор:</strong> <span th:text="${event.getAuthorName()}"></span></p>
+                <p><i class="fas fa-user"></i> <strong>Автор: </strong><span th:text="${event.getAuthorName()}"></span></p>
                 <p><i class="fas fa-calendar-alt"></i> <strong>Дата: </strong>
                     <span th:text="${event.date.getDayOfMonth()}"></span>/<span th:text="${event.date.getMonthValue()}"></span>/<span th:text="${event.date.getYear()}"></span>г.
                 </p>
