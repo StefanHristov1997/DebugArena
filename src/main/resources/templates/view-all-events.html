@@ -9,40 +9,103 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        main {
+            padding: 20px;
+        }
+
+        .events-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .event-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: calc(50% - 20px);
+            box-sizing: border-box;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .event-header h2 {
+            margin: 0;
+        }
+
+        .event-body {
+            padding: 20px;
+            color: #333;
+        }
+
+        .event-body p {
+            margin: 10px 0;
+        }
+
+        .event-footer {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .event-link {
+            background-color: #ff5722;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .event-link:hover {
+            background-color: #e64a19;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .event-item {
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
 </head>
 
 <body>
 <header th:replace="~{fragments/navigation}"></header>
-
-<main class="article-list">
-    <div class="container">
-        <a th:href="@{/events/add-event}" class="link-item">
-            <i class="fas fa-plus-circle"></i>
-            <span th:text="#{add.event.h1}"></span>
-        </a>
-        <h1 th:text="#{all.events}"></h1>
-        <ul th:each="event: ${events}" class="articles">
-            <li class="article-item">
-                <h2 class="article-title"><a th:href="@{/events/details/{id}(id=${event.getId()})}"><span
-                        th:text="${event.getTitle()}"></span></a></h2>
-                <div class="article-meta">
-                    <span class="article-user">Организатор: <span
-                            th:text="${event.getAuthorName()}"></span></span>
-                    <span class="article-date">Дата и час на събитието: <span
-                            th:text="${event.getDate()}"></span></span>
-                </div>
-<!--                <div th:if="${isAdmin}">-->
-<!--                    <form th:action="@{/problems/java/delete-problem/{id}(id=${javaProblem.id})}"-->
-<!--                          th:method="DELETE"-->
-<!--                          class="delete-form">-->
-<!--                        <button type="submit" class="comment-delete-btn">Изтриване на дискусията</button>-->
-<!--                    </form>-->
-<!--                </div>-->
-            </li>
-        </ul>
-    </div>
+<a th:href="@{/events/add-event}" class="link-item">
+    <i class="fas fa-plus-circle"></i>
+    <span th:text="#{add.event.fast.link}"></span>
+</a>
+<main>
+    <section class="events-list" th:each="event : ${events}">
+        <div class="event-item">
+            <div class="event-header">
+                <h2 th:text="${event.getTitle()}"></h2>
+            </div>
+            <div class="event-body">
+                <p><i class="fas fa-user"></i> <strong>Организатор:</strong> <span th:text="${event.getAuthorName()}"></span></p>
+                <p><i class="fas fa-calendar-alt"></i> <strong>Дата: </strong>
+                    <span th:text="${event.date.getDayOfMonth()}"></span>/<span th:text="${event.date.getMonthValue()}"></span>/<span th:text="${event.date.getYear()}"></span>г.
+                </p>
+                <p><i class="fa-regular fa-clock"></i> <strong>Час: </strong>
+                    <span th:text="${event.date.getHour()}"></span>:<span th:text="${event.date.getMinute()}"></span>
+                </p>
+            </div>
+            <div class="event-footer">
+                <a th:href="@{/events/details/{id}(id=${event.id})}" class="event-link">Към събитието</a>
+            </div>
+        </div>
+    </section>
 </main>
-
 <footer th:replace="~{fragments/footer}"></footer>
 <script src="/js/language-script.js"></script>
 </body>
