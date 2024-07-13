@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ДебъгАрена</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+<header th:replace="~{fragments/navigation}"></header>
+
+<main class="problem-details">
+    <div class="container">
+        <h1 th:text="${eventDetails.getTitle()}"></h1>
+        <div class="problem-meta">
+            <span class="problem-user">Потребител: <span th:text="${eventDetails.getAuthorName()}"></span></span>
+            <span class="problem-date">Дата на публикуване: <span th:text="${eventDetails.getDate()}"></span></span>
+        </div>
+        <div class="problem-description">
+            <p>Описание на проблема:</p>
+            <p th:text="${eventDetails.getDescription()}"></p>
+        </div>
+<!--        <div class="comments-section">-->
+<!--            <h2>Коментари</h2>-->
+<!--            <div th:each="comment: ${comments}" class="comment" th:data-comment-id="${comment.id}"-->
+<!--                 th:data-current-rating="${comment.rating}">-->
+<!--                <div class="problem-meta">-->
+<!--                    <p class="comment-user">Коментар от <span th:text="${comment.getAuthorUsername()}"></span></p>-->
+<!--                    <span class="problem-date">Дата на публикуване: <span-->
+<!--                            th:text="${eventDetails.getDescription()}"></span></span>-->
+<!--                </div>-->
+<!--            </div>-->
+            <!--                <div th:if="${currentUserEmail.equals(comment.getAuthorEmail())}" class="stars-container">-->
+            <!--                    <div th:each="i: ${#numbers.sequence(0, comment.getRating() - 1)}" class="star">-->
+            <!--                        <span  class="star">&starf;</span>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                <div class="stars-container">-->
+            <!--                    <form th:unless="${currentUserEmail.equals(comment.getAuthorEmail())}"-->
+            <!--                          class="rating"-->
+            <!--                          th:action="@{/comments/rating/{commentId}/{problemId}(commentId=${comment.id},problemId=${problem.id})}"-->
+            <!--                          th:method="PATCH">-->
+            <!--                        <button type="submit" th:name="rating" value="1" class="fa fa-star" data-rating="1"></button>-->
+            <!--                        <button type="submit" th:name="rating" value="2" class="fa fa-star" data-rating="2"></button>-->
+            <!--                        <button type="submit" th:name="rating" value="3" class="fa fa-star" data-rating="3"></button>-->
+            <!--                        <button type="submit" th:name="rating" value="4" class="fa fa-star" data-rating="4"></button>-->
+            <!--                        <button type="submit" th:name="rating" value="5" class="fa fa-star" data-rating="5"></button>-->
+            <!--                    </form>-->
+            <!--                </div>-->
+            <!--                <div class="problem-description">-->
+            <!--                    <p th:text="${comment.getTextContent()}"></p>-->
+            <!--                </div>-->
+            <!--                <div-->
+            <!--                     th:if="${currentUserEmail.equals(comment.getAuthorEmail()) or isAdmin}"-->
+            <!--                     class="delete-form">-->
+            <!--                    <form th:action="@{/comments/delete-comment/{commentId}/{problemId}(commentId=${comment.id},problemId=${problem.id})}"-->
+            <!--                          th:method="DELETE">-->
+            <!--                        <button type="submit" class="comment-delete-btn">Изтриване на коментара</button>-->
+            <!--                    </form>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <!--            <form class="comment-form"-->
+            <!--                  th:action="@{/comments/add-comment/{id}(id=${problem.getId()})}"-->
+            <!--                  th:method="POST"-->
+            <!--                  th:object="${addCommentBindingModel}">-->
+
+            <!--                <textarea th:field="*{textContent}"-->
+            <!--                          th:errorclass="'is-invalid alert-danger'"-->
+            <!--                          th:class="form-control"-->
+            <!--                          placeholder="Добави коментар"></textarea>-->
+            <!--                <small th:errors="*{textContent}"-->
+            <!--                       class="invalid-feedback text-danger" style="color: red">error message-->
+            <!--                </small>-->
+            <!--                <button type="submit">Изпрати коментара</button>-->
+            <!--            </form>-->
+<!--        </div>-->
+    </div>
+</main>
+
+<footer th:replace="~{fragments/footer}"></footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Function to update the UI based on rating
+        function updateStars(stars, rating) {
+            stars.forEach((s, index) => {
+                if (index < rating) {
+                    s.classList.add('checked');
+                } else {
+                    s.classList.remove('checked');
+                }
+            });
+        }
+
+        // Initialize the stars based on the current rating
+        document.querySelectorAll('.comment').forEach(comment => {
+            let rating = comment.dataset.currentRating;
+            let stars = comment.querySelectorAll('.fa-star');
+            updateStars(stars, rating);
+        });
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const ratings = document.querySelectorAll('.comment-rating');
+            ratings.forEach(rating => {
+                const stars = rating.querySelectorAll('.star');
+                const ratingValue = rating.getAttribute('data-rating');
+                stars.forEach((star, index) => {
+                    if (index < ratingValue) {
+                        star.classList.remove('empty');
+                    } else {
+                        star.classList.add('empty');
+                    }
+                });
+            });
+        });
+
+        // Add click event to the stars
+        document.querySelectorAll('.rating .fa').forEach(star => {
+            star.addEventListener('click', function () {
+                let rating = this.dataset.rating;
+                let commentId = this.closest('.comment').dataset.commentId;
+
+                // Update UI
+                let stars = this.parentNode.querySelectorAll('.fa');
+                updateStars(stars, rating);
+
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

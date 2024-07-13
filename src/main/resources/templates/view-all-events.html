@@ -23,8 +23,8 @@
         <h1 th:text="#{all.events}"></h1>
         <ul th:each="event: ${events}" class="articles">
             <li class="article-item">
-<!--                <h2 class="article-title"><a th:href="@{/problems/details/{id}(id=${javaProblem.getId()})}"><span-->
-<!--                        th:text="${event.getTitle()}"></span></a></h2>-->
+                <h2 class="article-title"><a th:href="@{/events/details/{id}(id=${event.getId()})}"><span
+                        th:text="${event.getTitle()}"></span></a></h2>
                 <div class="article-meta">
                     <span class="article-user">Организатор: <span
                             th:text="${event.getAuthorName()}"></span></span>

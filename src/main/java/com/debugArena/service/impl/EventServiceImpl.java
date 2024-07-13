@@ -1,6 +1,7 @@
 package com.debugArena.service.impl;
 
 import com.debugArena.model.dto.binding.AddEventBindingModel;
+import com.debugArena.model.dto.view.EventDetailsInfoViewModel;
 import com.debugArena.model.dto.view.EventShortInfoViewModel;
 import com.debugArena.service.EventService;
 import org.springframework.core.ParameterizedTypeReference;
@@ -26,6 +27,16 @@ public class EventServiceImpl implements EventService {
                 .uri("/events")
                 .body(addEventBindingModel)
                 .retrieve();
+    }
+
+    @Override
+    public EventDetailsInfoViewModel getEventDetailsInfoById(Long id) {
+        return restClient
+                .get()
+                .uri("/events/{id}", id)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(EventDetailsInfoViewModel.class);
     }
 
     @Override

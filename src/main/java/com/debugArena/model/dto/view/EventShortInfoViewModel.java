@@ -7,6 +7,8 @@ import lombok.Setter;
 @Setter
 public class EventShortInfoViewModel {
 
+    private Long id;
+
     private String title;
 
     private String authorName;

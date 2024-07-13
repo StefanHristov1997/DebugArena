@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class AddEventBindingModel {
 
     @NotBlank(message = "{blank_field_message}")
-    @Size(min = 6, message = "{title.length.message}")
+    @Size(min = 10, message = "{title.length.message}")
     private String title;
 
     @NotBlank(message = "{blank_field_message}")
