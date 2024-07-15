@@ -8,12 +8,11 @@ import com.debugArena.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestClient;
 
 import java.util.List;
 
 @Component
-public class WeekEventsNotificationScheduleTask {
+public class WeeklyEventsNotificationScheduleTask {
 
     private final MailService emailService;
     private final EventService eventService;
@@ -21,7 +20,7 @@ public class WeekEventsNotificationScheduleTask {
 
 
     @Autowired
-    public WeekEventsNotificationScheduleTask(
+    public WeeklyEventsNotificationScheduleTask(
             MailService emailService,
             EventService eventService,
             UserService userService) {
@@ -31,7 +30,7 @@ public class WeekEventsNotificationScheduleTask {
         this.userService = userService;
     }
 
-    @Scheduled(cron = "0 0 * * 0 ?")
+    @Scheduled(cron = "0 0 * * SUN ?")
     public void sendWeeklyEventsNotification() {
         List<EventDetailsInfoViewModel> weeklyEvents = eventService.getWeeklyEvents();
         List<UserEmailBindingModel> userEmails = userService.getUserEmails();
