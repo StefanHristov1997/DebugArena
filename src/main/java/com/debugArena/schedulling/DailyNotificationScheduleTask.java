@@ -30,6 +30,6 @@ public class DailyNotificationScheduleTask {
 
         List<DailyNotificationProblemViewModel> dailyNotificationProblems = problemService.getDailyNotificationProblems();
         List<UserEmailBindingModel> userEmails = userService.getUserEmails();
-        emailService.sendDailyNotifications(dailyNotificationProblems, userEmails);
+        emailService.sendDailyProblemsNotifications(dailyNotificationProblems, userEmails);
     }
 }

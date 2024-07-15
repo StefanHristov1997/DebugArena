@@ -57,7 +57,7 @@ public class MailServiceImpl implements MailService {
     }
 
     @Override
-    public void sendDailyNotifications(
+    public void sendDailyProblemsNotifications(
             List<DailyNotificationProblemViewModel> dailyNotificationProblems,
             List<UserEmailBindingModel> userEmailBindingModels) {
 

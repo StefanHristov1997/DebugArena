@@ -10,7 +10,7 @@ public interface MailService {
 
     void sendToOurEmail(EmailSenderBindingModel emailSenderBindingModel);
 
-    void sendDailyNotifications(
+    void sendDailyProblemsNotifications(
             List<DailyNotificationProblemViewModel> dailyNotificationProblems,
             List<UserEmailBindingModel> userEmailBindingModels);
 }
