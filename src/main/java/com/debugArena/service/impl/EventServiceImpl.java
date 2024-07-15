@@ -49,4 +49,15 @@ public class EventServiceImpl implements EventService {
                 .body(new ParameterizedTypeReference<>() {
                 });
     }
+
+    @Override
+    public List<EventDetailsInfoViewModel> getWeeklyEvents() {
+        return restClient
+                .get()
+                .uri("/events/weekly-events")
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {
+                });
+    }
 }

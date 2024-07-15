@@ -12,21 +12,21 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class DailyNotificationScheduleTask {
+public class DailyProblemsNotificationScheduleTask {
 
     private final MailService emailService;
     private final ProblemService problemService;
     private final UserService userService;
 
     @Autowired
-    public DailyNotificationScheduleTask(MailService emailService, ProblemService problemService, UserService userService) {
+    public DailyProblemsNotificationScheduleTask(MailService emailService, ProblemService problemService, UserService userService) {
         this.emailService = emailService;
         this.problemService = problemService;
         this.userService = userService;
     }
 
     @Scheduled(cron = "0 0 22 * * 1-7")
-    public void sendDailyNotifications() {
+    public void sendDailyProblemsNotifications() {
 
         List<DailyNotificationProblemViewModel> dailyNotificationProblems = problemService.getDailyNotificationProblems();
         List<UserEmailBindingModel> userEmails = userService.getUserEmails();

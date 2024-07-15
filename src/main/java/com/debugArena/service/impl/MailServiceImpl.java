@@ -3,6 +3,7 @@ package com.debugArena.service.impl;
 import com.debugArena.model.dto.binding.EmailSenderBindingModel;
 import com.debugArena.model.dto.binding.UserEmailBindingModel;
 import com.debugArena.model.dto.view.DailyNotificationProblemViewModel;
+import com.debugArena.model.dto.view.EventDetailsInfoViewModel;
 import com.debugArena.service.MailService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -71,7 +72,7 @@ public class MailServiceImpl implements MailService {
                 messageHelper.setFrom(debugArenaMainEmail);
                 messageHelper.setReplyTo(debugArenaMainEmail);
                 messageHelper.setSubject("Daily problems notification from DebugArena");
-                messageHelper.setText(generateDailyNotificationEmailBody(dailyNotificationProblems), true);
+                messageHelper.setText(generateDailyProblemsNotificationEmailBody(dailyNotificationProblems), true);
                 mailSender.send(messageHelper.getMimeMessage());
             } catch (MessagingException e) {
                 throw new RuntimeException(e);
@@ -79,12 +80,45 @@ public class MailServiceImpl implements MailService {
         });
     }
 
-    private String generateDailyNotificationEmailBody(List<DailyNotificationProblemViewModel> dailyNotificationProblems) {
+    private String generateDailyProblemsNotificationEmailBody(List<DailyNotificationProblemViewModel> dailyNotificationProblems) {
 
         Context context = new Context();
 
         context.setVariable("dailyProblems", dailyNotificationProblems);
 
-        return templateEngine.process("/email/daily-notification", context);
+        return templateEngine.process("/email/daily-problems-notification", context);
+    }
+
+    @Override
+    public void sendWeeklyEventsNotifications(
+            List<EventDetailsInfoViewModel> eventDetailsInfoViewModels,
+            List<UserEmailBindingModel> userEmailBindingModels) {
+
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+
+        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+
+        userEmailBindingModels.forEach(userEmail -> {
+            try {
+                messageHelper.setTo(userEmail.getEmail());
+                messageHelper.setFrom(debugArenaMainEmail);
+                messageHelper.setReplyTo(debugArenaMainEmail);
+                messageHelper.setSubject("Weekly events notification from DebugArena");
+                messageHelper.setText(generateWeeklyEventsNotificationEmailBody((eventDetailsInfoViewModels)), true);
+                mailSender.send(messageHelper.getMimeMessage());
+            } catch (MessagingException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+    }
+
+    private String generateWeeklyEventsNotificationEmailBody(List<EventDetailsInfoViewModel> eventDetailsInfoViewModels) {
+
+        Context context = new Context();
+
+        context.setVariable("weeklyEvents", eventDetailsInfoViewModels);
+
+        return templateEngine.process("/email/weekly-events-notification", context);
     }
 }

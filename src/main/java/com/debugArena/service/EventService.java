@@ -13,4 +13,6 @@ public interface EventService {
     EventDetailsInfoViewModel getEventDetailsInfoById(Long id);
 
     List<EventShortInfoViewModel> getEvents();
+
+    List<EventDetailsInfoViewModel> getWeeklyEvents();
 }
