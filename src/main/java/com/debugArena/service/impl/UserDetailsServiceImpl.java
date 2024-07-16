@@ -3,7 +3,6 @@ package com.debugArena.service.impl;
 import com.debugArena.model.entity.RoleEntity;
 import com.debugArena.model.entity.UserEntity;
 import com.debugArena.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

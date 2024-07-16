@@ -1,5 +1,6 @@
 package com.debugArena.web;
 
+import com.debugArena.exeption.ObjectNotFoundException;
 import com.debugArena.model.dto.binding.AddCommentBindingModel;
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
 import com.debugArena.model.dto.view.CommentViewModel;
@@ -12,6 +13,7 @@ import com.debugArena.service.helpers.LoggedUserHelper;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -54,64 +56,6 @@ public class ProblemController {
         return "problem-categories";
     }
 
-    @GetMapping("/details/{id}")
-    public String viewProblemDetails(@PathVariable("id") Long id, Model model) {
-
-        if (!model.containsAttribute("addCommentBindingModel")) {
-            model.addAttribute("addCommentBindingModel", new AddCommentBindingModel());
-        }
-
-
-        ProblemDetailsInfoViewModel problemDetails = problemService.getProblemDetails(id);
-        List<CommentViewModel> commentsByProblem = commentService.getCommentsByProblemOrderByRatingDesc(id);
-
-        model.addAttribute("problem", problemDetails);
-        model.addAttribute("comments", commentsByProblem);
-        model.addAttribute("currentUserEmail", loggedUserHelper.getEmail());
-
-        return "problem-details";
-    }
-
-    @GetMapping("/java")
-    public String viewProblemsWithJava(Model model) {
-
-        List<ProblemShortInfoViewModel> javaProblems = problemService.getArticlesByLanguage(LanguageEnum.JAVA);
-
-        model.addAttribute("javaProblems", javaProblems);
-
-        return "java-problems";
-    }
-
-    @GetMapping("/csharp")
-    public String viewProblemsWithCsharp(Model model) {
-
-        List<ProblemShortInfoViewModel> csharpProblems = problemService.getArticlesByLanguage(LanguageEnum.CSHARP);
-
-        model.addAttribute("csharpProblems", csharpProblems);
-
-        return "csharp-problems";
-    }
-
-    @GetMapping("/javascript")
-    public String viewProblemsWithJavaScript(Model model) {
-
-        List<ProblemShortInfoViewModel> javaScriptProblems = problemService.getArticlesByLanguage(LanguageEnum.JAVASCRIPT);
-
-        model.addAttribute("javaScriptProblems", javaScriptProblems);
-
-        return "javascript-problems";
-    }
-
-    @GetMapping("/python")
-    public String viewProblemsWithPython(Model model) {
-
-        List<ProblemShortInfoViewModel> pythonProblems = problemService.getArticlesByLanguage(LanguageEnum.PYTHON);
-
-        model.addAttribute("pythonProblems", pythonProblems);
-
-        return "python-problems";
-    }
-
     @GetMapping("/add-problem")
     public String viewAddProblem(Model model) {
 
@@ -137,6 +81,71 @@ public class ProblemController {
         problemService.addProblem(addProblemBindingModel);
 
         return "redirect:/problems";
+    }
+
+    @GetMapping("/details/{id}")
+    public String viewProblemDetails(@PathVariable("id") Long id, Model model) {
+
+        if (!model.containsAttribute("addCommentBindingModel")) {
+            model.addAttribute("addCommentBindingModel", new AddCommentBindingModel());
+        }
+
+
+        ProblemDetailsInfoViewModel problemDetails = problemService.getProblemDetails(id);
+        List<CommentViewModel> commentsByProblem = commentService.getCommentsByProblemOrderByRatingDesc(id);
+
+        model.addAttribute("problem", problemDetails);
+        model.addAttribute("comments", commentsByProblem);
+        model.addAttribute("currentUserEmail", loggedUserHelper.getEmail());
+
+        return "problem-details";
+    }
+
+
+    @ResponseStatus(code = HttpStatus.NOT_FOUND)
+    @ExceptionHandler(ObjectNotFoundException.class)
+    public String handleNotFoundProblem() {
+        return "/error/404";
+    }
+
+    @GetMapping("/java")
+    public String viewProblemsWithJava(Model model) {
+
+        List<ProblemShortInfoViewModel> javaProblems = problemService.getProblemsByLanguage(LanguageEnum.JAVA);
+
+        model.addAttribute("javaProblems", javaProblems);
+
+        return "java-problems";
+    }
+
+    @GetMapping("/csharp")
+    public String viewProblemsWithCsharp(Model model) {
+
+        List<ProblemShortInfoViewModel> csharpProblems = problemService.getProblemsByLanguage(LanguageEnum.CSHARP);
+
+        model.addAttribute("csharpProblems", csharpProblems);
+
+        return "csharp-problems";
+    }
+
+    @GetMapping("/javascript")
+    public String viewProblemsWithJavaScript(Model model) {
+
+        List<ProblemShortInfoViewModel> javaScriptProblems = problemService.getProblemsByLanguage(LanguageEnum.JAVASCRIPT);
+
+        model.addAttribute("javaScriptProblems", javaScriptProblems);
+
+        return "javascript-problems";
+    }
+
+    @GetMapping("/python")
+    public String viewProblemsWithPython(Model model) {
+
+        List<ProblemShortInfoViewModel> pythonProblems = problemService.getProblemsByLanguage(LanguageEnum.PYTHON);
+
+        model.addAttribute("pythonProblems", pythonProblems);
+
+        return "python-problems";
     }
 
     @DeleteMapping("/java/delete-problem/{id}")

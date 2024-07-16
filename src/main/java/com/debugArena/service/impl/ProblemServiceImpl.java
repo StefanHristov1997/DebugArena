@@ -1,5 +1,6 @@
 package com.debugArena.service.impl;
 
+import com.debugArena.exeption.ObjectNotFoundException;
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
 import com.debugArena.model.dto.view.DailyNotificationProblemViewModel;
 import com.debugArena.model.dto.view.ProblemDetailsInfoViewModel;
@@ -62,7 +63,7 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     @Override
-    public List<ProblemShortInfoViewModel> getArticlesByLanguage(LanguageEnum language) {
+    public List<ProblemShortInfoViewModel> getProblemsByLanguage(LanguageEnum language) {
 
         List<ProblemEntity> problemsByLanguageName = problemRepository.findProblemsByLanguageName(language);
 
@@ -75,7 +76,11 @@ public class ProblemServiceImpl implements ProblemService {
     @Override
     public ProblemDetailsInfoViewModel getProblemDetails(Long id) {
 
-        ProblemEntity problem = problemRepository.findProblemById(id);
+
+        ProblemEntity problem = problemRepository
+                .findById(id)
+                .orElseThrow(() ->
+                        new ObjectNotFoundException("Problem with " + id + "is not found!"));
 
         return modelMapper.map(problem, ProblemDetailsInfoViewModel.class);
     }
