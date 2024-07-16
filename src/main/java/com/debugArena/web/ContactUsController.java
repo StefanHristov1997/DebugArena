@@ -1,16 +1,16 @@
 package com.debugArena.web;
 
+import com.debugArena.exeption.EmailConnectionException;
 import com.debugArena.model.dto.binding.EmailSenderBindingModel;
 import com.debugArena.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -47,8 +47,7 @@ public class ContactUsController {
     public String doContactUs(
             @Valid EmailSenderBindingModel emailSenderBindingModel,
             BindingResult bindingResult,
-            RedirectAttributes rAtt)
-    {
+            RedirectAttributes rAtt) {
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attributeName, emailSenderBindingModel);
             rAtt.addFlashAttribute(bindingResultPath + DOT + attributeName, bindingResult);
@@ -58,5 +57,11 @@ public class ContactUsController {
         userService.contactUs(emailSenderBindingModel);
 
         return "redirect:/contact-us/successfully-contact-message";
+    }
+
+    @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(EmailConnectionException.class)
+    public String handleEmailConnectionException() {
+        return "/error/email-connect-error";
     }
 }

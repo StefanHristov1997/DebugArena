@@ -47,10 +47,11 @@ public class ProblemServiceImpl implements ProblemService {
 
         ProblemEntity problemToSave = modelMapper.map(addProblemBindingModel, ProblemEntity.class);
 
-        //TODO: add no such language exception
         LanguageEntity language = languageRepository
                 .findByName(addProblemBindingModel
-                        .getLanguage()).orElseThrow();
+                        .getLanguage())
+                .orElseThrow(()->
+                        new ObjectNotFoundException("Language " + addProblemBindingModel.getLanguage() + " is not found!"));
 
         UserEntity currentUser = loggedUserHelper.get();
 
@@ -75,7 +76,6 @@ public class ProblemServiceImpl implements ProblemService {
 
     @Override
     public ProblemDetailsInfoViewModel getProblemDetails(Long id) {
-
 
         ProblemEntity problem = problemRepository
                 .findById(id)

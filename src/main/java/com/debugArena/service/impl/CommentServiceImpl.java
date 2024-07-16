@@ -1,5 +1,6 @@
 package com.debugArena.service.impl;
 
+import com.debugArena.exeption.ObjectNotFoundException;
 import com.debugArena.model.dto.binding.AddCommentBindingModel;
 import com.debugArena.model.dto.view.CommentViewModel;
 import com.debugArena.model.entity.CommentEntity;
@@ -53,7 +54,8 @@ public class CommentServiceImpl implements CommentService {
 
         CommentEntity comment = commentRepository
                 .findById(id)
-                .orElseThrow(() -> new RuntimeException("Comment not found"));
+                .orElseThrow(() ->
+                        new ObjectNotFoundException("Comment " + id + " is not found!"));
 
         comment.setRating(rating);
 

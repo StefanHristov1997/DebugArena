@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Грешка 404</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .error-page {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-page h1 {
+            font-size: 6em;
+            margin: 0;
+            color: #333;
+        }
+
+        .error-page h2 {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+
+        .error-page p {
+            font-size: 1em;
+            margin: 20px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff5722;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e64a19;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="error-page">
+        <h1>404</h1>
+        <h2 th:text="#{404.error.page.h2}"></h2>
+        <p th:text="#{404.error.page.p}"></p>
+        <a th:href="@{/}" class="btn" th:text="#{404.error.page.btn}"></a>
+    </div>
+</div>
+</body>
+</html>
