@@ -18,11 +18,11 @@ public class UserResetPasswordBindingModel {
     @Email(message = "{email_message}")
     private String email;
 
-    @NotBlank(message = "{blank_field_message}")
+    @NotBlank(message = "")
     @Size(min = 6, message = "{password_length_message}")
     private String password;
 
-    @NotBlank(message = "{blank_field_message}")
+    @NotBlank(message = "")
     @Size(min = 6, message = "{password_length_message}")
     private String confirmPassword;
 }

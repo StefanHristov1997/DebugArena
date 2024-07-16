@@ -15,11 +15,11 @@ import java.time.LocalDate;
 @Setter
 public class AddProblemBindingModel {
 
-    @NotBlank(message = "{blank_field_message}")
+    @NotBlank(message = "")
     @Size(min = 6, message = "{title.length.message}")
     private String title;
 
-    @NotBlank(message = "{blank_field_message}")
+    @NotBlank(message = "")
     @Size(min = 20, message = "{description.length.message}")
     private String description;
 

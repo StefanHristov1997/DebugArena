@@ -14,7 +14,7 @@ import lombok.Setter;
 @RegisterPasswordMatcher
 public class UserRegisterBindingModel {
 
-    @NotBlank(message = "{blank_field_message}")
+    @NotBlank(message = "")
     @Size(min = 5, message = "{username.length.message}")
     @UniqueUsername
     private String username;
@@ -24,11 +24,11 @@ public class UserRegisterBindingModel {
     @UniqueEmail
     private String email;
 
-    @NotBlank(message = "{blank_field_message}")
+    @NotBlank(message = "")
     @Size(min = 6, message = "{password_length_message}")
     private String password;
 
-    @NotBlank(message = "{blank_field_message}")
+    @NotBlank(message = "")
     @Size(min = 6, message = "{password_length_message}")
     private String confirmPassword;
 }

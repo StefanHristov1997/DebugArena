@@ -30,7 +30,7 @@ public class WeeklyEventsNotificationScheduleTask {
         this.userService = userService;
     }
 
-    @Scheduled(cron = "0 0 * * SUN ?")
+    @Scheduled(cron = "0 0 * * 7 ?")
     public void sendWeeklyEventsNotification() {
         List<EventDetailsInfoViewModel> weeklyEvents = eventService.getWeeklyEvents();
         List<UserEmailBindingModel> userEmails = userService.getUserEmails();
