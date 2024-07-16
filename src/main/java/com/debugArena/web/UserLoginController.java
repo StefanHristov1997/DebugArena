@@ -32,11 +32,8 @@ public class UserLoginController {
     }
 
     @PostMapping("/login-error")
-    public String loginError(Model model) {
-
-        if(loggedUserHelper.isLogged()){
-            return "redirect:/home";
-        }
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public String handleUserNotFound(Model model) {
 
         model.addAttribute("loginError", true);
 

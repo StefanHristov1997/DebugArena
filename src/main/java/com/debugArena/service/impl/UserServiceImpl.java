@@ -5,7 +5,6 @@ import com.debugArena.model.dto.binding.*;
 import com.debugArena.model.dto.view.UserProfileViewModel;
 import com.debugArena.model.entity.UserEntity;
 import com.debugArena.model.enums.UserRoleEnum;
-import com.debugArena.repository.CommentRepository;
 import com.debugArena.repository.UserRepository;
 import com.debugArena.service.RoleService;
 import com.debugArena.service.UserService;
@@ -13,17 +12,16 @@ import com.debugArena.service.helpers.LoggedUserHelper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final CommentRepository commentRepository;
     private final RoleService roleService;
 
     private final LoggedUserHelper loggedUserHelper;
@@ -35,14 +33,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public UserServiceImpl(
             UserRepository userRepository,
-            CommentRepository commentRepository,
             RoleService roleService,
             LoggedUserHelper loggedUserHelper,
             ApplicationEventPublisher publisher,
             ModelMapper mapper,
             PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-        this.commentRepository = commentRepository;
         this.roleService = roleService;
         this.loggedUserHelper = loggedUserHelper;
         this.publisher = publisher;
@@ -71,7 +67,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void resetPassword(UserResetPasswordBindingModel userResetPasswordBindingModel) {
 
-        final UserEntity userToSave = this.userRepository.findByEmail(userResetPasswordBindingModel.getEmail()).get();
+        final UserEntity userToSave = this.userRepository
+                .findByEmail(userResetPasswordBindingModel
+                        .getEmail())
+                .orElseThrow(() ->
+                        new UsernameNotFoundException("User with email: " + userResetPasswordBindingModel.getEmail() + " is not found"));
 
         final String encodedPassword = passwordEncoder.encode(userResetPasswordBindingModel.getPassword());
 
