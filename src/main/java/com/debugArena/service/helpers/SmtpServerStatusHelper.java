@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Properties;
 
 @Service
-public class SmtpServerStatusService {
+public class SmtpServerStatusHelper {
 
     @Value("${mail.host}")
     private String host;

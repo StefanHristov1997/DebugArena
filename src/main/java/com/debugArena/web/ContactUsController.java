@@ -48,6 +48,7 @@ public class ContactUsController {
             @Valid EmailSenderBindingModel emailSenderBindingModel,
             BindingResult bindingResult,
             RedirectAttributes rAtt) {
+
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attributeName, emailSenderBindingModel);
             rAtt.addFlashAttribute(bindingResultPath + DOT + attributeName, bindingResult);
@@ -62,6 +63,6 @@ public class ContactUsController {
     @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(EmailConnectionException.class)
     public String handleEmailConnectionException() {
-        return "/error/email-connect-error";
+        return "/error/email-connection-error";
     }
 }
