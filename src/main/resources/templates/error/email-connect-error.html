@@ -63,8 +63,9 @@
 <div class="container">
     <div class="error-page">
         <h1>500</h1>
-        <p>Съжаляваме, възникна проблем с нашия сървър. Ще се опитаме да отстраним проблема възможно най-скоро.</p>
-        <a th:href="@{/}" class="btn">Обратно към началната страница</a>
+        <h2 th:text="#{email.error.page.h2}"></h2>
+        <p th:text="#{email.error.page.p}"></p>
+        <a th:href="@{/}" class="btn" th:text="#{error.page.btn.home}"></a>
     </div>
 </div>
 </body>
