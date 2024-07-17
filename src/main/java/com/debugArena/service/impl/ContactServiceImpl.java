@@ -1,7 +1,7 @@
 package com.debugArena.service.impl;
 
 import com.debugArena.events.UserContactedUsEvent;
-import com.debugArena.exeption.EmailConnectionException;
+import com.debugArena.exeption.ServerConnectionException;
 import com.debugArena.service.ContactService;
 import com.debugArena.service.MailService;
 import com.debugArena.service.helpers.SmtpServerStatusHelper;
@@ -26,7 +26,7 @@ public class ContactServiceImpl implements ContactService {
     public void receiveUserEmail(UserContactedUsEvent event) {
 
         if (!smtpServerStatusHelper.isSmtpServerUp()) {
-            throw new EmailConnectionException();
+            throw new ServerConnectionException();
         }
 
         mailService.sendToOurEmail(event.getEmailSenderBindingModel());

@@ -181,6 +181,6 @@ public class ProblemController {
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
     @ExceptionHandler(ObjectNotFoundException.class)
     public String handleNotFoundProblem() {
-        return "/error/problem-not-found";
+        return "/error/object-not-found";
     }
 }

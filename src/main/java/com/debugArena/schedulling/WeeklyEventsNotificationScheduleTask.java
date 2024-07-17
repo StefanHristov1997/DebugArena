@@ -15,7 +15,7 @@ import java.util.List;
 @Component
 public class WeeklyEventsNotificationScheduleTask {
 
-    private final MailService emailService;
+    private final MailService mailService;
     private final SmtpServerStatusHelper smtpServerStatusHelper;
     private final EventService eventService;
     private final UserService userService;
@@ -23,11 +23,11 @@ public class WeeklyEventsNotificationScheduleTask {
 
     @Autowired
     public WeeklyEventsNotificationScheduleTask(
-            MailService emailService, SmtpServerStatusHelper smtpServerStatusHelper,
+            MailService mailService, SmtpServerStatusHelper smtpServerStatusHelper,
             EventService eventService,
             UserService userService) {
 
-        this.emailService = emailService;
+        this.mailService = mailService;
         this.smtpServerStatusHelper = smtpServerStatusHelper;
         this.eventService = eventService;
         this.userService = userService;
@@ -39,7 +39,7 @@ public class WeeklyEventsNotificationScheduleTask {
             List<EventDetailsInfoViewModel> weeklyEvents = eventService.getWeeklyEvents();
             List<UserEmailBindingModel> userEmails = userService.getUserEmails();
 
-            emailService.sendWeeklyEventsNotifications(weeklyEvents, userEmails);
+            mailService.sendWeeklyEventsNotifications(weeklyEvents, userEmails);
         }
     }
 }

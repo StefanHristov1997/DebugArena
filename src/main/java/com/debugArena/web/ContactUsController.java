@@ -1,6 +1,6 @@
 package com.debugArena.web;
 
-import com.debugArena.exeption.EmailConnectionException;
+import com.debugArena.exeption.ServerConnectionException;
 import com.debugArena.model.dto.binding.EmailSenderBindingModel;
 import com.debugArena.service.UserService;
 import jakarta.validation.Valid;
@@ -61,8 +61,8 @@ public class ContactUsController {
     }
 
     @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(EmailConnectionException.class)
-    public String handleEmailConnectionException() {
-        return "/error/email-connection-error";
+    @ExceptionHandler(ServerConnectionException.class)
+    public String handleServerConnectionException() {
+        return "/error/server-connection-error";
     }
 }
