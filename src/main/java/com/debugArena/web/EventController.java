@@ -1,5 +1,7 @@
 package com.debugArena.web;
 
+import com.debugArena.exeption.ServerConnectionException;
+import com.debugArena.exeption.ObjectNotFoundException;
 import com.debugArena.model.dto.binding.AddEventBindingModel;
 import com.debugArena.model.dto.view.EventDetailsInfoViewModel;
 import com.debugArena.model.dto.view.EventShortInfoViewModel;
@@ -7,13 +9,11 @@ import com.debugArena.service.EventService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -78,6 +78,18 @@ public class EventController {
         model.addAttribute("events", events);
 
         return "view-all-events";
+    }
+
+    @ResponseStatus(code = HttpStatus.NOT_FOUND)
+    @ExceptionHandler(ObjectNotFoundException.class)
+    public String handleEventNotFound() {
+        return "/error/object-not-found";
+    }
+
+    @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(ServerConnectionException.class)
+    public String handleServerConnectionException() {
+        return "/error/server-connection-error";
     }
 
 }
