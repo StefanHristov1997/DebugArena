@@ -15,14 +15,14 @@ import java.util.List;
 @Component
 public class DailyProblemsNotificationScheduleTask {
 
-    private final MailService emailService;
+    private final MailService mailService;
     private final SmtpServerStatusHelper smtpServerStatusHelper;
     private final ProblemService problemService;
     private final UserService userService;
 
     @Autowired
-    public DailyProblemsNotificationScheduleTask(MailService emailService, SmtpServerStatusHelper smtpServerStatusHelper, ProblemService problemService, UserService userService) {
-        this.emailService = emailService;
+    public DailyProblemsNotificationScheduleTask(MailService mailService, SmtpServerStatusHelper smtpServerStatusHelper, ProblemService problemService, UserService userService) {
+        this.mailService = mailService;
         this.smtpServerStatusHelper = smtpServerStatusHelper;
         this.problemService = problemService;
         this.userService = userService;
@@ -34,7 +34,7 @@ public class DailyProblemsNotificationScheduleTask {
             List<DailyNotificationProblemViewModel> dailyNotificationProblems = problemService.getDailyNotificationProblems();
             List<UserEmailBindingModel> userEmails = userService.getUserEmails();
 
-            emailService.sendDailyProblemsNotifications(dailyNotificationProblems, userEmails);
+            mailService.sendDailyProblemsNotifications(dailyNotificationProblems, userEmails);
         }
     }
 }
