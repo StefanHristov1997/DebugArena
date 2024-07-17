@@ -17,7 +17,7 @@ public class EventAPIServerStatusHelper {
         try {
             String response = restClient
                     .get()
-                    .uri("/events/check")
+                    .uri("api/events/check")
                     .retrieve().body(String.class);
             return true;
         } catch (Exception e) {

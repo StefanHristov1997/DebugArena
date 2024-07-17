@@ -36,7 +36,7 @@ public class EventServiceImpl implements EventService {
 
         restClient
                 .post()
-                .uri("/events")
+                .uri("api/events/create")
                 .body(addEventBindingModel)
                 .retrieve();
     }
@@ -49,7 +49,7 @@ public class EventServiceImpl implements EventService {
         try {
             return restClient
                     .get()
-                    .uri("/events/{id}", id)
+                    .uri("api/events/{id}", id)
                     .accept(MediaType.APPLICATION_JSON)
                     .retrieve()
                     .body(EventDetailsInfoViewModel.class);
@@ -65,7 +65,7 @@ public class EventServiceImpl implements EventService {
 
             return restClient
                     .get()
-                    .uri("/events")
+                    .uri("api/events/all")
                     .accept(MediaType.APPLICATION_JSON)
                     .retrieve()
                     .body(new ParameterizedTypeReference<>() {
@@ -79,7 +79,7 @@ public class EventServiceImpl implements EventService {
 
         return restClient
                 .get()
-                .uri("/events/weekly-events")
+                .uri("api/events/weekly-events")
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .body(new ParameterizedTypeReference<>() {
