@@ -12,13 +12,13 @@ public class EventAPIServerStatusHelper {
         this.restClient = restClient;
     }
 
-
     public boolean isApiServerUp() {
         try {
             String response = restClient
                     .get()
                     .uri("api/events/check")
-                    .retrieve().body(String.class);
+                    .retrieve()
+                    .body(String.class);
             return true;
         } catch (Exception e) {
             return false;

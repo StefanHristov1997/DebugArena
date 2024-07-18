@@ -1,7 +1,7 @@
 package com.debugArena.service.impl;
 
-import com.debugArena.exeption.ServerConnectionException;
 import com.debugArena.exeption.ObjectNotFoundException;
+import com.debugArena.exeption.ServerConnectionException;
 import com.debugArena.model.dto.binding.AddEventBindingModel;
 import com.debugArena.model.dto.view.EventDetailsInfoViewModel;
 import com.debugArena.model.dto.view.EventShortInfoViewModel;
@@ -10,7 +10,6 @@ import com.debugArena.service.helpers.EventAPIServerStatusHelper;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
 

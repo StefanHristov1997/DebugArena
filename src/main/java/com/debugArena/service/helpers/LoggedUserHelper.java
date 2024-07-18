@@ -48,11 +48,11 @@ public class LoggedUserHelper {
                 .anyMatch(role -> role.getAuthority().equals("ROLE_" + userRoles));
     }
 
-    private UserDetails getUserDetails() {
+    public UserDetails getUserDetails() {
         return (UserDetails) getAuthentication().getPrincipal();
     }
 
-    private Authentication getAuthentication() {
+    public Authentication getAuthentication() {
         return SecurityContextHolder.getContext().getAuthentication();
     }
 }

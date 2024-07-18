@@ -18,6 +18,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 
+import static org.mockito.Mockito.when;
+
 @ExtendWith(MockitoExtension.class)
 class UserDetailsServiceImplTest {
 
@@ -46,7 +48,7 @@ class UserDetailsServiceImplTest {
         testUser.getRoles().add(new RoleEntity(1L, UserRoleEnum.ADMIN));
         testUser.getRoles().add(new RoleEntity(1L, UserRoleEnum.USER));
 
-        Mockito.when(mockedUserRepository.findByEmail(VALID_EMAIL))
+       when(mockedUserRepository.findByEmail(VALID_EMAIL))
                 .thenReturn(Optional.of(testUser));
 
 
