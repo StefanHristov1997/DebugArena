@@ -1,7 +1,7 @@
 package com.debugArena.web;
 
-import com.debugArena.exeption.ServerConnectionException;
 import com.debugArena.exeption.ObjectNotFoundException;
+import com.debugArena.exeption.ServerConnectionException;
 import com.debugArena.model.dto.binding.AddEventBindingModel;
 import com.debugArena.model.dto.view.EventDetailsInfoViewModel;
 import com.debugArena.model.dto.view.EventShortInfoViewModel;

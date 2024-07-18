@@ -10,6 +10,7 @@ import com.debugArena.service.helpers.EventAPIServerStatusHelper;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
 
@@ -34,11 +35,11 @@ public class EventServiceImpl implements EventService {
 
         checkingServerStatus();
 
-        restClient
-                .post()
-                .uri("api/events/create")
-                .body(addEventBindingModel)
-                .retrieve();
+            restClient
+                    .post()
+                    .uri("api/events/create")
+                    .body(addEventBindingModel)
+                    .retrieve();
     }
 
     @Override
