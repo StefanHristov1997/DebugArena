@@ -1,6 +1,7 @@
 package com.debugArena.service.impl;
 
 import com.debugArena.model.dto.binding.UserEmailBindingModel;
+import com.debugArena.model.dto.binding.UserProfileBindingModel;
 import com.debugArena.model.dto.view.UserProfileViewModel;
 import com.debugArena.model.entity.UserEntity;
 import com.debugArena.repository.UserRepository;
@@ -153,7 +154,6 @@ class UserServiceImplTest {
         when(mockedLoggedUserHelper.get())
                 .thenReturn(testLoggedUser);
 
-
         UserProfileViewModel testUserProfile = new UserProfileViewModel();
 
         testUserProfile.setUsername(testLoggedUser.getUsername());
@@ -170,5 +170,82 @@ class UserServiceImplTest {
         Assertions.assertEquals(testUserProfile.getSkills(), toTest.getUserProfile().getSkills());
         Assertions.assertEquals(testUserProfile, toTest.getUserProfile());
     }
+
+    @Test
+    void testEditUserProfileWithValidArguments() {
+
+        UserProfileBindingModel testUserProfile = new UserProfileBindingModel();
+        testUserProfile.setDescription("test");
+        testUserProfile.setSkills("test");
+        testUserProfile.setInterests("test");
+
+        UserEntity testLoggedUser = new UserEntity();
+
+        testLoggedUser.setUsername(USERNAME);
+        testLoggedUser.setDescription("");
+        testLoggedUser.setInterests("");
+        testLoggedUser.setSkills("");
+
+        when(mockedLoggedUserHelper.get())
+                .thenReturn(testLoggedUser);
+
+        toTest.editProfile(testUserProfile);
+
+        Assertions.assertEquals(testUserProfile.getDescription(), testLoggedUser.getDescription());
+        Assertions.assertEquals(testUserProfile.getInterests(), testLoggedUser.getInterests());
+        Assertions.assertEquals(testUserProfile.getSkills(), testLoggedUser.getSkills());
+    }
+
+    @Test
+    void testEditUserProfileWithEmptyArguments() {
+
+        UserProfileBindingModel testFirstUserProfile = new UserProfileBindingModel();
+        testFirstUserProfile.setDescription("");
+        testFirstUserProfile.setSkills("");
+        testFirstUserProfile.setInterests("");
+
+        UserEntity testFirstLoggedUser = new UserEntity();
+
+        testFirstLoggedUser.setUsername(USERNAME);
+        testFirstLoggedUser.setDescription("test");
+        testFirstLoggedUser.setInterests("test");
+        testFirstLoggedUser.setSkills("test");
+
+        when(mockedLoggedUserHelper.get())
+                .thenReturn(testFirstLoggedUser);
+
+        toTest.editProfile(testFirstUserProfile);
+
+        Assertions.assertNotEquals(testFirstUserProfile.getDescription(), testFirstLoggedUser.getDescription());
+        Assertions.assertNotEquals(testFirstUserProfile.getInterests(), testFirstLoggedUser.getInterests());
+        Assertions.assertNotEquals(testFirstUserProfile.getSkills(), testFirstLoggedUser.getSkills());
+    }
+
+    @Test
+    void testEditUserProfileWithBlankArguments() {
+
+        UserProfileBindingModel testSecondUserProfile = new UserProfileBindingModel();
+        testSecondUserProfile.setDescription(" ");
+        testSecondUserProfile.setSkills(" ");
+        testSecondUserProfile.setInterests(" ");
+
+        UserEntity testSecondLoggedUser = new UserEntity();
+
+        testSecondLoggedUser.setUsername(USERNAME);
+        testSecondLoggedUser.setDescription("test");
+        testSecondLoggedUser.setInterests("test");
+        testSecondLoggedUser.setSkills("test");
+
+        when(mockedLoggedUserHelper.get())
+                .thenReturn(testSecondLoggedUser);
+
+        toTest.editProfile(testSecondUserProfile);
+
+        Assertions.assertNotEquals(testSecondUserProfile.getDescription(), testSecondLoggedUser.getDescription());
+        Assertions.assertNotEquals(testSecondUserProfile.getInterests(), testSecondLoggedUser.getInterests());
+        Assertions.assertNotEquals(testSecondUserProfile.getSkills(), testSecondLoggedUser.getSkills());
+    }
+
+
 
 }

@@ -92,19 +92,19 @@ public class UserServiceImpl implements UserService {
 
         String userDescription = userProfileBindingModel.getDescription();
 
-        if (!userDescription.isEmpty() || !userDescription.isBlank()) {
+        if (!userDescription.isBlank()) {
             currentUser.setDescription(userDescription);
         }
 
         String userSkills = userProfileBindingModel.getSkills();
 
-        if (!userSkills.isEmpty() || !userSkills.isBlank()) {
+        if (!userSkills.isBlank()) {
             currentUser.setSkills(userSkills);
         }
 
         String userInterests = userProfileBindingModel.getInterests();
 
-        if (!userInterests.isEmpty() || !userInterests.isBlank()) {
+        if (!userInterests.isBlank()) {
             currentUser.setInterests(userInterests);
         }
 
