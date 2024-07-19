@@ -15,6 +15,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
@@ -22,10 +24,13 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Optional;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceImplTest {
@@ -39,6 +44,9 @@ class UserServiceImplTest {
 
     @Mock
     private UserRepository mockedUserRepository;
+
+    @Captor
+    private ArgumentCaptor<UserEntity> userEntityCaptor;
 
     @Mock
     private RoleService mockedRoleService;
@@ -271,6 +279,7 @@ class UserServiceImplTest {
                     toTest.resetPassword(testUserResetPassword);
                 });
     }
+
     @Test
     public void testRegisterUser_FirstUser() {
 
@@ -284,6 +293,7 @@ class UserServiceImplTest {
                 .thenReturn(testUser);
 
         List<RoleEntity> testRoles = new ArrayList<>();
+
         RoleEntity testFirstRole = new RoleEntity();
         testFirstRole.setName(UserRoleEnum.USER);
 
@@ -298,8 +308,14 @@ class UserServiceImplTest {
 
         toTest.registerUser(testUserRegisterModel);
 
-        verify(mockedUserRepository, times(1)).save(testUser);
-        Assertions.assertEquals(2, testUser.getRoles().size());
+        verify(mockedUserRepository).save(userEntityCaptor.capture());
+
+        UserEntity actualSavedUser = userEntityCaptor.getValue();
+
+        Assertions.assertEquals(testUserRegisterModel.getUsername(), actualSavedUser.getUsername());
+        Assertions.assertEquals(testUserRegisterModel.getEmail(), actualSavedUser.getEmail());
+        Assertions.assertEquals(testUserRegisterModel.getPassword(), actualSavedUser.getPassword());
+        Assertions.assertEquals(2, actualSavedUser.getRoles().size());
     }
 
     @Test
@@ -312,7 +328,8 @@ class UserServiceImplTest {
 
         UserEntity testUser = createTestUser();
 
-        when(mockedModelMapper.map(testUserRegisterModel, UserEntity.class)).thenReturn(testUser);
+        when(mockedModelMapper.map(testUserRegisterModel, UserEntity.class))
+                .thenReturn(testUser);
 
         List<RoleEntity> testRoles = new ArrayList<>();
         RoleEntity testFirstRole = new RoleEntity();
@@ -324,8 +341,14 @@ class UserServiceImplTest {
 
         toTest.registerUser(testUserRegisterModel);
 
-        verify(mockedUserRepository, times(1)).save(testUser);
-        Assertions.assertEquals(1, testUser.getRoles().size());
+        verify(mockedUserRepository).save(userEntityCaptor.capture());
+
+        UserEntity actualSavedUser = userEntityCaptor.getValue();
+
+        Assertions.assertEquals(testUserRegisterModel.getUsername(), actualSavedUser.getUsername());
+        Assertions.assertEquals(testUserRegisterModel.getEmail(), actualSavedUser.getEmail());
+        Assertions.assertEquals(testUserRegisterModel.getPassword(), actualSavedUser.getPassword());
+        Assertions.assertEquals(1, actualSavedUser.getRoles().size());
     }
 
     private static UserRegisterBindingModel createUserRegisterModel() {
@@ -334,6 +357,7 @@ class UserServiceImplTest {
 
         testUserRegisterModel.setUsername(USERNAME);
         testUserRegisterModel.setPassword(PASSWORD);
+        testUserRegisterModel.setEmail(EMAIL);
 
         return testUserRegisterModel;
     }
