@@ -28,8 +28,8 @@ class UserDetailsServiceImplTest {
 
     private UserDetailsServiceImpl toTest;
 
-    private final String VALID_EMAIL = "test@test.com";
-    private final String NOT_VALID_EMAIL = "test@test.com";
+    private final static String VALID_EMAIL = "test@test.com";
+    private final static String NOT_VALID_EMAIL = "test@123test.com";
 
     @BeforeEach
     void setUp() {

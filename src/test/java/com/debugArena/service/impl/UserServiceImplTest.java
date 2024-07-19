@@ -2,8 +2,12 @@ package com.debugArena.service.impl;
 
 import com.debugArena.model.dto.binding.UserEmailBindingModel;
 import com.debugArena.model.dto.binding.UserProfileBindingModel;
+import com.debugArena.model.dto.binding.UserRegisterBindingModel;
+import com.debugArena.model.dto.binding.UserResetPasswordBindingModel;
 import com.debugArena.model.dto.view.UserProfileViewModel;
+import com.debugArena.model.entity.RoleEntity;
 import com.debugArena.model.entity.UserEntity;
+import com.debugArena.model.enums.UserRoleEnum;
 import com.debugArena.repository.UserRepository;
 import com.debugArena.service.RoleService;
 import com.debugArena.service.helpers.LoggedUserHelper;
@@ -15,20 +19,23 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceImplTest {
 
     private UserServiceImpl toTest;
 
-    private final String EMAIL = "test@test.com";
-    private final String USERNAME = "testUser";
+    private final static String USERNAME = "testUser";
+    private final static String EMAIL = "test@test.com";
+    private final static String NOT_VALID_EMAIL = "test@123test.com";
+    private final static String PASSWORD = "test";
 
     @Mock
     private UserRepository mockedUserRepository;
@@ -144,12 +151,7 @@ class UserServiceImplTest {
     @Test
     void testGetUserProfile() {
 
-        UserEntity testLoggedUser = new UserEntity();
-
-        testLoggedUser.setUsername(USERNAME);
-        testLoggedUser.setDescription("test");
-        testLoggedUser.setInterests("test");
-        testLoggedUser.setSkills("test");
+        UserEntity testLoggedUser = createTestUser();
 
         when(mockedLoggedUserHelper.get())
                 .thenReturn(testLoggedUser);
@@ -204,12 +206,7 @@ class UserServiceImplTest {
         testFirstUserProfile.setSkills("");
         testFirstUserProfile.setInterests("");
 
-        UserEntity testFirstLoggedUser = new UserEntity();
-
-        testFirstLoggedUser.setUsername(USERNAME);
-        testFirstLoggedUser.setDescription("test");
-        testFirstLoggedUser.setInterests("test");
-        testFirstLoggedUser.setSkills("test");
+        UserEntity testFirstLoggedUser = createTestUser();
 
         when(mockedLoggedUserHelper.get())
                 .thenReturn(testFirstLoggedUser);
@@ -229,12 +226,7 @@ class UserServiceImplTest {
         testSecondUserProfile.setSkills(" ");
         testSecondUserProfile.setInterests(" ");
 
-        UserEntity testSecondLoggedUser = new UserEntity();
-
-        testSecondLoggedUser.setUsername(USERNAME);
-        testSecondLoggedUser.setDescription("test");
-        testSecondLoggedUser.setInterests("test");
-        testSecondLoggedUser.setSkills("test");
+        UserEntity testSecondLoggedUser = createTestUser();
 
         when(mockedLoggedUserHelper.get())
                 .thenReturn(testSecondLoggedUser);
@@ -246,6 +238,118 @@ class UserServiceImplTest {
         Assertions.assertNotEquals(testSecondUserProfile.getSkills(), testSecondLoggedUser.getSkills());
     }
 
+    @Test
+    void testResetPasswordWithUserFound() {
 
+        UserEntity testUser = createTestUser();
+        UserResetPasswordBindingModel testUserResetPassword = new UserResetPasswordBindingModel();
+
+        testUserResetPassword.setEmail(testUser.getEmail());
+        testUserResetPassword.setPassword("test123");
+        testUserResetPassword.setConfirmPassword("test123");
+
+        when(mockedUserRepository.findByEmail(testUserResetPassword.getEmail()))
+                .thenReturn(Optional.of(testUser));
+
+        when(mockedPasswordEncoder.encode(testUserResetPassword.getPassword()))
+                .thenReturn("test123");
+
+        toTest.resetPassword(testUserResetPassword);
+
+        Assertions.assertEquals(testUserResetPassword.getPassword(), testUser.getPassword());
+    }
+
+    @Test
+    void testResetPasswordWithNotUserFound() {
+
+        UserResetPasswordBindingModel testUserResetPassword = new UserResetPasswordBindingModel();
+
+        testUserResetPassword.setEmail(NOT_VALID_EMAIL);
+
+        Assertions
+                .assertThrows(UsernameNotFoundException.class, () -> {
+                    toTest.resetPassword(testUserResetPassword);
+                });
+    }
+    @Test
+    public void testRegisterUser_FirstUser() {
+
+        UserRegisterBindingModel testUserRegisterModel = createUserRegisterModel();
+
+        when(mockedUserRepository.count()).thenReturn(0L);
+
+        UserEntity testUser = createTestUser();
+
+        when(mockedModelMapper.map(testUserRegisterModel, UserEntity.class))
+                .thenReturn(testUser);
+
+        List<RoleEntity> testRoles = new ArrayList<>();
+        RoleEntity testFirstRole = new RoleEntity();
+        testFirstRole.setName(UserRoleEnum.USER);
+
+        RoleEntity testSecondRole = new RoleEntity();
+        testFirstRole.setName(UserRoleEnum.ADMIN);
+
+        testRoles.add(testFirstRole);
+        testRoles.add(testSecondRole);
+
+        when(mockedRoleService.getRolesByName(List.of(UserRoleEnum.USER, UserRoleEnum.ADMIN)))
+                .thenReturn(new LinkedHashSet<>(testRoles));
+
+        toTest.registerUser(testUserRegisterModel);
+
+        verify(mockedUserRepository, times(1)).save(testUser);
+        Assertions.assertEquals(2, testUser.getRoles().size());
+    }
+
+    @Test
+    public void testRegisterUser_ExistingUsers() {
+
+        when(mockedUserRepository.count())
+                .thenReturn(1L);
+
+        UserRegisterBindingModel testUserRegisterModel = createUserRegisterModel();
+
+        UserEntity testUser = createTestUser();
+
+        when(mockedModelMapper.map(testUserRegisterModel, UserEntity.class)).thenReturn(testUser);
+
+        List<RoleEntity> testRoles = new ArrayList<>();
+        RoleEntity testFirstRole = new RoleEntity();
+        testFirstRole.setName(UserRoleEnum.USER);
+        testRoles.add(testFirstRole);
+
+        when(mockedRoleService.getRolesByName(List.of(UserRoleEnum.USER)))
+                .thenReturn(new LinkedHashSet<>(testRoles));
+
+        toTest.registerUser(testUserRegisterModel);
+
+        verify(mockedUserRepository, times(1)).save(testUser);
+        Assertions.assertEquals(1, testUser.getRoles().size());
+    }
+
+    private static UserRegisterBindingModel createUserRegisterModel() {
+
+        UserRegisterBindingModel testUserRegisterModel = new UserRegisterBindingModel();
+
+        testUserRegisterModel.setUsername(USERNAME);
+        testUserRegisterModel.setPassword(PASSWORD);
+
+        return testUserRegisterModel;
+    }
+
+    private static UserEntity createTestUser() {
+
+        UserEntity testUser = new UserEntity();
+
+        testUser.setUsername(USERNAME);
+        testUser.setEmail(EMAIL);
+        testUser.setPassword(PASSWORD);
+        testUser.setDescription("test");
+        testUser.setInterests("test");
+        testUser.setSkills("test");
+
+        return testUser;
+    }
 
 }
