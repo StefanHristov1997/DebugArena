@@ -2,7 +2,7 @@ package com.debugArena.service.impl;
 
 import com.debugArena.exeption.ObjectNotFoundException;
 import com.debugArena.model.dto.binding.AddCommentBindingModel;
-import com.debugArena.model.dto.binding.AddProblemBindingModel;
+import com.debugArena.model.dto.view.CommentViewModel;
 import com.debugArena.model.entity.CommentEntity;
 import com.debugArena.model.entity.ProblemEntity;
 import com.debugArena.model.entity.UserEntity;
@@ -22,10 +22,10 @@ import org.modelmapper.ModelMapper;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class CommentServiceImplTest {
@@ -76,7 +76,7 @@ class CommentServiceImplTest {
         testComment.setAuthor(testUser);
         testUser.getAddedComments().add(testComment);
 
-        ProblemEntity testProblem = createProblem();
+        ProblemEntity testProblem = createTestProblem();
 
         when(mockedProblemRepository.findById(testProblem.getId()))
                 .thenReturn(Optional.of(testProblem));
@@ -121,6 +121,103 @@ class CommentServiceImplTest {
         });
     }
 
+    @Test
+    void testUpdateCommentRatingComment_Found() {
+
+        CommentEntity testComment = createTestComment();
+
+        when(mockedCommentRepository.findById(testComment.getId()))
+                .thenReturn(Optional.of(testComment));
+
+        testComment.setRating(4);
+
+        toTest.updateCommentRating(testComment.getId(), testComment.getRating());
+
+        verify(mockedCommentRepository).save(commentCaptor.capture());
+
+        CommentEntity result = commentCaptor.getValue();
+
+        Assertions.assertEquals(testComment.getRating(), result.getRating());
+    }
+
+    @Test
+    void testUpdateCommentRatingComment_NotFound() {
+
+        Assertions
+                .assertThrows(ObjectNotFoundException.class, () -> {
+                    toTest.updateCommentRating(-1L, 0);
+                });
+    }
+
+    @Test
+    void testDeleteCommentById() {
+
+        Long commentId = 1L;
+
+        toTest.deleteCommentById(commentId);
+
+        verify(mockedCommentRepository, times(1))
+                .deleteById(commentId);
+    }
+
+    @Test
+    void testGetCommentsByProblemOrderByRatingDesc() {
+
+        CommentEntity firstTestComment = createTestComment();
+        firstTestComment.setRating(5);
+
+        CommentEntity secondTestComment = createTestComment();
+        secondTestComment.setRating(3);
+
+        CommentEntity thirdTestComment = createTestComment();
+        thirdTestComment.setRating(4);
+
+        List<CommentEntity> testComments = List.of(firstTestComment, secondTestComment, thirdTestComment);
+
+        when(mockedCommentRepository.findAllByProblemIdOrderByRatingDesc(1L))
+                .thenReturn(testComments);
+
+        CommentViewModel firstTestCommentViewModel = new CommentViewModel();
+        firstTestCommentViewModel.setId(firstTestComment.getId());
+        firstTestCommentViewModel.setRating(firstTestComment.getRating());
+        firstTestCommentViewModel.setAuthorUsername(firstTestComment.getAuthor().getUsername());
+        firstTestCommentViewModel.setTextContent(firstTestComment.getTextContent());
+        firstTestCommentViewModel.setAuthorEmail(firstTestComment.getAuthor().getEmail());
+        firstTestCommentViewModel.setCreatedOn(firstTestComment.getCreatedOn());
+
+        when(mockedModelMapper.map(firstTestComment, CommentViewModel.class))
+                .thenReturn(firstTestCommentViewModel);
+
+        CommentViewModel secondTestCommentViewModel = new CommentViewModel();
+        secondTestCommentViewModel.setId(secondTestComment.getId());
+        secondTestCommentViewModel.setRating(secondTestComment.getRating());
+        secondTestCommentViewModel.setAuthorUsername(secondTestComment.getAuthor().getUsername());
+        secondTestCommentViewModel.setTextContent(secondTestComment.getTextContent());
+        secondTestCommentViewModel.setAuthorEmail(secondTestComment.getAuthor().getEmail());
+        secondTestCommentViewModel.setCreatedOn(secondTestComment.getCreatedOn());
+
+        when(mockedModelMapper.map(secondTestComment, CommentViewModel.class))
+                .thenReturn(secondTestCommentViewModel);
+
+        CommentViewModel thirdTestCommentViewModel = new CommentViewModel();
+        thirdTestCommentViewModel.setId(thirdTestComment.getId());
+        thirdTestCommentViewModel.setRating(thirdTestComment.getRating());
+        thirdTestCommentViewModel.setAuthorUsername(thirdTestComment.getAuthor().getUsername());
+        thirdTestCommentViewModel.setTextContent(thirdTestComment.getTextContent());
+        thirdTestCommentViewModel.setAuthorEmail(thirdTestComment.getAuthor().getEmail());
+        thirdTestCommentViewModel.setCreatedOn(thirdTestComment.getCreatedOn());
+
+        when(mockedModelMapper.map(thirdTestComment, CommentViewModel.class))
+                .thenReturn(thirdTestCommentViewModel);
+
+        List<CommentViewModel> resultList = toTest.getCommentsByProblemOrderByRatingDesc(1L);
+
+        Assertions.assertEquals(3, resultList.size());
+        Assertions.assertEquals(firstTestCommentViewModel, resultList.get(0));
+        Assertions.assertEquals(thirdTestCommentViewModel, resultList.get(2));
+        Assertions.assertEquals(secondTestCommentViewModel, resultList.get(1));
+    }
+
     private static UserEntity createTestUser() {
 
         UserEntity testUser = new UserEntity();
@@ -134,7 +231,7 @@ class CommentServiceImplTest {
         return testUser;
     }
 
-    private static ProblemEntity createProblem() {
+    private static ProblemEntity createTestProblem() {
 
         ProblemEntity testProblem = new ProblemEntity();
         UserEntity testUser = createTestUser();
@@ -151,7 +248,7 @@ class CommentServiceImplTest {
 
         CommentEntity testComment = new CommentEntity();
         UserEntity testUser = createTestUser();
-        ProblemEntity testProblem = createProblem();
+        ProblemEntity testProblem = createTestProblem();
 
         testComment.setCreatedOn(LocalDate.now());
         testComment.setAuthor(testUser);

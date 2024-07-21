@@ -42,19 +42,19 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public EventDetailsInfoViewModel getEventDetailsInfoById(Long id) {
+    public EventDetailsInfoViewModel getEventDetailsInfoById(Long eventId) {
 
         checkingServerStatus();
 
         try {
             return restClient
                     .get()
-                    .uri("api/events/{id}", id)
+                    .uri("api/events/{id}", eventId)
                     .accept(MediaType.APPLICATION_JSON)
                     .retrieve()
                     .body(EventDetailsInfoViewModel.class);
         } catch (RestClientException e) {
-            throw new ObjectNotFoundException("Event with id " + id + " not found");
+            throw new ObjectNotFoundException("Event with eventID " + eventId + " not found");
         }
     }
 
@@ -85,7 +85,6 @@ public class EventServiceImpl implements EventService {
                 .body(new ParameterizedTypeReference<>() {
                 });
     }
-
 
     private void checkingServerStatus() {
         if (!eventAPIServerStatusHelper.isApiServerUp()){

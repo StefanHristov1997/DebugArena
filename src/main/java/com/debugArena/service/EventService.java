@@ -10,7 +10,7 @@ public interface EventService {
 
     void registerEvent(AddEventBindingModel addEventBindingModel);
 
-    EventDetailsInfoViewModel getEventDetailsInfoById(Long id);
+    EventDetailsInfoViewModel getEventDetailsInfoById(Long eventId);
 
     List<EventShortInfoViewModel> getEvents();
 
