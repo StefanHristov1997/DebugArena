@@ -86,6 +86,11 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     @Override
+    public void deleteProblemById(Long id) {
+        problemRepository.deleteById(id);
+    }
+
+    @Override
     public List<DailyNotificationProblemViewModel> getDailyNotificationProblems() {
 
         List<ProblemEntity> problemsCreatedToday = problemRepository
@@ -105,10 +110,5 @@ public class ProblemServiceImpl implements ProblemService {
                                 .parse(LocalDate.now().getYear() + "-01" + "-01"));
 
         problemRepository.deleteAll(problemsByCreatedOnLastYear);
-    }
-
-    @Override
-    public void deleteProblemById(Long id) {
-        problemRepository.deleteById(id);
     }
 }

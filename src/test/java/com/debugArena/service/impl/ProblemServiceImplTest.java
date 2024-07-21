@@ -2,6 +2,7 @@ package com.debugArena.service.impl;
 
 import com.debugArena.exeption.ObjectNotFoundException;
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
+import com.debugArena.model.dto.view.ProblemDetailsInfoViewModel;
 import com.debugArena.model.dto.view.ProblemShortInfoViewModel;
 import com.debugArena.model.entity.LanguageEntity;
 import com.debugArena.model.entity.ProblemEntity;
@@ -112,7 +113,7 @@ class ProblemServiceImplTest {
     }
 
     @Test
-    void testAddProblemLanguage_notFound() {
+    void testAddProblemLanguage_NotFound() {
 
         AddProblemBindingModel testProblemModel = createAddProblemBindingModel();
 
@@ -162,6 +163,51 @@ class ProblemServiceImplTest {
         Assertions.assertEquals(testSecondShortInfoViewModel.getId(), result.get(1).getId());
         Assertions.assertEquals(testSecondShortInfoViewModel.getAuthorUsername(), result.get(1).getAuthorUsername());
         Assertions.assertEquals(testSecondShortInfoViewModel.getCreatedOn(), result.get(1).getCreatedOn());
+    }
+
+    @Test
+    void testGetProblemById_Found() {
+
+        ProblemEntity testProblem = createProblem();
+
+        when(mockedProblemRepository.findById(testProblem.getId()))
+                .thenReturn(Optional.of(testProblem));
+
+        ProblemDetailsInfoViewModel testProblemDetailsInfoViewModel = new ProblemDetailsInfoViewModel();
+        testProblemDetailsInfoViewModel.setId(testProblem.getId());
+        testProblemDetailsInfoViewModel.setTitle(testProblem.getTitle());
+        testProblemDetailsInfoViewModel.setDescription(testProblem.getDescription());
+        testProblemDetailsInfoViewModel.setCreatedOn(testProblem.getCreatedOn());
+        testProblemDetailsInfoViewModel.setAuthorUsername(testProblem.getAuthor().getUsername());
+
+        when(mockedModelMapper.map(testProblem, ProblemDetailsInfoViewModel.class))
+                .thenReturn(testProblemDetailsInfoViewModel);
+
+        ProblemDetailsInfoViewModel resultProblemDetailsInfo = toTest.getProblemDetails(testProblem.getId());
+
+        Assertions.assertEquals(testProblem.getId(), resultProblemDetailsInfo.getId());
+        Assertions.assertEquals(testProblem.getTitle(), resultProblemDetailsInfo.getTitle());
+        Assertions.assertEquals(testProblem.getDescription(), resultProblemDetailsInfo.getDescription());
+        Assertions.assertEquals(testProblem.getCreatedOn(), resultProblemDetailsInfo.getCreatedOn());
+        Assertions.assertEquals(testProblem.getAuthor().getUsername(), resultProblemDetailsInfo.getAuthorUsername());
+    }
+
+    @Test
+    void testGetProblemById_NotFound() {
+
+        Assertions.assertThrows(ObjectNotFoundException.class, () -> {
+            toTest.getProblemDetails(150L);
+        });
+    }
+
+    @Test
+    void testDeleteProblemById() {
+
+        Long problemId = 1L;
+
+        toTest.deleteProblemById(problemId);
+
+        verify(mockedProblemRepository, times(1)).deleteById(problemId);
     }
 
     private static AddProblemBindingModel createAddProblemBindingModel() {
