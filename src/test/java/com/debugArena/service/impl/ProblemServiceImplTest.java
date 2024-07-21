@@ -2,6 +2,7 @@ package com.debugArena.service.impl;
 
 import com.debugArena.exeption.ObjectNotFoundException;
 import com.debugArena.model.dto.binding.AddProblemBindingModel;
+import com.debugArena.model.dto.view.DailyNotificationProblemViewModel;
 import com.debugArena.model.dto.view.ProblemDetailsInfoViewModel;
 import com.debugArena.model.dto.view.ProblemShortInfoViewModel;
 import com.debugArena.model.entity.LanguageEntity;
@@ -208,6 +209,58 @@ class ProblemServiceImplTest {
         toTest.deleteProblemById(problemId);
 
         verify(mockedProblemRepository, times(1)).deleteById(problemId);
+    }
+
+    @Test
+    void testGetDailyNotificationProblems() {
+
+        ProblemEntity firstTestProblem = createProblem();
+        ProblemEntity secondTestProblem = createProblem();
+
+        List<ProblemEntity> testProblems = List.of(firstTestProblem, secondTestProblem);
+
+        when(mockedProblemRepository.findProblemsByCreatedOnIs(LocalDate.now()))
+                .thenReturn(testProblems);
+
+        DailyNotificationProblemViewModel testFirstDailyNotificationProblemViewModel = new DailyNotificationProblemViewModel();
+        testFirstDailyNotificationProblemViewModel.setTitle(firstTestProblem.getTitle());
+        testFirstDailyNotificationProblemViewModel.setAuthorUsername(firstTestProblem.getAuthor().getUsername());
+
+        DailyNotificationProblemViewModel testSecondDailyNotificationProblemViewModel = new DailyNotificationProblemViewModel();
+        testSecondDailyNotificationProblemViewModel.setTitle(firstTestProblem.getTitle());
+        testSecondDailyNotificationProblemViewModel.setAuthorUsername(firstTestProblem.getAuthor().getUsername());
+
+        when(mockedModelMapper.map(firstTestProblem, DailyNotificationProblemViewModel.class))
+                .thenReturn(testFirstDailyNotificationProblemViewModel);
+
+        when(mockedModelMapper.map(secondTestProblem, DailyNotificationProblemViewModel.class))
+                .thenReturn(testSecondDailyNotificationProblemViewModel);
+
+        List<DailyNotificationProblemViewModel> result = toTest.getDailyNotificationProblems();
+
+        Assertions.assertEquals(2, result.size());
+        Assertions.assertEquals(testFirstDailyNotificationProblemViewModel.getTitle(), result.get(0).getTitle());
+        Assertions.assertEquals(testFirstDailyNotificationProblemViewModel.getAuthorUsername(), result.get(0).getAuthorUsername());
+
+        Assertions.assertEquals(testSecondDailyNotificationProblemViewModel.getTitle(), result.get(1).getTitle());
+        Assertions.assertEquals(testSecondDailyNotificationProblemViewModel.getAuthorUsername(), result.get(1).getAuthorUsername());
+    }
+
+    @Test
+    void testDeleteProblemsCreatedLastYear() {
+
+        ProblemEntity firstTestProblem = createProblem();
+        ProblemEntity secondTestProblem = createProblem();
+
+        List<ProblemEntity> testProblems = List.of(firstTestProblem, secondTestProblem);
+
+        when(mockedProblemRepository.findProblemsByCreatedOnIsBefore(LocalDate
+                .parse(LocalDate.now().getYear() + "-01" + "-01")))
+                .thenReturn(testProblems);
+
+        toTest.deleteProblemsCreatedLastYear();
+
+        verify(mockedProblemRepository, times(1)).deleteAll(testProblems);
     }
 
     private static AddProblemBindingModel createAddProblemBindingModel() {
