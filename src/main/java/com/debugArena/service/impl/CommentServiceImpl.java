@@ -42,7 +42,10 @@ public class CommentServiceImpl implements CommentService {
         commentToSave.setAuthor(currentUser);
         currentUser.getAddedComments().add(commentToSave);
 
-        ProblemEntity problem = problemRepository.findById(problemId).orElseThrow();
+        ProblemEntity problem = problemRepository
+                .findById(problemId)
+                .orElseThrow(() -> new ObjectNotFoundException("Problem wih " + problemId + " is not found!"));
+
         commentToSave.setProblem(problem);
 
         commentRepository.save(commentToSave);
@@ -54,7 +57,7 @@ public class CommentServiceImpl implements CommentService {
         CommentEntity comment = commentRepository
                 .findById(id)
                 .orElseThrow(() ->
-                        new ObjectNotFoundException("Comment " + id + " is not found!"));
+                        new ObjectNotFoundException("Comment with " + id + " is not found!"));
 
         comment.setRating(rating);
 

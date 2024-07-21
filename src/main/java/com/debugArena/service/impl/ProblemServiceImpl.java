@@ -104,6 +104,7 @@ public class ProblemServiceImpl implements ProblemService {
 
     @Override
     public void deleteProblemsCreatedLastYear() {
+
         List<ProblemEntity> problemsByCreatedOnLastYear = problemRepository
                 .findProblemsByCreatedOnIsBefore(
                         LocalDate
