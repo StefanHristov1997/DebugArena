@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:hsqldb:mem:testdb;sql.syntax_mys=true
+logging:
+  level:
+    org.hibernate.SQL: FALSE
+    org.hibernate.orm.jdbc.bind: TRACE
+mail:
+  sender: "debugarena@gmail.com"
+  receiver: "contact@debugarena.com"
+  host: localhost
+  port: 1025
+  username: test
+  password: test
+event:
+  api:
+    baseUrl: "http://localhost:8081"
+binding-result-package: org.springframework.validation.BindingResult
