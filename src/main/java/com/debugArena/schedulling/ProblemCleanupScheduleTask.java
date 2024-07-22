@@ -15,8 +15,8 @@ public class ProblemCleanupScheduleTask {
         this.problemService = problemService;
     }
 
-    @Scheduled(cron = "0 0 1 1 * ?")
-    public void cleanupProblemsCreatedLastYear() {
-        problemService.deleteProblemsCreatedLastYear();
+    @Scheduled(cron = "0 50 23 31 12 ?")
+    public void cleanupProblemsCreatedBeforeCurrentYear() {
+        problemService.deleteProblemsCreatedBeforeCurrentYear();
     }
 }

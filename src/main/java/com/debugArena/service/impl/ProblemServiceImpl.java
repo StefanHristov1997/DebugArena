@@ -103,13 +103,13 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     @Override
-    public void deleteProblemsCreatedLastYear() {
+    public void deleteProblemsCreatedBeforeCurrentYear() {
 
-        List<ProblemEntity> problemsByCreatedOnLastYear = problemRepository
+        List<ProblemEntity> problemsByCreatedBeforeCurrentYear = problemRepository
                 .findProblemsByCreatedOnIsBefore(
                         LocalDate
                                 .parse(LocalDate.now().getYear() + "-01" + "-01"));
 
-        problemRepository.deleteAll(problemsByCreatedOnLastYear);
+        problemRepository.deleteAll(problemsByCreatedBeforeCurrentYear);
     }
 }

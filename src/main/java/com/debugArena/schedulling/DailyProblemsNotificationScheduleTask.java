@@ -28,6 +28,7 @@ public class DailyProblemsNotificationScheduleTask {
         this.userService = userService;
     }
 
+    //30 * * * * ?
     @Scheduled(cron = "0 0 22 * * 1-7")
     public void sendDailyProblemsNotifications() {
         if(smtpServerStatusHelper.isSmtpServerUp()){

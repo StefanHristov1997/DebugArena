@@ -18,7 +18,7 @@ public interface ProblemService {
 
     List<DailyNotificationProblemViewModel> getDailyNotificationProblems();
 
-    void deleteProblemsCreatedLastYear();
+    void deleteProblemsCreatedBeforeCurrentYear();
 
     void deleteProblemById(Long id);
 

@@ -247,7 +247,7 @@ class ProblemServiceImplTest {
     }
 
     @Test
-    void testDeleteProblemsCreatedLastYear() {
+    void testDeleteProblemsCreatedBeforeCurrentYear() {
 
         ProblemEntity firstTestProblem = createProblem();
         ProblemEntity secondTestProblem = createProblem();
@@ -258,7 +258,7 @@ class ProblemServiceImplTest {
                 .parse(LocalDate.now().getYear() + "-01" + "-01")))
                 .thenReturn(testProblems);
 
-        toTest.deleteProblemsCreatedLastYear();
+        toTest.deleteProblemsCreatedBeforeCurrentYear();
 
         verify(mockedProblemRepository, times(1)).deleteAll(testProblems);
     }
