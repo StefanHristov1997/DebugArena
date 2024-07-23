@@ -58,7 +58,7 @@ public class CommentController {
     }
 
     @DeleteMapping("/delete-comment/{commentId}/{problemId}")
-    public String deleteComment(
+    public String deleteCommentById(
             RedirectAttributes rAtt,
             @PathVariable(value = "commentId") Long commentId,
             @PathVariable(value = "problemId") Long problemId
