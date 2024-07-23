@@ -67,7 +67,7 @@ class UserRegisterControllerIT {
 
     @Test
     @WithMockUser(username = "viewUser", authorities = { "view" })
-    void testUserIsRedirectWhenIsAuthenticated() throws Exception {
+    void testRedirectWhenUserIsAuthenticated() throws Exception {
 
         mockMvc.perform(get("/users/register")
                         .with(csrf()))
