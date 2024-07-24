@@ -34,6 +34,15 @@ class UserProfileControllerIT {
     }
 
     @Test
+    void testRedirectToLoginPageWhenUserIsNotLoggedInForProfileRoute() throws Exception {
+
+        mockMvc.perform(get("/users/profile")
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("http://localhost/users/login"));
+    }
+
+    @Test
     @WithMockUser(username = "shristov16@e-dnrs.org", authorities = {"view"})
     void testProfileView() throws Exception {
 
@@ -70,17 +79,17 @@ class UserProfileControllerIT {
 
         mockMvc.perform(patch("/users/profile/edit-profile")
                         .with(csrf())
-                .param("description", "test description123")
-                .param("skills", "test skills123")
-                .param("interests", "test interests123"))
+                        .param("description", "test description123")
+                        .param("skills", "test skills123")
+                        .param("interests", "test interests123"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/users/profile"));
 
         Optional<UserEntity> userOpt = userRepository.findByEmail("shristov16@e-dnrs.org");
 
         Assertions.assertTrue(userOpt.isPresent());
-        Assertions.assertEquals("test description123" , userOpt.get().getDescription());
-        Assertions.assertEquals("test skills123" , userOpt.get().getSkills());
-        Assertions.assertEquals("test interests123" , userOpt.get().getInterests());
+        Assertions.assertEquals("test description123", userOpt.get().getDescription());
+        Assertions.assertEquals("test skills123", userOpt.get().getSkills());
+        Assertions.assertEquals("test interests123", userOpt.get().getInterests());
     }
 }
