@@ -29,6 +29,21 @@ class UserRegisterControllerIT {
     private MockMvc mockMvc;
 
     @Test
+    @WithMockUser(username = "viewUser", authorities = { "view" })
+    void testRedirectToHomeWhenUserIsLoggedIn() throws Exception {
+
+        mockMvc.perform(get("/users/register")
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/home"));
+
+        mockMvc.perform(post("/users/register")
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/home"));
+    }
+
+    @Test
     void testUserRegisterWithValidData() throws Exception {
 
         mockMvc.perform(post("/users/register")
@@ -64,22 +79,6 @@ class UserRegisterControllerIT {
         Assertions.assertFalse(userOpt.isPresent());
     }
 
-
-    @Test
-    @WithMockUser(username = "viewUser", authorities = { "view" })
-    void testRedirectWhenUserIsAuthenticated() throws Exception {
-
-        mockMvc.perform(get("/users/register")
-                        .with(csrf()))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/home"));
-
-        mockMvc.perform(post("/users/register")
-                        .with(csrf()))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/home"));
-
-    }
 
     @Test
     void testRegisterView() throws Exception {
