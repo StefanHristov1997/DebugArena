@@ -25,22 +25,21 @@ class UserLoginControllerIT {
     private MockMvc mockMvc;
 
     @Test
+    @WithMockUser(username = "viewUser", authorities = {"view"})
+    void testRedirectToHomeWhenUserIsLoggedIn() throws Exception {
+
+        mockMvc.perform(get("/users/login")
+                        .with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/home"));
+    }
+
+    @Test
     void testLoginView() throws Exception {
 
         mockMvc.perform(get("/users/login"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(view().name("login"));
-    }
-
-    @Test
-    @WithMockUser(username = "viewUser", authorities = {"view"})
-    void testRedirectWhenUserIsAuthenticated() throws Exception {
-
-        mockMvc.perform(get("/users/login")
-                        .with(csrf()))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/home"));
-
     }
 
     @Test

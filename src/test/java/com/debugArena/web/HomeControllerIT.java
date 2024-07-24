@@ -8,8 +8,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -32,14 +31,15 @@ class HomeControllerIT {
 
         mockMvc.perform(get("/"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/home"));
+                .andExpect(redirectedUrl("/home"));
     }
 
     @Test
-    void testRedirectToLoginPageWhenUserIsNotLoggedIn() throws Exception {
+    void testRedirectToLoginWhenUserIsNotLoggedIn() throws Exception {
 
         mockMvc.perform(get("/home"))
-                .andExpect(status().is3xxRedirection());
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("http://localhost/users/login"));
     }
 
     @Test

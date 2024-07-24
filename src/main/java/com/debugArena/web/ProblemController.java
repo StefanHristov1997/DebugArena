@@ -17,7 +17,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -90,7 +89,6 @@ public class ProblemController {
         if (!model.containsAttribute("addCommentBindingModel")) {
             model.addAttribute("addCommentBindingModel", new AddCommentBindingModel());
         }
-
 
         ProblemDetailsInfoViewModel problemDetails = problemService.getProblemDetails(id);
         List<CommentViewModel> commentsByProblem = commentService.getCommentsByProblemOrderByRatingDesc(id);

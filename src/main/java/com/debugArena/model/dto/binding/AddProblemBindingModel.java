@@ -15,6 +15,8 @@ import java.time.LocalDate;
 @Setter
 public class AddProblemBindingModel {
 
+    private Long id;
+
     @NotBlank(message = "")
     @Size(min = 6, message = "{title.length.message}")
     private String title;
