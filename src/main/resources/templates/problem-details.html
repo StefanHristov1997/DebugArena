@@ -59,7 +59,7 @@
                      class="delete-form">
                     <form th:action="@{/comments/delete-comment/{commentId}/{problemId}(commentId=${comment.id},problemId=${problem.id})}"
                           th:method="DELETE">
-                        <button type="submit" class="comment-delete-btn">Изтриване на коментара</button>
+                        <button type="submit" class="comment-delete-btn" th:text="#{delete.btn}"></button>
                     </form>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                 <small th:errors="*{textContent}"
                        class="invalid-feedback text-danger" style="color: red">error message
                 </small>
-                <button type="submit">Изпрати коментара</button>
+                <button type="submit" th:text="#{contact.form.btn}"></button>
             </form>
         </div>
     </div>
@@ -133,5 +133,6 @@
     });
 
 </script>
+<script src="/js/language-script.js"></script>
 </body>
 </html>

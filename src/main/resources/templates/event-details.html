@@ -83,11 +83,12 @@
             <form th:action="@{/events/delete/{id}(id = ${eventDetails.getId()})}"
                   th:method="DELETE"
                   class="delete-form">
-                <button type="submit" class="comment-delete-btn">Изтриване на събитието</button>
+                <button type="submit" class="comment-delete-btn" th:text="#{delete.btn}"></button>
             </form>
         </div>
     </section>
 </main>
 <footer th:replace="~{fragments/footer}"></footer>
+<script src="/js/language-script.js"></script>
 </body>
 </html>

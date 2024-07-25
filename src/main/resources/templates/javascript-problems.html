@@ -32,7 +32,7 @@
                     <form th:action="@{/problems/javascript/delete-problem/{id}(id=${javascriptProblem.id})}"
                           th:method="DELETE"
                           class="delete-form">
-                        <button type="submit" class="comment-delete-btn">Изтриване на дискусията</button>
+                        <button type="submit" class="comment-delete-btn" th:text="#{delete.btn}"></button>
                     </form>
                 </div>
             </li>
