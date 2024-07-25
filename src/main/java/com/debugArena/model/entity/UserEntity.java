@@ -50,4 +50,15 @@ public class UserEntity extends BaseEntity {
         this.addedProblems = new HashSet<>();
         this.addedComments = new HashSet<>();
     }
+
+    public double getCommentAvgRating() {
+
+        double commentSum = 0;
+
+        for (CommentEntity comment : addedComments){
+            commentSum += comment.getRating();
+        }
+
+       return Math.round(commentSum / addedComments.size());
+    }
 }
