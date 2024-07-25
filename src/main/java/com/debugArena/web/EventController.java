@@ -6,6 +6,7 @@ import com.debugArena.model.dto.binding.AddEventBindingModel;
 import com.debugArena.model.dto.view.EventDetailsInfoViewModel;
 import com.debugArena.model.dto.view.EventShortInfoViewModel;
 import com.debugArena.service.EventService;
+import com.debugArena.service.helpers.LoggedUserHelper;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +23,9 @@ import java.util.List;
 @RequestMapping("/events")
 public class EventController {
 
-    private EventService eventService;
+    private final EventService eventService;
+
+    private final LoggedUserHelper loggedUserHelper;
 
     @Value("${binding-result-package}")
     private String bindingResultPath;
@@ -30,8 +33,14 @@ public class EventController {
     final String attributeName = "addEventBindingModel";
 
     @Autowired
-    public EventController(EventService eventService) {
+    public EventController(EventService eventService, LoggedUserHelper loggedUserHelper) {
         this.eventService = eventService;
+        this.loggedUserHelper = loggedUserHelper;
+    }
+
+    @ModelAttribute("isAdmin")
+    boolean isAdmin() {
+        return loggedUserHelper.isAdmin();
     }
 
     @GetMapping("/add-event")
@@ -68,6 +77,14 @@ public class EventController {
         model.addAttribute("eventDetails", eventDetails);
 
         return "event-details";
+    }
+
+    @DeleteMapping("delete/{id}")
+    public String deleteEvent(@PathVariable("id") Long eventId) {
+
+        eventService.deleteEvent(eventId);
+
+        return "redirect:/events";
     }
 
     @GetMapping

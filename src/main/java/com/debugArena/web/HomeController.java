@@ -12,7 +12,6 @@ public class HomeController {
 
     private final LoggedUserHelper loggedUserHelper;
 
-
     @Autowired
     public HomeController(LoggedUserHelper loggedUserHelper) {
         this.loggedUserHelper = loggedUserHelper;

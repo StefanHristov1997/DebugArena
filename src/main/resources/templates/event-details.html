@@ -79,6 +79,13 @@
                 <p th:text="${eventDetails.description}"></p>
             </div>
         </div>
+        <div th:if="${isAdmin}">
+            <form th:action="@{/events/delete/{id}(id = ${eventDetails.getId()})}"
+                  th:method="DELETE"
+                  class="delete-form">
+                <button type="submit" class="comment-delete-btn">Изтриване на събитието</button>
+            </form>
+        </div>
     </section>
 </main>
 <footer th:replace="~{fragments/footer}"></footer>

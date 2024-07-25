@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 @Setter
 public class EventDetailsInfoViewModel {
 
+    private Long id;
+
     private String title;
 
     private String description;

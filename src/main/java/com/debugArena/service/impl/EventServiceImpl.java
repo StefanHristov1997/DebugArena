@@ -34,11 +34,11 @@ public class EventServiceImpl implements EventService {
 
         checkingServerStatus();
 
-            restClient
-                    .post()
-                    .uri("api/events/create")
-                    .body(addEventBindingModel)
-                    .retrieve();
+        restClient
+                .post()
+                .uri("api/events/create")
+                .body(addEventBindingModel)
+                .retrieve();
     }
 
     @Override
@@ -59,17 +59,27 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    public void deleteEvent(Long eventId) {
+
+        checkingServerStatus();
+
+        restClient.delete()
+                .uri("api/events/delete/{id}", eventId)
+                .retrieve();
+    }
+
+    @Override
     public List<EventShortInfoViewModel> getEvents() {
 
         checkingServerStatus();
 
-            return restClient
-                    .get()
-                    .uri("api/events/all")
-                    .accept(MediaType.APPLICATION_JSON)
-                    .retrieve()
-                    .body(new ParameterizedTypeReference<>() {
-                    });
+        return restClient
+                .get()
+                .uri("api/events/all")
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {
+                });
     }
 
     @Override
@@ -87,7 +97,7 @@ public class EventServiceImpl implements EventService {
     }
 
     private void checkingServerStatus() {
-        if (!eventAPIServerStatusHelper.isApiServerUp()){
+        if (!eventAPIServerStatusHelper.isApiServerUp()) {
             throw new ServerConnectionException();
         }
     }
