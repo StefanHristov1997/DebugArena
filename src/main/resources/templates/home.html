@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ДебъгАрена/title>
+    <title>ДебъгАрена</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
@@ -24,9 +24,9 @@
         <h2 th:text="#{home.p2}"></h2>
         <div class="activity-stats">
             <div class="stat-item">
-                <i class="fas fa-code"></i>
-                <h3 th:text="#{home.your.solutions}"></h3>
-                <p>10</p>
+                <i class="fas fa-star"></i>
+                <h3 th:text="#{home.your.comments_rating}"></h3>
+                <p th:text="${@loggedUserHelper.get().getCommentAvgRating()}"></p>
             </div>
             <div class="stat-item">
                 <i class="fas fa-question-circle"></i>
