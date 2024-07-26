@@ -20,6 +20,8 @@ public interface UserService {
 
     void editProfile(UserProfileBindingModel userProfileBindingModel);
 
+    void editUserPersonalInformation(UserPersonalInfoBindingModel personalInfoBindingModel);
+
     UserProfileViewModel getUserProfile();
 
     List<UserEmailBindingModel> getUserEmails();

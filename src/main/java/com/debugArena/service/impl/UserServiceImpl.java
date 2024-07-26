@@ -102,10 +102,30 @@ public class UserServiceImpl implements UserService {
             currentUser.setSkills(userSkills);
         }
 
-       final String userInterests = userProfileBindingModel.getInterests();
+        final String userInterests = userProfileBindingModel.getInterests();
 
         if (!userInterests.isBlank()) {
             currentUser.setInterests(userInterests);
+        }
+
+        userRepository.saveAndFlush(currentUser);
+    }
+
+    @Override
+    public void editUserPersonalInformation(UserPersonalInfoBindingModel personalInfoBindingModel) {
+
+        final UserEntity currentUser = loggedUserHelper.get();
+
+        if (!personalInfoBindingModel.getUsername().isBlank()) {
+            currentUser.setUsername(personalInfoBindingModel.getUsername());
+        }
+
+        if (!personalInfoBindingModel.getEmail().isBlank()) {
+            currentUser.setEmail(personalInfoBindingModel.getUsername());
+        }
+
+        if (!personalInfoBindingModel.getPassword().isBlank()) {
+            currentUser.setPassword(personalInfoBindingModel.getUsername());
         }
 
         userRepository.saveAndFlush(currentUser);
@@ -118,7 +138,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserEmailBindingModel> getUserEmails() {
-       final List<UserEntity> allUsers = userRepository.findAll();
+        final List<UserEntity> allUsers = userRepository.findAll();
 
         return allUsers
                 .stream()
