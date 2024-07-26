@@ -112,21 +112,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editUserPersonalInformation(UserPersonalInfoBindingModel personalInfoBindingModel) {
+    public void editUserUsername(UserEditUsernameBindingModel personalInfoBindingModel) {
 
         final UserEntity currentUser = loggedUserHelper.get();
 
-        if (!personalInfoBindingModel.getUsername().isBlank()) {
-            currentUser.setUsername(personalInfoBindingModel.getUsername());
-        }
-
-        if (!personalInfoBindingModel.getEmail().isBlank()) {
-            currentUser.setEmail(personalInfoBindingModel.getUsername());
-        }
-
-        if (!personalInfoBindingModel.getPassword().isBlank()) {
-            currentUser.setPassword(personalInfoBindingModel.getUsername());
-        }
+        currentUser.setUsername(personalInfoBindingModel.getUsername());
 
         userRepository.saveAndFlush(currentUser);
     }

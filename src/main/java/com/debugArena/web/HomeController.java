@@ -3,9 +3,8 @@ package com.debugArena.web;
 import com.debugArena.service.helpers.LoggedUserHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.Locale;
 
 @Controller
 public class HomeController {
@@ -28,7 +27,7 @@ public class HomeController {
     }
 
     @GetMapping("/home")
-    public String viewHome(Locale locale) {
+    public String viewHome(Model model) {
         return "home";
     }
 }

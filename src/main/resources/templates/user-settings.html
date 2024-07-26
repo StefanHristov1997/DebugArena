@@ -16,17 +16,49 @@
         <h1>Настройки</h1>
         <div class="settings-section">
             <h2>Лична информация</h2>
-            <label for="profile-pic">Промяна на профилна снимка</label>
-            <input type="file" id="profile-pic" name="profile-pic">
-            <label for="username">Промяна на потребителско име</label>
-            <input type="text" id="username" name="username" placeholder="Ново потребителско име">
-            <label for="email">Промяна на имейл</label>
-            <input type="email" id="email" name="email" placeholder="Нов имейл">
-            <label for="password">Промяна на парола</label>
-            <input type="password" id="password" name="password" placeholder="Нова парола">
+            <form
+                    th:action="@{/users/settings/edit-username}"
+                    th:method="PATCH"
+                    th:object="${userEditUsernameBindingModel}">
+
+                <label for="profile-pic">Промяна на профилна снимка</label>
+                <input type="file" id="profile-pic" name="profile-pic">
+                <label for="username">Промяна на потребителско име</label>
+                <input th:field="*{username}"
+                       th:errorclass="'is-invalid alert-danger'"
+                       th:class="form-control"
+                       type="text"
+                       id="username"
+                       placeholder="Ново потребителско име">
+                <small th:errors="*{username}"
+                       class="invalid-feedback text-danger" style="color: red">error message
+                </small>
+                <button type="submit" class="btn-save">Запази промените</button>
+            </form>
+            <div class="success-message" th:if="${successfully}">
+                Промените са запазени успешно!
+            </div>
+
+
+            <!--            <form th:action="@{/users/settings/edit-personal-info}"-->
+            <!--                  th:method="PATCH"-->
+            <!--                  th:object="${userEditUsernameBindingModel}">-->
+            <!--                <label for="password">Промяна на парола</label>-->
+            <!--                <input th:field="*{password}"-->
+            <!--                       th:errorclass="'is-invalid alert-danger'"-->
+            <!--                       th:class="form-control"-->
+            <!--                       type="password"-->
+            <!--                       id="password"-->
+            <!--                       placeholder="Нова парола">-->
+            <!--                <small th:errors="*{password}"-->
+            <!--                       class="invalid-feedback text-danger" style="color: red">error message-->
+            <!--                </small>-->
+            <!--                <p th:if="${successfully}" style="color: green">Промените бяха запазени успешно.</p>-->
+            <!--                <button type="submit" class="btn-save">Запази промените</button>-->
+            <!--            </form>-->
         </div>
-        <button type="submit" class="btn-save">Запази промените</button>
     </div>
 </div>
+<script src="/js/language-script.js"></script>
 </body>
 </html>

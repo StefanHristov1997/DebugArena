@@ -2,7 +2,6 @@ package com.debugArena.service;
 
 import com.debugArena.model.dto.binding.*;
 import com.debugArena.model.dto.view.UserProfileViewModel;
-import com.debugArena.model.entity.UserEntity;
 
 import java.util.List;
 
@@ -20,7 +19,7 @@ public interface UserService {
 
     void editProfile(UserProfileBindingModel userProfileBindingModel);
 
-    void editUserPersonalInformation(UserPersonalInfoBindingModel personalInfoBindingModel);
+    void editUserUsername(UserEditUsernameBindingModel personalInfoBindingModel);
 
     UserProfileViewModel getUserProfile();
 
