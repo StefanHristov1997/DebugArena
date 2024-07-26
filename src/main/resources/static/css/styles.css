@@ -662,15 +662,6 @@ footer {
     margin-bottom: 30px;
 }
 
-.profile-picture img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #ff5722;
-    margin-bottom: 20px;
-}
-
 .profile-info h1 {
     font-family: 'Russo One', sans-serif;
     font-size: 2rem;
@@ -1057,6 +1048,76 @@ footer {
 .star:active {
     color: red;
 }
+
+/* User Settings page */
+.settings-container {
+    width: 600px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-right: 300px;
+    margin-left: 300px;
+}
+
+.settings-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.settings-section {
+    margin-bottom: 20px;
+}
+
+.settings-section h2 {
+    margin-bottom: 10px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+
+.settings-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.settings-section input[type="text"],
+.settings-section input[type="email"],
+.settings-section input[type="password"],
+.settings-section input[type="file"],
+.settings-section select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.settings-section input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.settings-container .btn-save {
+    background: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    margin-left: 200px;
+}
+
+.settings-container .btn-edit i, .btn-save i {
+    margin-right: 5px;
+}
+
+.settings-container  .btn-edit:hover, .btn-save:hover {
+    background: #ff3d00;
+}
+
 
 
 
