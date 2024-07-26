@@ -40,9 +40,9 @@ public class MailServiceImpl implements MailService {
     @Override
     public void sendToOurEmail(EmailSenderBindingModel emailSenderBindingModel) {
 
-        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        final MimeMessage mimeMessage = mailSender.createMimeMessage();
 
-        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+        final MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
 
         try {
             messageHelper.setTo(debugArenaContactEmail);
@@ -62,9 +62,9 @@ public class MailServiceImpl implements MailService {
             List<DailyNotificationProblemViewModel> dailyNotificationProblems,
             List<UserEmailBindingModel> userEmailBindingModels) {
 
-        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        final MimeMessage mimeMessage = mailSender.createMimeMessage();
 
-        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+        final MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
 
         userEmailBindingModels.forEach(userEmail -> {
             try {
@@ -94,9 +94,9 @@ public class MailServiceImpl implements MailService {
             List<EventDetailsInfoViewModel> eventDetailsInfoViewModels,
             List<UserEmailBindingModel> userEmailBindingModels) {
 
-        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        final MimeMessage mimeMessage = mailSender.createMimeMessage();
 
-        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+        final MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
 
         userEmailBindingModels.forEach(userEmail -> {
             try {

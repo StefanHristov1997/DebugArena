@@ -45,15 +45,15 @@ public class ProblemServiceImpl implements ProblemService {
     @Transactional
     public void addProblem(AddProblemBindingModel addProblemBindingModel) {
 
-        ProblemEntity problemToSave = modelMapper.map(addProblemBindingModel, ProblemEntity.class);
+        final ProblemEntity problemToSave = modelMapper.map(addProblemBindingModel, ProblemEntity.class);
 
-        LanguageEntity language = languageRepository
+        final LanguageEntity language = languageRepository
                 .findByName(addProblemBindingModel
                         .getLanguage())
-                .orElseThrow(()->
+                .orElseThrow(() ->
                         new ObjectNotFoundException("Language " + addProblemBindingModel.getLanguage() + " is not found!"));
 
-        UserEntity currentUser = loggedUserHelper.get();
+        final UserEntity currentUser = loggedUserHelper.get();
 
         problemToSave.setAuthor(currentUser);
         problemToSave.setLanguage(language);
@@ -66,7 +66,7 @@ public class ProblemServiceImpl implements ProblemService {
     @Override
     public List<ProblemShortInfoViewModel> getProblemsByLanguage(LanguageEnum language) {
 
-        List<ProblemEntity> problemsByLanguageName = problemRepository.findProblemsByLanguageName(language);
+        final List<ProblemEntity> problemsByLanguageName = problemRepository.findProblemsByLanguageName(language);
 
         return problemsByLanguageName
                 .stream()
@@ -77,7 +77,7 @@ public class ProblemServiceImpl implements ProblemService {
     @Override
     public ProblemDetailsInfoViewModel getProblemDetails(Long id) {
 
-        ProblemEntity problem = problemRepository
+        final ProblemEntity problem = problemRepository
                 .findById(id)
                 .orElseThrow(() ->
                         new ObjectNotFoundException("Problem with " + id + "is not found!"));
@@ -93,7 +93,7 @@ public class ProblemServiceImpl implements ProblemService {
     @Override
     public List<DailyNotificationProblemViewModel> getDailyNotificationProblems() {
 
-        List<ProblemEntity> problemsCreatedToday = problemRepository
+        final List<ProblemEntity> problemsCreatedToday = problemRepository
                 .findProblemsByCreatedOnIs(LocalDate.now());
 
         return problemsCreatedToday
@@ -105,7 +105,7 @@ public class ProblemServiceImpl implements ProblemService {
     @Override
     public void deleteProblemsCreatedBeforeCurrentYear() {
 
-        List<ProblemEntity> problemsByCreatedBeforeCurrentYear = problemRepository
+       final List<ProblemEntity> problemsByCreatedBeforeCurrentYear = problemRepository
                 .findProblemsByCreatedOnIsBefore(
                         LocalDate
                                 .parse(LocalDate.now().getYear() + "-01" + "-01"));

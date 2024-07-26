@@ -88,21 +88,21 @@ public class UserServiceImpl implements UserService {
     @Override
     public void editProfile(UserProfileBindingModel userProfileBindingModel) {
 
-        UserEntity currentUser = loggedUserHelper.get();
+        final UserEntity currentUser = loggedUserHelper.get();
 
-        String userDescription = userProfileBindingModel.getDescription();
+        final String userDescription = userProfileBindingModel.getDescription();
 
         if (!userDescription.isBlank()) {
             currentUser.setDescription(userDescription);
         }
 
-        String userSkills = userProfileBindingModel.getSkills();
+        final String userSkills = userProfileBindingModel.getSkills();
 
         if (!userSkills.isBlank()) {
             currentUser.setSkills(userSkills);
         }
 
-        String userInterests = userProfileBindingModel.getInterests();
+       final String userInterests = userProfileBindingModel.getInterests();
 
         if (!userInterests.isBlank()) {
             currentUser.setInterests(userInterests);
@@ -118,7 +118,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserEmailBindingModel> getUserEmails() {
-        List<UserEntity> allUsers = userRepository.findAll();
+       final List<UserEntity> allUsers = userRepository.findAll();
 
         return allUsers
                 .stream()

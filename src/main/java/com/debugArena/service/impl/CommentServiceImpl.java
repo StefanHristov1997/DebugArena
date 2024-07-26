@@ -36,13 +36,13 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void addComment(AddCommentBindingModel addCommentBindingModel, Long problemId) {
 
-        CommentEntity commentToSave = modelMapper.map(addCommentBindingModel, CommentEntity.class);
+        final CommentEntity commentToSave = modelMapper.map(addCommentBindingModel, CommentEntity.class);
 
-        UserEntity currentUser = loggedUserHelper.get();
+        final UserEntity currentUser = loggedUserHelper.get();
         commentToSave.setAuthor(currentUser);
         currentUser.getAddedComments().add(commentToSave);
 
-        ProblemEntity problem = problemRepository
+        final ProblemEntity problem = problemRepository
                 .findById(problemId)
                 .orElseThrow(() -> new ObjectNotFoundException("Problem wih " + problemId + " is not found!"));
 
@@ -54,7 +54,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void updateCommentRating(Long id, int rating) {
 
-        CommentEntity comment = commentRepository
+        final CommentEntity comment = commentRepository
                 .findById(id)
                 .orElseThrow(() ->
                         new ObjectNotFoundException("Comment with " + id + " is not found!"));
@@ -72,7 +72,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public List<CommentViewModel> getCommentsByProblemOrderByRatingDesc(Long problemId) {
 
-        List<CommentEntity> comments = commentRepository.findAllByProblemIdOrderByRatingDesc(problemId);
+        final List<CommentEntity> comments = commentRepository.findAllByProblemIdOrderByRatingDesc(problemId);
 
         return comments
                 .stream()
