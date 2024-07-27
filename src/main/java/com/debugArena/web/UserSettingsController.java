@@ -1,5 +1,6 @@
 package com.debugArena.web;
 
+import com.debugArena.model.dto.binding.UserEditPasswordBindingModel;
 import com.debugArena.model.dto.binding.UserEditUsernameBindingModel;
 import com.debugArena.service.UserService;
 import jakarta.validation.Valid;
@@ -23,8 +24,10 @@ public class UserSettingsController {
     private String bindingResultPath;
     private static final String DOT = ".";
     final String attributeUsername = "userEditUsernameBindingModel";
+    final String attributePassword = "userEditPasswordBindingModel";
 
     private boolean successfullyEditUsername = false;
+    private boolean successfullyEditPassword = false;
 
     @Autowired
     public UserSettingsController(UserService userService) {
@@ -38,12 +41,20 @@ public class UserSettingsController {
             model.addAttribute(attributeUsername, new UserEditUsernameBindingModel());
         }
 
+        if (!model.containsAttribute(attributePassword)) {
+            model.addAttribute(attributePassword, new UserEditPasswordBindingModel());
+        }
+
         model.addAttribute("successfullyEditUsername", successfullyEditUsername);
+        model.addAttribute("successfullyEditPassword", successfullyEditPassword);
+
+        successfullyEditPassword = false;
+        successfullyEditUsername = false;
         return "user-settings";
     }
 
     @PatchMapping("/settings/edit-username")
-    public String updateUserPersonalInfo(
+    public String updateUserUsername(
             @Valid UserEditUsernameBindingModel userEditUsernameBindingModel,
             BindingResult bindingResult,
             RedirectAttributes rAtt) {
@@ -51,12 +62,28 @@ public class UserSettingsController {
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attributeUsername, userEditUsernameBindingModel);
             rAtt.addFlashAttribute(bindingResultPath + DOT + attributeUsername, bindingResult);
-            successfullyEditUsername = false;
             return "redirect:/users/settings";
         }
 
         userService.editUserUsername(userEditUsernameBindingModel);
         successfullyEditUsername = true;
+        return "redirect:/users/settings";
+    }
+
+    @PatchMapping("/settings/edit-password")
+    public String updateUserPassword(
+            @Valid UserEditPasswordBindingModel userEditPasswordBindingModel,
+            BindingResult bindingResult,
+            RedirectAttributes rAtt) {
+
+        if (bindingResult.hasErrors()) {
+            rAtt.addFlashAttribute(attributePassword, userEditPasswordBindingModel);
+            rAtt.addFlashAttribute(bindingResultPath + DOT + attributePassword, bindingResult);
+            return "redirect:/users/settings";
+        }
+
+        userService.editUserPassword(userEditPasswordBindingModel);
+        successfullyEditPassword = true;
         return "redirect:/users/settings";
     }
 }

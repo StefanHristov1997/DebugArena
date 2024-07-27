@@ -14,7 +14,7 @@
 <div class="container">
     <div class="settings-container">
         <h1>Настройки</h1>
-        <div class="success-message" th:if="${successfullyEditUsername}">
+        <div class="success-message" th:if="${successfullyEditUsername} or ${successfullyEditPassword}">
             Промените са запазени успешно!
         </div>
         <div class="settings-section">
@@ -38,23 +38,21 @@
                 </small>
                 <button type="submit" class="btn-save">Запази промените</button>
             </form>
-
-            <!--            <form th:action="@{/users/settings/edit-personal-info}"-->
-            <!--                  th:method="PATCH"-->
-            <!--                  th:object="${userEditUsernameBindingModel}">-->
-            <!--                <label for="password">Промяна на парола</label>-->
-            <!--                <input th:field="*{password}"-->
-            <!--                       th:errorclass="'is-invalid alert-danger'"-->
-            <!--                       th:class="form-control"-->
-            <!--                       type="password"-->
-            <!--                       id="password"-->
-            <!--                       placeholder="Нова парола">-->
-            <!--                <small th:errors="*{password}"-->
-            <!--                       class="invalid-feedback text-danger" style="color: red">error message-->
-            <!--                </small>-->
-            <!--                <p th:if="${successfully}" style="color: green">Промените бяха запазени успешно.</p>-->
-            <!--                <button type="submit" class="btn-save">Запази промените</button>-->
-            <!--            </form>-->
+            <form th:action="@{/users/settings/edit-password}"
+                  th:method="PATCH"
+                  th:object="${userEditPasswordBindingModel}">
+                <label for="password">Промяна на парола</label>
+                <input th:field="*{password}"
+                       th:errorclass="'is-invalid alert-danger'"
+                       th:class="form-control"
+                       type="password"
+                       id="password"
+                       placeholder="Нова парола">
+                <small th:errors="*{password}"
+                       class="invalid-feedback text-danger" style="color: red">error message
+                </small>
+                <button type="submit" class="btn-save">Запази промените</button>
+            </form>
         </div>
     </div>
 </div>

@@ -19,7 +19,9 @@ public interface UserService {
 
     void editProfile(UserProfileBindingModel userProfileBindingModel);
 
-    void editUserUsername(UserEditUsernameBindingModel personalInfoBindingModel);
+    void editUserUsername(UserEditUsernameBindingModel userEditUsernameBindingModel);
+
+    void editUserPassword(UserEditPasswordBindingModel userPasswordBindingModel);
 
     UserProfileViewModel getUserProfile();
 
