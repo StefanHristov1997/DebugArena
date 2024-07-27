@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bg" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -18,25 +18,30 @@
     <div class="container">
         <h1 th:text="${problem.getTitle()}"></h1>
         <div class="problem-meta">
-            <span class="problem-user">Потребител: <span th:text="${problem.getAuthorUsername()}"></span></span>
-            <span class="problem-date">Дата на публикуване: <span th:text="${problem.getCreatedOn()}"></span></span>
+            <span class="problem-user" th:text="#{java.problem.user}"></span>
+            <span th:text="${problem.getAuthorUsername()}"></span>
+            <span>, </span>
+            <span class="problem-date" th:text="#{java.problem.data}"></span>
+            <span th:text="${problem.getCreatedOn()}"></span>
         </div>
         <div class="problem-description">
-            <p>Описание на проблема:</p>
+            <p th:text="#{problem.description}"></p>
             <p th:text="${problem.getDescription()}"></p>
         </div>
         <div class="comments-section">
-            <h2>Коментари</h2>
+            <h2 th:text="#{problem.comments}"></h2>
             <div th:each="comment: ${comments}" class="comment" th:data-comment-id="${comment.id}"
                  th:data-current-rating="${comment.rating}">
                 <div class="problem-meta">
-                    <p class="comment-user">Коментар от <span th:text="${comment.getAuthorUsername()}"></span></p>
-                    <span class="problem-date">Дата на публикуване: <span
-                            th:text="${comment.getCreatedOn()}"></span></span>
+                    <p class="comment-user" th:text="#{problem.comment.author}"></p>
+                    <span th:text="${comment.getAuthorUsername()}"></span>
+                    <span>, </span>
+                    <span class="problem-date" th:text="#{java.problem.data}"></span>
+                    <span th:text="${comment.getCreatedOn()}"></span>
                 </div>
                 <div th:if="${currentUserEmail.equals(comment.getAuthorEmail())}" class="stars-container">
                     <div th:each="i: ${#numbers.sequence(0, comment.getRating() - 1)}" class="star">
-                        <span  class="star">&starf;</span>
+                        <span class="star">&starf;</span>
                     </div>
                 </div>
                 <div class="stars-container">
@@ -55,8 +60,8 @@
                     <p th:text="${comment.getTextContent()}"></p>
                 </div>
                 <div
-                     th:if="${currentUserEmail.equals(comment.getAuthorEmail()) or isAdmin}"
-                     class="delete-form">
+                        th:if="${currentUserEmail.equals(comment.getAuthorEmail()) or isAdmin}"
+                        class="delete-form">
                     <form th:action="@{/comments/delete-comment/{commentId}/{problemId}(commentId=${comment.id},problemId=${problem.id})}"
                           th:method="DELETE">
                         <button type="submit" class="comment-delete-btn" th:text="#{delete.btn}"></button>
@@ -71,11 +76,11 @@
                 <textarea th:field="*{textContent}"
                           th:errorclass="'is-invalid alert-danger'"
                           th:class="form-control"
-                          placeholder="Добави коментар"></textarea>
+                          th:placeholder="#{add.problem.placeholder}"></textarea>
                 <small th:errors="*{textContent}"
                        class="invalid-feedback text-danger" style="color: red">error message
                 </small>
-                <button type="submit" th:text="#{contact.form.btn}"></button>
+                <button type="submit" th:text="#{send.btn}"></button>
             </form>
         </div>
     </div>

@@ -888,12 +888,9 @@ footer {
     color: #777;
 }
 
-.article-meta .article-user {
-    display: block;
-}
-
+.article-meta .article-user,
 .article-meta .article-date {
-    display: block;
+    display: inline;
 }
 
 /* Стилове за секцията с детайли на проблема */
@@ -915,7 +912,7 @@ footer {
 
 .problem-meta .problem-user,
 .problem-meta .problem-date {
-    display: block;
+    display: inline;
 }
 
 .problem-description {
@@ -944,6 +941,7 @@ footer {
 
 .comment p {
     margin: 0;
+    display: inline;
 }
 
 .comment-user {
@@ -1114,11 +1112,11 @@ footer {
     margin-right: 5px;
 }
 
-.settings-container  .btn-edit:hover, .btn-save:hover {
+.settings-container .btn-edit:hover, .btn-save:hover {
     background: #ff3d00;
 }
 
- .settings-container .success-message {
+.settings-container .success-message {
     background-color: #d4edda;
     color: #155724;
     padding: 10px;
@@ -1126,6 +1124,74 @@ footer {
     border-radius: 4px;
     margin-bottom: 20px;
     text-align: center;
+}
+
+/* Events */
+main {
+    padding: 20px;
+}
+
+.events-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.event-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.event-header h2 {
+    margin: 0;
+}
+
+.event-body {
+    padding: 20px;
+    color: #333;
+}
+
+.event-body p {
+    margin: 10px 0;
+}
+
+.event-footer {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.event-link {
+    background-color: #ff5722;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.event-link:hover {
+    background-color: #e64a19;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .event-item {
+        width: calc(100% - 20px);
+    }
 }
 
 
