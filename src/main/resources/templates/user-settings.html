@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,46 +13,49 @@
 <header th:replace="~{fragments/navigation}"></header>
 <div class="container">
     <div class="settings-container">
-        <h1>Настройки</h1>
+        <h1 th:text="#{user.settings.h1}"></h1>
         <div class="success-message" th:if="${successfullyEditUsername} or ${successfullyEditPassword}">
-            Промените са запазени успешно!
+            <span th:text="#{user.edit.successfully.message}"></span>
         </div>
         <div class="settings-section">
-            <h2>Лична информация</h2>
+            <h2 th:text="#{user.personal.information.h2}"></h2>
             <form
                     th:action="@{/users/settings/edit-username}"
                     th:method="PATCH"
                     th:object="${userEditUsernameBindingModel}">
 
-                <label for="profile-pic">Промяна на профилна снимка</label>
+                <label for="profile-pic" th:text="#{user.change.profile.picture}"></label>
                 <input type="file" id="profile-pic" name="profile-pic">
-                <label for="username">Промяна на потребителско име</label>
-                <input th:field="*{username}"
-                       th:errorclass="'is-invalid alert-danger'"
-                       th:class="form-control"
-                       type="text"
-                       id="username"
-                       placeholder="Ново потребителско име">
-                <small th:errors="*{username}"
-                       class="invalid-feedback text-danger" style="color: red">error message
-                </small>
-                <button type="submit" class="btn-save">Запази промените</button>
+                <label for="username" th:text="#{user.change.username}"></label>
+                    <input th:field="*{username}"
+                           th:errorclass="'is-invalid alert-danger'"
+                           th:class="form-control"
+                           type="text"
+                           id="username"
+                           th:placeholder="#{user.username.placeholder}">
+                    <small th:errors="*{username}"
+                           class="invalid-feedback text-danger" style="color: red">error message
+                    </small>
+                    <button type="submit" class="btn-save" th:text="#{profile.save.changes.btn}"></button>
             </form>
+
             <form th:action="@{/users/settings/edit-password}"
                   th:method="PATCH"
                   th:object="${userEditPasswordBindingModel}">
-                <label for="password">Промяна на парола</label>
+
+                <label for="password" th:text="#{user.change.password}"></label>
                 <input th:field="*{password}"
                        th:errorclass="'is-invalid alert-danger'"
                        th:class="form-control"
                        type="password"
                        id="password"
-                       placeholder="Нова парола">
+                       th:placeholder="#{user.password.placeholder}">
                 <small th:errors="*{password}"
                        class="invalid-feedback text-danger" style="color: red">error message
                 </small>
-                <button type="submit" class="btn-save">Запази промените</button>
+                <button type="submit" class="btn-save" th:text="#{profile.save.changes.btn}"></button>
             </form>
+
         </div>
     </div>
 </div>
