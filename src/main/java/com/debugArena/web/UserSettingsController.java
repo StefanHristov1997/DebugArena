@@ -24,7 +24,7 @@ public class UserSettingsController {
     private static final String DOT = ".";
     final String attributeUsername = "userEditUsernameBindingModel";
 
-    private boolean success = false;
+    private boolean successfullyEditUsername = false;
 
     @Autowired
     public UserSettingsController(UserService userService) {
@@ -38,7 +38,7 @@ public class UserSettingsController {
             model.addAttribute(attributeUsername, new UserEditUsernameBindingModel());
         }
 
-        model.addAttribute("successfully", success);
+        model.addAttribute("successfullyEditUsername", successfullyEditUsername);
         return "user-settings";
     }
 
@@ -51,11 +51,12 @@ public class UserSettingsController {
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute(attributeUsername, userEditUsernameBindingModel);
             rAtt.addFlashAttribute(bindingResultPath + DOT + attributeUsername, bindingResult);
+            successfullyEditUsername = false;
             return "redirect:/users/settings";
         }
 
         userService.editUserUsername(userEditUsernameBindingModel);
-        success = true;
+        successfullyEditUsername = true;
         return "redirect:/users/settings";
     }
 }

@@ -1118,8 +1118,7 @@ footer {
     background: #ff3d00;
 }
 
-.settings-section .success-message {
-    display: none;
+ .settings-container .success-message {
     background-color: #d4edda;
     color: #155724;
     padding: 10px;

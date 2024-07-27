@@ -14,6 +14,9 @@
 <div class="container">
     <div class="settings-container">
         <h1>Настройки</h1>
+        <div class="success-message" th:if="${successfullyEditUsername}">
+            Промените са запазени успешно!
+        </div>
         <div class="settings-section">
             <h2>Лична информация</h2>
             <form
@@ -35,10 +38,6 @@
                 </small>
                 <button type="submit" class="btn-save">Запази промените</button>
             </form>
-            <div class="success-message" th:if="${successfully}">
-                Промените са запазени успешно!
-            </div>
-
 
             <!--            <form th:action="@{/users/settings/edit-personal-info}"-->
             <!--                  th:method="PATCH"-->
