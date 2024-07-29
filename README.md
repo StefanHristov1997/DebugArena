@@ -1,6 +1,6 @@
 # Content Table
 <ul>
-  <li></li>
+  <li><a href="https://github.com/StefanHristov1997/DebugArena/blob/main/README.md#-about">About DebugArena</a></li>
 </ul>
 
 # 🚀 About
