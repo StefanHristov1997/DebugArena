@@ -1,6 +1,7 @@
 # Content Table
 <ul>
-  <li><a href="https://github.com/StefanHristov1997/DebugArena/blob/main/README.md#-about">About DebugArena</a></li>
+  <li><a href="https://github.com/StefanHristov1997/DebugArena?tab=readme-ov-file#-about">About DebugArena</a></li>
+   <li><a href="https://github.com/StefanHristov1997/DebugArena?tab=readme-ov-file#-about">Features</a></li>
 </ul>
 
 # 🚀 About
