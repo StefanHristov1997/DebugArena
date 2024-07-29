@@ -4,7 +4,7 @@
 
 # Features:
 <ul>
-  <li>When you first log into the application, you'll find a navigation menu that guides you to the accessible pages without user authentication and showcases the main features the application offers.</li>
+  <li><strong>Authentication</strong>strong>When you first log into the application, you'll find a navigation menu that guides you to the accessible pages without user authentication and showcases the main features the application offers.</li>
   <li>DebugArena features internationalization, ensuring that there are no restrictions based on the user's nationality or language barrier.</li>
   <li>To start, in order for the user to fully enjoy the features offered by the application, they need to authenticate themselves. The platform provides an easy registration form for this purpose.</li>
   <li>The platform offers several quick links, allowing users to easily and quickly access the desired page if they already have an account or have forgotten their password.</li>
