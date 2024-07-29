@@ -16,6 +16,6 @@
 </Li>
   <img src="https://github.com/user-attachments/assets/34f4d686-40d5-470b-badc-31a7c2e2d7ad" alt="Login form" width="350px" height="500px">
   
-  <li><strong>internationalization:</strong> DebugArena features internationalization, ensuring that there are no restrictions based on the user's nationality or language barrier.</li>
+  <li><strong>Internationalization:</strong> DebugArena features internationalization, ensuring that there are no restrictions based on the user's nationality or language barrier.</li>
   
 </ul>
