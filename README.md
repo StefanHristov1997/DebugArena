@@ -10,4 +10,6 @@
        <img src="https://github.com/user-attachments/assets/c4f5f94b-5cfb-4ca1-b551-0edbc1ad1604" alt="login form" weight="300px" height="300px">
        <img src="https://github.com/user-attachments/assets/cee21a28-06f1-4d5d-8f11-6f5ba30dc124" alt="register form_en" weight="300px" height="300px">
        <img src="https://github.com/user-attachments/assets/f9f06fb7-e53f-4170-9668-0a1b52e5b8cc" alt="login form" weight="300px" height="300px">
+  <li>Once a user is registered, the application directs them to the main page, which features a quick access button to created discussions, statistics about their activity, and quick links for adding a problem, accessing 
+      the user profile, and profile settings.</li>
 </ul>
