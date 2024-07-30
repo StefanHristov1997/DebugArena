@@ -11,7 +11,7 @@
 **DebugArena** is a platform where novice software engineers and experienced professionals can connect with our community, share, and find solutions to their coding problems.
 
 # 💻 Features:
-<ul style="font-size=large">
+<ul>
   <li><strong>Flexibility:</strong> the application has a responsive design so that it can be accessed from all devices with user-friendliness.</li>
   <li><strong>Authentication:</strong> when you first log into the application, you'll find a navigation menu that guides you to the accessible pages without user authentication and showcases the main features the 
       application offers. To start, in order for the user to fully enjoy the features offered by the application, they need to authenticate themselves. The platform provides an easy registration and login form for this 
