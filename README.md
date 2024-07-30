@@ -30,7 +30,7 @@
 </ul>
 
 # 🖼️ Images:
-<img src="https://github.com/user-attachments/assets/a74f99f9-f8ca-4712-89e8-c80561b20715" style="display:inline" alt="Index page mobile" height="500px" width="250px">
+<img src="https://github.com/user-attachments/assets/a74f99f9-f8ca-4712-89e8-c80561b20715" alt="Index page mobile" height="500px" width="250px">
 <img src="https://github.com/user-attachments/assets/993e90b7-396a-4a2b-9b5b-986f2d57a6ac" alt="Index page mobile" height="500px" width="250px">
 <img src="https://github.com/user-attachments/assets/f1c16a52-0f6e-4f21-bd79-692e30affe4c" alt="Home page mobile" height="500px" width="250px">
 <img src="https://github.com/user-attachments/assets/d76503a4-e17d-42ad-8e16-0423590e753b" alt="Register form_en" height="300px" width="250px">
@@ -54,7 +54,7 @@
 # 🖨️ Technologies:
 **Back-end:**
 
-<img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java icon" height="50px" width="50px">
+<img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" style="display:inline" alt="Java icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="Spring boot icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/183896128-ec99105a-ec1a-4d85-b08b-1aa1620b2046.png" alt="MySQL icon" height="50px" width="50px">
 <img src="https://github.com/user-attachments/assets/ece43ada-6f6a-4527-bc69-bd0c4ff27035" alt="Mailhog icon" height="50px" width="50px">
