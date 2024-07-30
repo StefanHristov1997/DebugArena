@@ -30,7 +30,7 @@
 </ul>
 
 # 🖼️ Images:
-<img src="https://github.com/user-attachments/assets/a74f99f9-f8ca-4712-89e8-c80561b20715" alt="Index page mobile" height="500px" width="250px">
+<img src="https://github.com/user-attachments/assets/a74f99f9-f8ca-4712-89e8-c80561b20715" style="display:inline" alt="Index page mobile" height="500px" width="250px">
 <img src="https://github.com/user-attachments/assets/993e90b7-396a-4a2b-9b5b-986f2d57a6ac" alt="Index page mobile" height="500px" width="250px">
 <img src="https://github.com/user-attachments/assets/f1c16a52-0f6e-4f21-bd79-692e30affe4c" alt="Home page mobile" height="500px" width="250px">
 <img src="https://github.com/user-attachments/assets/d76503a4-e17d-42ad-8e16-0423590e753b" alt="Register form_en" height="300px" width="250px">
