@@ -25,3 +25,8 @@
   <li><strong>Support:</strong> Any user can contact us through the form available in contacts from the navigation bar.</li>
   <li><strong>Awareness:</strong> Registered users receive notifications about newly created discussions on a daily basis and upcoming events for the coming week.</li>
 </ul>
+
+# 🖼️ Images
+
+<img src="https://github.com/user-attachments/assets/d76503a4-e17d-42ad-8e16-0423590e753b" alt="Register form_en" height="300px" width="300px">
+
