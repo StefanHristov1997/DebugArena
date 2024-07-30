@@ -48,4 +48,6 @@
 <img src="https://github.com/user-attachments/assets/8cba2e1d-9e31-472e-9534-0b92c30e27bd" alt="Events page" height="600px" width="800px">
 <img src="https://github.com/user-attachments/assets/e14640f3-8de4-45dc-a92d-f16bcfe810ee" alt="Events page" height="600px" width="800px">
 <img src="https://github.com/user-attachments/assets/6c8d7361-4196-4e22-a102-0fe8a2a496af" alt="Contact page" height="600px" width="800px">
+<img src="https://github.com/user-attachments/assets/1d4e9cfd-543e-4c67-ba92-fa32df3130e5" alt="Email notigication" height="600px" width="800px">
+<img src="https://github.com/user-attachments/assets/180cccad-dc6e-451c-8444-51c56b437a67" alt="Email notigication" height="600px" width="800px">
 
