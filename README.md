@@ -63,11 +63,12 @@
 <img src="https://user-images.githubusercontent.com/25181517/183892181-ad32b69e-3603-418c-b8e7-99e976c2a784.png" alt="Mockito icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/190229463-87fa862f-ccf0-48da-8023-940d287df610.png" alt="Lombok icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/117207242-07d5a700-adf4-11eb-975e-be04e62b984b.png" alt="Maven icon" height="50px" width="50px">
-## Front-end:
-
-<li><img src="https://user-images.githubusercontent.com/25181517/192158954-f88b5814-d510-4564-b285-dff7d6400dad.png" alt="HTML icon" height="50px" width="50px"></li>
-<li><img src="https://user-images.githubusercontent.com/25181517/183898674-75a4a1b1-f960-4ea9-abcb-637170a00a75.png" alt="CSS icon" height="50px" width="50px"></li>
-<li><img src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" alt="JavaScript icon" height="50px" width="50px"></li>
-<li><img src="https://user-images.githubusercontent.com/25181517/183898054-b3d693d4-dafb-4808-a509-bab54cf5de34.png" alt="Bootstrap icon" height="50px" width="50px"></li>
-<li><img src="https://github.com/user-attachments/assets/e7969340-7a69-49e3-8bf7-ca4f5ade1810" alt="Thymeleaf icon" height="50px" width="50px"></li>
+<br>
+**Front-end:**
+<br>
+<img src="https://user-images.githubusercontent.com/25181517/192158954-f88b5814-d510-4564-b285-dff7d6400dad.png" alt="HTML icon" height="50px" width="50px">
+<img src="https://user-images.githubusercontent.com/25181517/183898674-75a4a1b1-f960-4ea9-abcb-637170a00a75.png" alt="CSS icon" height="50px" width="50px">
+<img src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" alt="JavaScript icon" height="50px" width="50px">
+<img src="https://user-images.githubusercontent.com/25181517/183898054-b3d693d4-dafb-4808-a509-bab54cf5de34.png" alt="Bootstrap icon" height="50px" width="50px">
+<img src="https://github.com/user-attachments/assets/e7969340-7a69-49e3-8bf7-ca4f5ade1810" alt="Thymeleaf icon" height="50px" width="50px">
   
