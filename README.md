@@ -35,3 +35,4 @@
 <img src="https://github.com/user-attachments/assets/7d84caea-3b03-4a68-a668-eda3dc7abce1" alt="Reset password form_en" height="300px" width="250px">
 <img src="https://github.com/user-attachments/assets/db79f602-a334-4df3-9fce-80f141b40c39" alt="Index page_en" height="600px" width="800px">
 <img src="https://github.com/user-attachments/assets/861b6387-44ee-46bd-a2d8-ffed2716e61d" alt="Index page_en" height="600px" width="800px">
+<img src="https://github.com/user-attachments/assets/4ad22772-4d8f-48a3-9802-1c7a41c76d6a" alt="Index page_bg" height="600px" width="800px">
