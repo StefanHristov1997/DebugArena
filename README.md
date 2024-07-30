@@ -19,6 +19,7 @@
 <Li><strong>Recover password:</strong> We know that people often register somewhere and then forget their passwords, which isn't very secure. However, we've thought about this, and users have the option to recover their 
     passwords if needed.
 </Li>
+  <li><strong>Quick access:</strong> The application provides easy access to all pages, through numerous quick links and convenient navigation.</li>
   <li><strong>Internationalization:</strong> DebugArena features internationalization, ensuring that there are no restrictions based on the user's nationality or language barrier.</li>
   <li><strong>Personalization:</strong> Each user receives personalized information about their activity on posted issues, comments and average comment rating, as well as profile settings.</li>
   <li><strong>Functionality:</strong> Any registered user can add an issue with their code to be discussed, add a comment to the issue and rate another user's comment, also could create an event where people from the community can gather and discuss the theme of the event.</li>
