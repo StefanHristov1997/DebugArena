@@ -3,7 +3,7 @@
   <li><a href="https://github.com/StefanHristov1997/DebugArena?tab=readme-ov-file#-about">About</a></li>
   <li><a href="https://github.com/StefanHristov1997/DebugArena?tab=readme-ov-file#features">Features</a></li>
   <li><a href="https://github.com/StefanHristov1997/DebugArena/tree/main?tab=readme-ov-file#%EF%B8%8F-images">Images</a></li>
-  <li><a href="">Technologies</a></li>
+  <li><a href="https://github.com/StefanHristov1997/DebugArena/tree/main?tab=readme-ov-file#%EF%B8%8F-technologies">Technologies</a></li>
 </ul>
 
 # 🚀 About:
