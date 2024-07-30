@@ -66,5 +66,5 @@
 <img src="https://user-images.githubusercontent.com/25181517/183898674-75a4a1b1-f960-4ea9-abcb-637170a00a75.png" alt="CSS icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" alt="JavaScript icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/183898054-b3d693d4-dafb-4808-a509-bab54cf5de34.png" alt="Bootstrap icon" height="50px" width="50px">
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thymeleaf.org%2Fdoc%2Farticles%2Flayouts.html&psig=AOvVaw2nGeSdWnzkt8I8dxQBZ9yw&ust=1722421624974000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIiPztvGzocDFQAAAAAdAAAAABAE" alt="Thymeleaf icon" height="50px" width="50px">
+<img src="https://github.com/user-attachments/assets/e7969340-7a69-49e3-8bf7-ca4f5ade1810" alt="Thymeleaf icon" height="50px" width="50px">
   
