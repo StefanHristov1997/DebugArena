@@ -45,4 +45,7 @@
 <img src="https://github.com/user-attachments/assets/5d4869fb-f999-4164-82af-dee16fb09fc4" alt="Add problem page" height="600px" width="800px">
 <img src="https://github.com/user-attachments/assets/917f3e8a-5efa-4bde-8310-63e8b4fa734d" alt="Problems page" height="600px" width="800px">
 <img src="https://github.com/user-attachments/assets/7228acd3-ae3c-455f-b67b-858a99282c90" alt="Problem details page" height="600px" width="800px">
+<img src="https://github.com/user-attachments/assets/8cba2e1d-9e31-472e-9534-0b92c30e27bd" alt="Events page" height="600px" width="800px">
+<img src="https://github.com/user-attachments/assets/e14640f3-8de4-45dc-a92d-f16bcfe810ee" alt="Events page" height="600px" width="800px">
+<img src="https://github.com/user-attachments/assets/6c8d7361-4196-4e22-a102-0fe8a2a496af" alt="Contact page" height="600px" width="800px">
 
