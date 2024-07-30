@@ -52,9 +52,10 @@
 <img src="https://github.com/user-attachments/assets/180cccad-dc6e-451c-8444-51c56b437a67" alt="Email notigication" height="600px" width="800px">
 
 # 🖨️ Technologies:
-**Back-end:**
 
-<img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" style="display:inline" alt="Java icon" height="50px" width="50px">
+**Back-end:**
+<br>
+<img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="Spring boot icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/183896128-ec99105a-ec1a-4d85-b08b-1aa1620b2046.png" alt="MySQL icon" height="50px" width="50px">
 <img src="https://github.com/user-attachments/assets/ece43ada-6f6a-4527-bc69-bd0c4ff27035" alt="Mailhog icon" height="50px" width="50px">
