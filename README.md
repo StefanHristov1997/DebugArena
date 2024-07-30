@@ -39,3 +39,5 @@
 <img src="https://github.com/user-attachments/assets/db79f602-a334-4df3-9fce-80f141b40c39" alt="Index page_en" height="600px" width="800px">
 <img src="https://github.com/user-attachments/assets/861b6387-44ee-46bd-a2d8-ffed2716e61d" alt="Index page_en" height="600px" width="800px">
 <img src="https://github.com/user-attachments/assets/4ad22772-4d8f-48a3-9802-1c7a41c76d6a" alt="Index page_bg" height="600px" width="800px">
+<img src="https://github.com/user-attachments/assets/6183ff63-6c18-493e-9109-0c5aefa50cae" alt="Home page" height="600px" width="800px">
+<img src="https://github.com/user-attachments/assets/e329fe5f-fe10-4022-8059-0e09d10f796b" alt="Home page" height="600px" width="800px">
