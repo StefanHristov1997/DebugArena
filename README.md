@@ -41,3 +41,4 @@
 <img src="https://github.com/user-attachments/assets/4ad22772-4d8f-48a3-9802-1c7a41c76d6a" alt="Index page_bg" height="600px" width="800px">
 <img src="https://github.com/user-attachments/assets/6183ff63-6c18-493e-9109-0c5aefa50cae" alt="Home page" height="600px" width="800px">
 <img src="https://github.com/user-attachments/assets/e329fe5f-fe10-4022-8059-0e09d10f796b" alt="Home page" height="600px" width="800px">
+<img src="https://github.com/user-attachments/assets/126008c0-f6a2-4b98-a5d4-e4777a1132f5" alt="Home page" height="600px" width="800px">
