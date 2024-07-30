@@ -52,12 +52,11 @@
 <img src="https://github.com/user-attachments/assets/180cccad-dc6e-451c-8444-51c56b437a67" alt="Email notigication" height="600px" width="800px">
 
 # 🖨️ Technologies:
-### Back-end
-<ul>
-  <li><img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java icon" height="50px" width="50px"></li>
-  <li><img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="Spring boot icon" height="50px" width="50px"></li>
-  <li><img src="https://user-images.githubusercontent.com/25181517/183896128-ec99105a-ec1a-4d85-b08b-1aa1620b2046.png" alt="MySQL icon" height="50px" width="50px"></li>
-  <li><img src="https://user-images.githubusercontent.com/25181517/117533873-484d4480-afef-11eb-9fad-67c8605e3592.png" alt="Junit icon" height="50px" width="50px"></li>
-  <li><img src="https://user-images.githubusercontent.com/25181517/183892181-ad32b69e-3603-418c-b8e7-99e976c2a784.png" alt="Mockito icon" height="50px" width="50px"></li>
-  <li><img src="https://user-images.githubusercontent.com/25181517/190229463-87fa862f-ccf0-48da-8023-940d287df610.png" alt="Lombok icon" height="50px" width="50px"></li>
-</ul>
+### Back-end:
+  <img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java icon" height="50px" width="50px">
+  <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="Spring boot icon" height="50px" width="50px">
+  <<img src="https://user-images.githubusercontent.com/25181517/183896128-ec99105a-ec1a-4d85-b08b-1aa1620b2046.png" alt="MySQL icon" height="50px" width="50px">
+  <img src="https://user-images.githubusercontent.com/25181517/117533873-484d4480-afef-11eb-9fad-67c8605e3592.png" alt="Junit icon" height="50px" width="50px">
+  <img src="https://user-images.githubusercontent.com/25181517/183892181-ad32b69e-3603-418c-b8e7-99e976c2a784.png" alt="Mockito icon" height="50px" width="50px">
+  <img src="https://user-images.githubusercontent.com/25181517/190229463-87fa862f-ccf0-48da-8023-940d287df610.png" alt="Lombok icon" height="50px" width="50px">
+
