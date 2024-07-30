@@ -10,7 +10,7 @@
 
 **DebugArena** is a platform where novice software engineers and experienced professionals can connect with our community, share, and find solutions to their coding problems.
 
-# Features:
+# 💻 Features:
 <ul>
   <li><strong>Authentication:</strong> When you first log into the application, you'll find a navigation menu that guides you to the accessible pages without user authentication and showcases the main features the 
       application offers. To start, in order for the user to fully enjoy the features offered by the application, they need to authenticate themselves. The platform provides an easy registration and login form for this 
@@ -29,4 +29,5 @@
 # 🖼️ Images
 
 <img src="https://github.com/user-attachments/assets/d76503a4-e17d-42ad-8e16-0423590e753b" alt="Register form_en" height="300px" width="300px">
+<img src="https://github.com/user-attachments/assets/6aa72996-d052-4b28-a2b1-8b303bdfa2c3" alt="Login form_en" height="300px" width="300px">
 
