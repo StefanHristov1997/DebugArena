@@ -33,5 +33,5 @@
 <img src="https://github.com/user-attachments/assets/d76503a4-e17d-42ad-8e16-0423590e753b" alt="Register form_en" height="300px" width="250px">
 <img src="https://github.com/user-attachments/assets/6aa72996-d052-4b28-a2b1-8b303bdfa2c3" alt="Login form_en" height="300px" width="250px">
 <img src="https://github.com/user-attachments/assets/7d84caea-3b03-4a68-a668-eda3dc7abce1" alt="Reset password form_en" height="300px" width="250px">
-<img src="https://github.com/user-attachments/assets/db79f602-a334-4df3-9fce-80f141b40c39" alt="Reset password form_en" height="600px" width="800px">
-
+<img src="https://github.com/user-attachments/assets/db79f602-a334-4df3-9fce-80f141b40c39" alt="Index page_en" height="600px" width="800px">
+<img src="https://github.com/user-attachments/assets/861b6387-44ee-46bd-a2d8-ffed2716e61d" alt="Index page_en" height="600px" width="800px">
