@@ -6,7 +6,7 @@
   <li><a href="">Technologies</a></li>
 </ul>
 
-# 🚀 About
+# 🚀 About:
 
 **DebugArena** is a platform where novice software engineers and experienced professionals can connect with our community, share, and find solutions to their coding problems.
 
@@ -29,7 +29,7 @@
   <li><strong>Security:</strong> all personal data of the user is well protected by Spring Security.</li>
 </ul>
 
-# 🖼️ Images
+# 🖼️ Images:
 <img src="https://github.com/user-attachments/assets/a74f99f9-f8ca-4712-89e8-c80561b20715" alt="Index page mobile" height="500px" width="250px">
 <img src="https://github.com/user-attachments/assets/993e90b7-396a-4a2b-9b5b-986f2d57a6ac" alt="Index page mobile" height="500px" width="250px">
 <img src="https://github.com/user-attachments/assets/f1c16a52-0f6e-4f21-bd79-692e30affe4c" alt="Home page mobile" height="500px" width="250px">
@@ -51,3 +51,7 @@
 <img src="https://github.com/user-attachments/assets/1d4e9cfd-543e-4c67-ba92-fa32df3130e5" alt="Email notigication" height="600px" width="800px">
 <img src="https://github.com/user-attachments/assets/180cccad-dc6e-451c-8444-51c56b437a67" alt="Email notigication" height="600px" width="800px">
 
+# 🖨️ Technologies:
+<ul>
+  <li><img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png"></li>
+</ul>
