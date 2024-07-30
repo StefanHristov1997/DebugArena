@@ -28,5 +28,5 @@
   <li><strong>Personalization:</strong> Each user receives personalized information about their activity on posted issues, comments and average comment rating, as well as profile settings.</li>
   <li><strong>Functionality:</strong> Any registered user can add an issue with their code to be discussed, add a comment to the issue and rate another user's comment, also could create an event where people from the community can gather and discuss the theme of the event.</li>
   <li><strong>Support:</strong> Any user can contact us through the form available in contacts from the navigation bar.</li>
-  
+  <li><strong>Awareness:</strong> Registered users receive notifications about newly created discussions on a daily basis and upcoming events for the coming week.</li>
 </ul>
