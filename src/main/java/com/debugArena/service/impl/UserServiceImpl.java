@@ -9,12 +9,14 @@ import com.debugArena.repository.UserRepository;
 import com.debugArena.service.RoleService;
 import com.debugArena.service.UserService;
 import com.debugArena.service.helpers.LoggedUserHelper;
+import com.debugArena.util.FileUploadUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final RoleService roleService;
+    private final CloudinaryService cloudinaryService;
 
     private final LoggedUserHelper loggedUserHelper;
     private final ApplicationEventPublisher publisher;
@@ -33,13 +36,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public UserServiceImpl(
             UserRepository userRepository,
-            RoleService roleService,
+            RoleService roleService, CloudinaryService cloudinaryService,
             LoggedUserHelper loggedUserHelper,
             ApplicationEventPublisher publisher,
             ModelMapper mapper,
             PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleService = roleService;
+        this.cloudinaryService = cloudinaryService;
         this.loggedUserHelper = loggedUserHelper;
         this.publisher = publisher;
         this.mapper = mapper;
@@ -116,7 +120,7 @@ public class UserServiceImpl implements UserService {
 
         final UserEntity currentUser = loggedUserHelper.get();
 
-        if(!userEditUsernameBindingModel.getUsername().isBlank()){
+        if (!userEditUsernameBindingModel.getUsername().isBlank()) {
             currentUser.setUsername(userEditUsernameBindingModel.getUsername());
         }
 
@@ -128,12 +132,25 @@ public class UserServiceImpl implements UserService {
 
         final UserEntity currentUser = loggedUserHelper.get();
 
-        if(!userPasswordBindingModel.getPassword().isBlank()){
+        if (!userPasswordBindingModel.getPassword().isBlank()) {
             String encodedPassword = passwordEncoder.encode(userPasswordBindingModel.getPassword());
             currentUser.setPassword(encodedPassword);
         }
 
         userRepository.saveAndFlush(currentUser);
+    }
+
+    @Override
+    public void uploadProfileImage(MultipartFile file) {
+
+        UserEntity currentUser = loggedUserHelper.get();
+
+        FileUploadUtil.assertAllowed(file, FileUploadUtil.IMAGE_PATTERN);
+        final String fileName = FileUploadUtil.getFileName(file.getOriginalFilename());
+        final CloudinaryResponse response = this.cloudinaryService.uploadFile(file, fileName);
+        currentUser.setImageURL(response.getUrl());
+
+        userRepository.save(currentUser);
     }
 
     @Override

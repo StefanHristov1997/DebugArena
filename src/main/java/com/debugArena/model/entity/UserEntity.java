@@ -42,6 +42,9 @@ public class UserEntity extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false))
     private Set<RoleEntity> roles;
 
+    @Column(name = "image_url")
+    private String imageURL;
+
     public UserEntity() {
         this.description = "";
         this.skills = "";

@@ -11,19 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
 @Configuration
 public class AppConfig {
 
-    private final UserRepository userRepository;
-    private final RoleService roleService;
-
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AppConfig(UserRepository userRepository, RoleService roleService, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.roleService = roleService;
+    public AppConfig(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -46,6 +43,11 @@ public class AppConfig {
                         .map(UserRegisterBindingModel::getPassword, UserEntity::setPassword));
 
         return modelMapper;
+    }
+
+    @Bean
+    public MultipartResolver multipartResolver() {
+        return new StandardServletMultipartResolver();
     }
 
 }

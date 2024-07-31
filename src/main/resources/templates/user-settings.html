@@ -20,23 +20,29 @@
         <div class="settings-section">
             <h2 th:text="#{user.personal.information.h2}"></h2>
             <form
+                    th:action="@{/users/settings/upload-image}"
+                    enctype="multipart/form-data"
+                    th:method="POST">
+                <label for="imageURL" th:text="#{user.change.profile.picture}"></label>
+                <input type="file" id="imageURL" th:name="imageURL">
+                <button type="submit" class="btn-save" th:text="#{profile.save.changes.btn}"></button>
+            </form>
+            <form
                     th:action="@{/users/settings/edit-username}"
                     th:method="PATCH"
                     th:object="${userEditUsernameBindingModel}">
 
-                <label for="profile-pic" th:text="#{user.change.profile.picture}"></label>
-                <input type="file" id="profile-pic" name="profile-pic">
                 <label for="username" th:text="#{user.change.username}"></label>
-                    <input th:field="*{username}"
-                           th:errorclass="'is-invalid alert-danger'"
-                           th:class="form-control"
-                           type="text"
-                           id="username"
-                           th:placeholder="#{user.username.placeholder}">
-                    <small th:errors="*{username}"
-                           class="invalid-feedback text-danger" style="color: red">error message
-                    </small>
-                    <button type="submit" class="btn-save" th:text="#{profile.save.changes.btn}"></button>
+                <input th:field="*{username}"
+                       th:errorclass="'is-invalid alert-danger'"
+                       th:class="form-control"
+                       type="text"
+                       id="username"
+                       th:placeholder="#{user.username.placeholder}">
+                <small th:errors="*{username}"
+                       class="invalid-feedback text-danger" style="color: red">error message
+                </small>
+                <button type="submit" class="btn-save" th:text="#{profile.save.changes.btn}"></button>
             </form>
 
             <form th:action="@{/users/settings/edit-password}"

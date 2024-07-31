@@ -2,6 +2,7 @@ package com.debugArena.service;
 
 import com.debugArena.model.dto.binding.*;
 import com.debugArena.model.dto.view.UserProfileViewModel;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -22,6 +23,8 @@ public interface UserService {
     void editUserUsername(UserEditUsernameBindingModel userEditUsernameBindingModel);
 
     void editUserPassword(UserEditPasswordBindingModel userPasswordBindingModel);
+
+    void uploadProfileImage(MultipartFile file);
 
     UserProfileViewModel getUserProfile();
 
