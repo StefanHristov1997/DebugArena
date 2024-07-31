@@ -7,8 +7,7 @@
 </ul>
 
 # 🚀 About:
-
-**${\color{orange}Debug}}** is a platform where novice software engineers and experienced professionals can connect with our community, share, and find solutions to their coding problems.
+<span style="color:orange">Debug</span> is a platform where novice software engineers and experienced professionals can connect with our community, share, and find solutions to their coding problems.
 
 # 💻 Features:
 <ul>
