@@ -1,4 +1,12 @@
 spring:
+  jpa:
+    properties:
+      hibernate:
+        format_sql: 'TRUE'
+    hibernate:
+      ddl-auto: update
+    open-in-view: 'false'
+    defer-datasource-initialization: true
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/${DEFAULT_DATABASE}?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
@@ -7,21 +15,13 @@ spring:
   servlet:
     multipart:
       enabled: true
-    mvc:
-      hidden method:
-    filter:
-      enabled: true
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
     #sql:
     #init:
     #mode: always
-jpa:
-  hibernate:
-    ddl-auto: update
-    open-in-view: false
-  properties:
-    hibernate:
-      format_sql: true
-      defer-datasource-initialization: true
 #Cloudinary Properties
 cloudinary:
   api-key: ${CLOUDINARY_KEY}
