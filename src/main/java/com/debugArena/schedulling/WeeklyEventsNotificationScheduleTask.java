@@ -33,8 +33,9 @@ public class WeeklyEventsNotificationScheduleTask {
         this.userService = userService;
     }
 
+    // 0 0 22 * * 7
     //30 * * * * ?
-    @Scheduled(cron = "0 0 22 * * 7")
+    @Scheduled(cron = " 0 0 22 * * 7")
     public void sendWeeklyEventsNotification() {
         if (smtpServerStatusHelper.isSmtpServerUp()) {
             List<EventDetailsInfoViewModel> weeklyEvents = eventService.getWeeklyEvents();
