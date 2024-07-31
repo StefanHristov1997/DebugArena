@@ -643,6 +643,8 @@ footer {
 
 /* Стилове за профилната страница */
 .profile {
+    display: flex;
+    justify-content: center;
     padding: 50px 0;
     text-align: center;
 }
@@ -660,6 +662,13 @@ footer {
     align-items: center;
     flex-direction: column;
     margin-bottom: 30px;
+}
+
+.profile-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .profile-info h1 {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bg"  xmlns:th="http://www.thymeleaf.org">
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +12,11 @@
 <body>
 <header th:replace="~{fragments/navigation}"></header>
 <main class="profile">
-    <div class="container profile-container">
+    <div class="profile-container">
         <div class="profile-header">
+            <div class="profile-image">
+                <img th:src="${userProfile.getImageURL()}" alt="user profile image">
+            </div>
             <div class="profile-info">
                 <h1 th:text="${userProfile.getUsername()}"></h1>
             </div>
@@ -22,17 +25,17 @@
             <form th:action="@{/users/profile/edit-profile}" th:method="PATCH">
                 <h2 th:text="#{profile.user.description}"></h2>
                 <p th:unless="${userProfile.getDescription() == null}" th:text="${userProfile.getDescription()}"></p>
-                <textarea name="description" ></textarea>
+                <textarea name="description"></textarea>
 
                 <h2 th:text="#{profile.user.skills}"></h2>
                 <p th:unless="${userProfile.getSkills() == null}" th:text="${userProfile.getSkills()}"></p>
-                <textarea name="skills" ></textarea>
+                <textarea name="skills"></textarea>
 
                 <h2 th:text="#{profile.user.interests}"></h2>
                 <p th:unless="${userProfile.getInterests() == null}" th:text="${userProfile.getInterests()}"></p>
                 <textarea name="interests"></textarea>
 
-                <button class="btn-save"><i class="fas fa-save"></i> <span th:text="#{profile.save.changes.btn}"></span> </button>
+                <button class="btn-save"><i class="fas fa-save"></i> <span th:text="#{profile.save.changes.btn}"></span></button>
             </form>
         </div>
     </div>
