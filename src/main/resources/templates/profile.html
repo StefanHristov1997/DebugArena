@@ -15,7 +15,8 @@
     <div class="profile-container">
         <div class="profile-header">
             <div class="profile-image">
-                <img th:src="${userProfile.getImageURL()}" alt="user profile image">
+                <img th:if="${userProfile.getImageURL() == null}" src="/images/default-profle-picture.png" alt="user profile image">
+                <img th:unless="${userProfile.getImageURL() == null}" th:src="${userProfile.getImageURL()}" alt="user profile image">
             </div>
             <div class="profile-info">
                 <h1 th:text="${userProfile.getUsername()}"></h1>
