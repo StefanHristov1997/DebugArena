@@ -59,6 +59,7 @@
 <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="Spring boot icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/183896128-ec99105a-ec1a-4d85-b08b-1aa1620b2046.png" alt="MySQL icon" height="50px" width="50px">
 <img src="https://github.com/user-attachments/assets/ece43ada-6f6a-4527-bc69-bd0c4ff27035" alt="Mailhog icon" height="50px" width="50px">
+<img src="https://logowik.com/content/uploads/images/cloudinary6366.logowik.com.webp" alt="Cloudinary icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/117533873-484d4480-afef-11eb-9fad-67c8605e3592.png" alt="Junit icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/183892181-ad32b69e-3603-418c-b8e7-99e976c2a784.png" alt="Mockito icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/190229463-87fa862f-ccf0-48da-8023-940d287df610.png" alt="Lombok icon" height="50px" width="50px">
