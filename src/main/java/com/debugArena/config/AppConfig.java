@@ -45,9 +45,4 @@ public class AppConfig {
         return modelMapper;
     }
 
-    @Bean
-    public MultipartResolver multipartResolver() {
-        return new StandardServletMultipartResolver();
-    }
-
 }
