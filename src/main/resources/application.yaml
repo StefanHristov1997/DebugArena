@@ -23,11 +23,11 @@ spring:
       hibernate:
         format_sql: true
     defer-datasource-initialization: true
-  #Cloudinary Properties
-  #cloudinary:
-  #api-key:
-  #api-secret:
-  #cloud-name:
+#Cloudinary Properties
+cloudinary:
+    api-key: ${CLOUDINARY_KEY}
+    api-secret: ${CLOUDINARY_SECRET}
+    cloud-name: ${CLOUDINARY_NAME}
 logging:
   level:
     org.hibernate.SQL: FALSE
@@ -46,6 +46,6 @@ mail:
 
 event:
   api:
-    baseUrl: "http://localhost:8081"
+   baseUrl: "http://localhost:8081"
 
 binding-result-package: org.springframework.validation.BindingResult
