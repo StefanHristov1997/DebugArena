@@ -16,3 +16,7 @@ event:
   api:
     baseUrl: "http://localhost:8081"
 binding-result-package: org.springframework.validation.BindingResult
+cloudinary:
+  api-key: ${CLOUDINARY_KEY}
+  api-secret: ${CLOUDINARY_SECRET}
+  cloud-name: ${CLOUDINARY_NAME}
