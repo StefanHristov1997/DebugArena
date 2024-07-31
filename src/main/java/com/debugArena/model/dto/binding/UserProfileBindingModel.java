@@ -9,6 +9,8 @@ public class UserProfileBindingModel {
 
     private String username;
 
+    private String imageURL;
+
     private String description;
 
     private String skills;

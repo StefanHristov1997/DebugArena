@@ -52,6 +52,9 @@ class UserServiceImplTest {
     private RoleService mockedRoleService;
 
     @Mock
+    private CloudinaryService mockedCloudinaryService;
+
+    @Mock
     private LoggedUserHelper mockedLoggedUserHelper;
 
     @Mock
@@ -68,6 +71,7 @@ class UserServiceImplTest {
         this.toTest = new UserServiceImpl(
                 mockedUserRepository,
                 mockedRoleService,
+                mockedCloudinaryService,
                 mockedLoggedUserHelper,
                 mockedApplicationEventPublisher,
                 mockedModelMapper,

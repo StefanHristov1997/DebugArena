@@ -88,6 +88,7 @@ public class UserSettingsController {
 
     @PostMapping("/settings/upload-image")
     public String uploadImage(@RequestParam(value = "file", required = false) MultipartFile file) {
+
         userService.uploadProfileImage(file);
 
         return "redirect:/";
