@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ДебъгАрена</title>
-    <link rel="stylesheet" href="/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -17,27 +18,31 @@
     <i class="fas fa-plus-circle"></i>
     <span th:text="#{add.event.fast.link}"></span>
 </a>
-<main>
-    <section class="events-list" th:each="event : ${events}">
-        <div class="event-item">
-            <div class="event-header">
-                <h2 th:text="${event.getTitle()}"></h2>
+<div th:each="event : ${events}" class="event-container">
+    <div class="event-card">
+        <div class="event-header">
+            <h2 th:text="${event.getTitle()}"></h2>
+            <div class="event-tags">
+                <span class="tag tag-online">ОНЛАЙН СЪБИТИЕ</span>
+                <span class="tag tag-free">БЕЗПЛАТНО</span>
             </div>
-            <div class="event-body">
-                <p><i class="fas fa-user"></i> <strong>Автор: </strong><span th:text="${event.getAuthorName()}"></span></p>
-                <p><i class="fas fa-calendar-alt"></i> <strong>Дата: </strong>
-                    <span th:text="${event.date.getDayOfMonth()}"></span>/<span th:text="${event.date.getMonthValue()}"></span>/<span th:text="${event.date.getYear()}"></span>г.
-                </p>
-                <p><i class="fa-regular fa-clock"></i> <strong>Час: </strong>
-                    <span th:text="${event.date.getHour()}"></span>:<span th:text="${event.date.getMinute()}"></span>
-                </p>
+            <div class="event-author">
+                <img th:if="${event.getAuthorImageURL() == null}" src="/images/default-profle-picture.png" alt="user profile image">
+                <img th:unless="${event.getAuthorImageURL() == null}" th:src="${event.getAuthorImageURL()}" th:alt="${event.getAuthorName()}">
             </div>
+        </div>
+        <div class="event-details">
+            <p><strong>Дата:</strong> <span th:text="${event.date.getDayOfMonth()}"></span>/<span
+                    th:text="${event.date.getMonthValue()}"></span>/<span th:text="${event.date.getYear()}"></span></p>
+            <p><strong>Час:</strong> <span th:text="${event.date.getHour()}"></span>:<span
+                    th:text="${event.date.getMinute()}"></span></p>
+            <p><strong>Организатор:</strong> <span th:text="${event.getAuthorName()}"></span></p>
             <div class="event-footer">
                 <a th:href="@{/events/details/{id}(id=${event.id})}" class="event-link">Към събитието</a>
             </div>
         </div>
-    </section>
-</main>
+    </div>
+</div>
 <footer th:replace="~{fragments/footer}"></footer>
 <script src="/js/language-script.js"></script>
 </body>

@@ -1135,46 +1135,78 @@ footer {
     text-align: center;
 }
 
-/* Events */
-main {
-    padding: 20px;
-}
-
-.events-list {
+/* Стил за страницата със събития */
+.event-container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    align-items: center;
 }
 
-.event-item {
+.event-card {
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: calc(50% - 20px);
-    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    width: 600px;
+    margin: 10px;
 }
 
 .event-header {
     background-color: #333;
     color: #fff;
     padding: 20px;
+    position: relative;
 }
 
 .event-header h2 {
-    margin: 0;
+    margin: 0 0 10px 0;
+    font-size: 20px;
 }
 
-.event-body {
+.event-tags {
+    display: flex;
+    gap: 10px;
+}
+
+.tag {
+    background-color: #2b6cb0;
+    border-radius: 4px;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.tag-online {
+    background-color: #2b6cb0;
+}
+
+.tag-free {
+    background-color: #48bb78;
+}
+
+.event-author {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100px;
+    height: 70px;
+    border: 3px solid #fff;
+}
+
+.event-author img {
+    width: 100%;
+    height: auto;
+}
+
+.event-details {
     padding: 20px;
-    color: #333;
 }
 
-.event-body p {
+.event-details p {
     margin: 10px 0;
+    font-size: 14px;
 }
 
 .event-footer {
