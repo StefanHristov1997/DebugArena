@@ -35,11 +35,6 @@
             font-size: 2em;
         }
 
-        .event-author {
-            margin: 5px 0 0;
-            font-size: 1.2em;
-        }
-
         .event-body {
             padding: 20px;
         }
@@ -63,14 +58,17 @@
     <section class="event-details">
         <div class="event-header">
             <h1 th:text="${eventDetails.title}"></h1>
-            <p class="event-author">Автор: <span th:text="${eventDetails.authorName}"></span></p>
+            <p>Автор: <span th:text="${eventDetails.authorName}"></span></p>
         </div>
         <div class="event-body">
             <p><i class="fas fa-calendar-alt"></i> <strong>Дата: </strong>
-                <span th:text="${eventDetails.date.getDayOfMonth()}"></span>/<span th:text="${eventDetails.date.getMonthValue()}"></span>/<span th:text="${eventDetails.date.getYear()}"></span>г.
+                <span th:text="${eventDetails.date.getDayOfMonth()}"></span>/<span
+                        th:text="${eventDetails.date.getMonthValue()}"></span>/<span
+                        th:text="${eventDetails.date.getYear()}"></span>г.
             </p>
             <p><i class="fa-regular fa-clock"></i> <strong>Час: </strong>
-                <span th:text="${eventDetails.date.getHour()}"></span>:<span th:text="${eventDetails.date.getMinute()}"></span>
+                <span th:text="${eventDetails.date.getHour()}"></span>:<span
+                        th:text="${eventDetails.date.getMinute()}"></span>
             </p>
             <p><strong>Имейл за контакт:</strong> <span th:text="${eventDetails.authorEmail}"></span></p>
             <p><strong>Платформа:</strong> <span th:text="${eventDetails.platform}"></span></p>

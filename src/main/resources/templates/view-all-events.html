@@ -7,9 +7,6 @@
     <title>ДебъгАрена</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <style>
-
-    </style>
 </head>
 
 <body>
@@ -23,22 +20,30 @@
         <div class="event-header">
             <h2 th:text="${event.getTitle()}"></h2>
             <div class="event-tags">
-                <span class="tag tag-online">ОНЛАЙН СЪБИТИЕ</span>
-                <span class="tag tag-free">БЕЗПЛАТНО</span>
+                <span class="tag tag-online" th:text="#{event.tag.online}"></span>
+                <span class="tag tag-free" th:text="#{event.tag.free}"></span>
             </div>
             <div class="event-author">
-                <img th:if="${event.getAuthorImageURL() == null}" src="/images/default-profle-picture.png" alt="user profile image">
-                <img th:unless="${event.getAuthorImageURL() == null}" th:src="${event.getAuthorImageURL()}" th:alt="${event.getAuthorName()}">
+                <img th:if="${event.getAuthorImageURL() == null}" src="/images/default-profle-picture.png"
+                     alt="user profile image">
+                <img th:unless="${event.getAuthorImageURL() == null}" th:src="${event.getAuthorImageURL()}"
+                     th:alt="${event.getAuthorName()}">
             </div>
         </div>
         <div class="event-details">
-            <p><strong>Дата:</strong> <span th:text="${event.date.getDayOfMonth()}"></span>/<span
-                    th:text="${event.date.getMonthValue()}"></span>/<span th:text="${event.date.getYear()}"></span></p>
-            <p><strong>Час:</strong> <span th:text="${event.date.getHour()}"></span>:<span
-                    th:text="${event.date.getMinute()}"></span></p>
-            <p><strong>Организатор:</strong> <span th:text="${event.getAuthorName()}"></span></p>
+            <span th:text="#{event.details.data}">: </span>
+            <span th:text="${event.date.getDayOfMonth()}"></span>/<span th:text="${event.date.getMonthValue()}"></span>/<span th:text="${event.date.getYear()}"></span>
+            <br>
+            <span th:text="#{event.details.hour}"></span>
+            <span th:text="${event.date.getHour()}"></span>:
+            <span th:text="${event.date.getMinute()}"></span>
+            <br>
+            <span th:text="#{event.details.author}"> </span>
+            <span th:text="${event.getAuthorName()}"></span>
+
             <div class="event-footer">
-                <a th:href="@{/events/details/{id}(id=${event.id})}" class="event-link">Към събитието</a>
+                <a th:href="@{/events/details/{id}(id=${event.id})}" class="event-link"
+                   th:text="#{event.detail.link}"></a>
             </div>
         </div>
     </div>
