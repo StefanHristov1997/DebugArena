@@ -7,7 +7,6 @@
 </ul>
 
 # 🚀 About:
-
 **DebugArena** is a platform where novice software engineers and experienced professionals can connect with our community, share, and find solutions to their coding problems.
 
 # 💻 Features:
@@ -36,6 +35,9 @@
 <img src="https://github.com/user-attachments/assets/d76503a4-e17d-42ad-8e16-0423590e753b" alt="Register form_en" height="300px" width="250px">
 <img src="https://github.com/user-attachments/assets/6aa72996-d052-4b28-a2b1-8b303bdfa2c3" alt="Login form_en" height="300px" width="250px">
 <img src="https://github.com/user-attachments/assets/7d84caea-3b03-4a68-a668-eda3dc7abce1" alt="Reset password form_en" height="300px" width="250px">
+<img src="https://github.com/user-attachments/assets/2dc83982-7b03-4606-b112-8129825c3b2a" alt="Profile" height="300px" width="250px">
+<img src="https://github.com/user-attachments/assets/06a651bd-6e07-45ce-bd4c-ee215ca870e3" alt="Profile" height="300px" width="250px">
+<img src="https://github.com/user-attachments/assets/d89694fc-9cc3-485e-9687-caddc3044369" alt="User Settings" height="300px" width="250px">
 <img src="https://github.com/user-attachments/assets/db79f602-a334-4df3-9fce-80f141b40c39" alt="Index page_en" height="600px" width="800px">
 <img src="https://github.com/user-attachments/assets/861b6387-44ee-46bd-a2d8-ffed2716e61d" alt="Index page_en" height="600px" width="800px">
 <img src="https://github.com/user-attachments/assets/4ad22772-4d8f-48a3-9802-1c7a41c76d6a" alt="Index page_bg" height="600px" width="800px">
@@ -59,6 +61,7 @@
 <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="Spring boot icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/183896128-ec99105a-ec1a-4d85-b08b-1aa1620b2046.png" alt="MySQL icon" height="50px" width="50px">
 <img src="https://github.com/user-attachments/assets/ece43ada-6f6a-4527-bc69-bd0c4ff27035" alt="Mailhog icon" height="50px" width="50px">
+<img src="https://logowik.com/content/uploads/images/cloudinary6366.logowik.com.webp" alt="Cloudinary icon" height="50px" width="100px">
 <img src="https://user-images.githubusercontent.com/25181517/117533873-484d4480-afef-11eb-9fad-67c8605e3592.png" alt="Junit icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/183892181-ad32b69e-3603-418c-b8e7-99e976c2a784.png" alt="Mockito icon" height="50px" width="50px">
 <img src="https://user-images.githubusercontent.com/25181517/190229463-87fa862f-ccf0-48da-8023-940d287df610.png" alt="Lombok icon" height="50px" width="50px">
