@@ -94,7 +94,8 @@ public class EventController {
 
         model.addAttribute("events", events);
 
-        return "view-all-events";
+//        return "view-all-events";
+        return "view-events-new";
     }
 
     @ResponseStatus(code = HttpStatus.NOT_FOUND)

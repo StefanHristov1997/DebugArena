@@ -1,4 +1,4 @@
-package com.debugArena.model.dto.view;
+package com.debugArena.model.dto.binding;
 
 import com.debugArena.model.enums.VideoPlatformEnum;
 import lombok.Getter;
@@ -8,11 +8,13 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class EventShortInfoViewModel {
+public class EventMainBindingModel {
 
     private Long id;
 
     private String title;
+
+    private String description;
 
     private String authorName;
 
@@ -20,8 +22,8 @@ public class EventShortInfoViewModel {
 
     private String authorImageURL;
 
-    private VideoPlatformEnum platform;
-
     private LocalDateTime date;
+
+    private VideoPlatformEnum platform;
 
 }
