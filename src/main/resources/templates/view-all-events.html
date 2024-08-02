@@ -31,12 +31,13 @@
             </div>
         </div>
         <div class="event-details">
+            <i class="fas fa-calendar-alt"></i>
             <span th:text="#{event.details.data}">: </span>
             <span th:text="${event.date.getDayOfMonth()}"></span>/<span th:text="${event.date.getMonthValue()}"></span>/<span th:text="${event.date.getYear()}"></span>
             <br>
+            <i class="fa-regular fa-clock"></i>
             <span th:text="#{event.details.hour}"></span>
-            <span th:text="${event.date.getHour()}"></span>:
-            <span th:text="${event.date.getMinute()}"></span>
+            <span th:text="${event.date.getHour()}"></span>:<span th:text="${event.date.getMinute()}"></span>
             <br>
             <span th:text="#{event.details.author}"> </span>
             <span th:text="${event.getAuthorName()}"></span>

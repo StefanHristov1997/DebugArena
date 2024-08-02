@@ -58,22 +58,30 @@
     <section class="event-details">
         <div class="event-header">
             <h1 th:text="${eventDetails.title}"></h1>
-            <p>Автор: <span th:text="${eventDetails.authorName}"></span></p>
+            <span th:text="#{event.details.author}"></span>
+            <span th:text="${eventDetails.authorName}"></span>
         </div>
         <div class="event-body">
-            <p><i class="fas fa-calendar-alt"></i> <strong>Дата: </strong>
-                <span th:text="${eventDetails.date.getDayOfMonth()}"></span>/<span
-                        th:text="${eventDetails.date.getMonthValue()}"></span>/<span
-                        th:text="${eventDetails.date.getYear()}"></span>г.
-            </p>
-            <p><i class="fa-regular fa-clock"></i> <strong>Час: </strong>
-                <span th:text="${eventDetails.date.getHour()}"></span>:<span
-                        th:text="${eventDetails.date.getMinute()}"></span>
-            </p>
-            <p><strong>Имейл за контакт:</strong> <span th:text="${eventDetails.authorEmail}"></span></p>
-            <p><strong>Платформа:</strong> <span th:text="${eventDetails.platform}"></span></p>
+            <i class="fas fa-calendar-alt"></i>
+            <span th:text="#{event.details.data}"></span>
+            <span th:text="${eventDetails.date.getDayOfMonth()}"></span>/<span th:text="${eventDetails.date.getMonthValue()}"></span>/<span th:text="${eventDetails.date.getYear()}"></span>
+            <br>
+
+            <i class="fa-regular fa-clock"></i>
+            <span th:text="#{event.details.hour}"></span>
+            <span th:text="${eventDetails.date.getHour()}"></span>:<span th:text="${eventDetails.date.getMinute()}"></span>
+            <br>
+
+            <span th:text="#{event.email.contact}"></span>
+            <span th:text="${eventDetails.authorEmail}"></span>
+            <br>
+
+            <span th:text="#{event.video.platform}"></span>
+            <span th:text="${eventDetails.platform}"></span>
+            <br>
+
             <div class="event-description">
-                <p><strong>Описание:</strong></p>
+                <span th:text="#{event.description}"></span>
                 <p th:text="${eventDetails.description}"></p>
             </div>
         </div>
