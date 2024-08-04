@@ -160,6 +160,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserEmailBindingModel> getUserEmails() {
+
         final List<UserEntity> allUsers = userRepository.findAll();
 
         return allUsers
