@@ -24,7 +24,7 @@ public interface UserService {
 
     void editUserPassword(UserEditPasswordBindingModel userPasswordBindingModel);
 
-    void uploadProfileImage(MultipartFile file);
+    void uploadProfileImage(UserEditProfileImageBindingModel userEditProfileImageBindingModel);
 
     UserProfileViewModel getUserProfile();
 

@@ -1,6 +1,6 @@
 package com.debugArena.model.dto.binding;
 
-import com.debugArena.model.validation.annotation.UniqueUsername;
+import com.debugArena.validation.annotation.UniqueUsername;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;

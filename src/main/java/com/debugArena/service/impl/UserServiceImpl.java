@@ -141,13 +141,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void uploadProfileImage(MultipartFile file) {
+    public void uploadProfileImage(UserEditProfileImageBindingModel userEditProfileImageBindingModel) {
 
         UserEntity currentUser = loggedUserHelper.get();
 
-        FileUploadUtil.assertAllowed(file, FileUploadUtil.IMAGE_PATTERN);
-        final String fileName = FileUploadUtil.getFileName(file.getOriginalFilename());
-        final CloudinaryResponse response = this.cloudinaryService.uploadFile(file, fileName);
+        FileUploadUtil.assertAllowed(userEditProfileImageBindingModel.getProfileImage(), FileUploadUtil.IMAGE_PATTERN);
+        final String fileName = FileUploadUtil.getFileName(userEditProfileImageBindingModel.getProfileImage().getOriginalFilename());
+        final CloudinaryResponse response = this.cloudinaryService.uploadFile(userEditProfileImageBindingModel.getProfileImage(), fileName);
         currentUser.setImageURL(response.getUrl());
 
         userRepository.save(currentUser);

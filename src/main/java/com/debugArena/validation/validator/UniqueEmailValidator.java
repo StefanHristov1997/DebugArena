@@ -1,40 +1,40 @@
-package com.debugArena.model.validation.validator;
+package com.debugArena.validation.validator;
 
-import com.debugArena.model.validation.annotation.UniqueUsername;
+import com.debugArena.validation.annotation.UniqueEmail;
 import com.debugArena.service.UserService;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
+public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String> {
 
     private String message;
+
     private final UserService userService;
 
     @Autowired
-    public UniqueUsernameValidator(UserService userService) {
+    public UniqueEmailValidator(UserService userService) {
         this.userService = userService;
     }
 
     @Override
-    public void initialize(UniqueUsername constraintAnnotation) {
+    public void initialize(UniqueEmail constraintAnnotation) {
         this.message = constraintAnnotation.message();
     }
 
     @Override
-    public boolean isValid(String username, ConstraintValidatorContext context) {
-
-        if (username == null) {
+    public boolean isValid(String email, ConstraintValidatorContext context) {
+        if (email == null) {
             return true;
         } else {
-            boolean isUsernameAlreadyExist = this.userService.isUsernameExist(username);
+            boolean isEmailAlreadyExist = userService.isEmailExist(email);
 
-            if (isUsernameAlreadyExist) {
+            if (isEmailAlreadyExist) {
                 replaceDefaultConstraintViolation(context, message);
             }
 
-            return isUsernameAlreadyExist;
+            return isEmailAlreadyExist;
         }
     }
 

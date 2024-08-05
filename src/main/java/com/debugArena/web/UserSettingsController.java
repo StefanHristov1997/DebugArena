@@ -1,6 +1,8 @@
 package com.debugArena.web;
 
+import com.debugArena.exeption.FuncErrorException;
 import com.debugArena.model.dto.binding.UserEditPasswordBindingModel;
+import com.debugArena.model.dto.binding.UserEditProfileImageBindingModel;
 import com.debugArena.model.dto.binding.UserEditUsernameBindingModel;
 import com.debugArena.service.UserService;
 import jakarta.validation.Valid;
@@ -10,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -24,6 +25,7 @@ public class UserSettingsController {
     private static final String DOT = ".";
     final String attributeUsername = "userEditUsernameBindingModel";
     final String attributePassword = "userEditPasswordBindingModel";
+    final String attributeProfileImage = "userEditProfileImageBindingModel";
 
     private boolean successfullyEditUsername = false;
     private boolean successfullyEditPassword = false;
@@ -42,6 +44,10 @@ public class UserSettingsController {
 
         if (!model.containsAttribute(attributePassword)) {
             model.addAttribute(attributePassword, new UserEditPasswordBindingModel());
+        }
+
+        if (!model.containsAttribute(attributeProfileImage)) {
+            model.addAttribute(attributeProfileImage, new UserEditProfileImageBindingModel());
         }
 
         model.addAttribute("successfullyEditUsername", successfullyEditUsername);
@@ -87,10 +93,24 @@ public class UserSettingsController {
     }
 
     @PostMapping("/settings/upload-image")
-    public String uploadImage(@RequestParam(value = "file", required = false) MultipartFile file) {
+    public String uploadImage(@Valid UserEditProfileImageBindingModel userEditProfileImageBindingModel,
+                              BindingResult bindingResult,
+                              RedirectAttributes rAtt) {
 
-        userService.uploadProfileImage(file);
+        if (bindingResult.hasErrors()) {
+            rAtt.addFlashAttribute(attributeProfileImage, userEditProfileImageBindingModel);
+            rAtt.addFlashAttribute(bindingResultPath + DOT + attributeProfileImage, bindingResult);
+            return "redirect:/users/settings";
+        }
+
+        userService.uploadProfileImage(userEditProfileImageBindingModel);
 
         return "redirect:/";
+    }
+
+    @ExceptionHandler(FuncErrorException.class)
+    public String handleImageError(RedirectAttributes rAtt) {
+        rAtt.addFlashAttribute("error", true);
+        return "redirect:/users/settings";
     }
 }

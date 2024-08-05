@@ -23,10 +23,21 @@
             <form
                     th:action="@{/users/settings/upload-image}"
                     th:method="POST"
+                    th:object="${userEditProfileImageBindingModel}"
                     enctype="multipart/form-data">
 
                 <label th:for="file" th:text="#{user.change.profile.picture}"></label>
-                <input type="file" id="file" th:name="file">
+                <input th:field="*{profileImage}"
+                       th:errorclass="'is-invalid alert-danger'"
+                       th:class="form-control"
+                       type="file"
+                       id="file">
+                <small th:errors="*{profileImage}"
+                       class="invalid-feedback text-danger" style="color: red">error message
+                </small>
+                <small th:if="${error}"
+                       class="invalid-feedback text-danger" style="color: red" th:text="#{invalid.image.file}">
+                </small>
                 <button type="submit" class="btn-save" th:text="#{profile.save.changes.btn}"></button>
             </form>
 
