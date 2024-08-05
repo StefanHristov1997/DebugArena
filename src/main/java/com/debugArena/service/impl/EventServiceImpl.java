@@ -98,7 +98,6 @@ public class EventServiceImpl implements EventService {
                             new UsernameNotFoundException("User with email: " + e.getAuthorEmail() + " is not found"));
 
             e.setAuthorImageURL(author.getImageURL());
-
         }).map(e -> modelMapper.map(e, EventShortInfoViewModel.class)).toList();
     }
 

@@ -10,11 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 @UtilityClass
 public class FileUploadUtil {
-
-    public final static Long FILE_MAX_SILE = 2L * 1024 * 1024;
 
     public static final String IMAGE_PATTERN = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
 
@@ -28,10 +25,6 @@ public class FileUploadUtil {
     }
 
     public static void assertAllowed(MultipartFile file, String pattern) {
-        final long size = file.getSize();
-        if (size > FILE_MAX_SILE) {
-            throw new FuncErrorException("Max file size is 2MB");
-        }
 
         final String fileName = file.getOriginalFilename();
         final String extension = FilenameUtils.getExtension(fileName);
